@@ -1,0 +1,435 @@
+---
+title: "The Tastetime continuum"
+format: html
+---
+## The problem formulation
+
+Our money, as a measure of value, should be a to help us make real world choices, even as the alternatives are expressed in nominal currency terms.
+It is a function of money it should be able to serve, by definition.
+Decisions over spending and/or saving is essentially the individual's past, the present and future compressed into simple numbers.
+
+However, the people of the world today must navigate in a floating currency environment, where the value of the each currency changes, not only due to the real market conditions, but also according to the present **money supply**.
+
+The root of the problem is, that our past decisions are irreversible, while the present value of past decisions fluctuate, according to the money supply. 
+
+This page is lamentation for this conundrum.
+
+## M2 as a proxy for the Money Supply
+
+M2 is a measurement including everything that constitutes near-monies. Compared to the general M1 it is a broader definition of the current money supply.
+
+M2 includes the assets that are highly liquid therefore could within a short period of time be converted into cash or deposits. 
+
+**M2 = Currency + Checking accounts + Savings accounts + Small CDs + Retail money market funds**
+
+*Find more: 
+Board of Governors of the Federal Reserve System. (n.d.). What is the money supply? Is it important? https://www.federalreserve.gov/faqs/money_12845.htm*
+
+The following is the visualiziation to show USD money supply expressed in USD:
+
+```{python}
+
+import os as os 
+import pandas as pd
+import requests
+import fredapi as Fred
+import plotly.express as px
+import plotly.io as pio
+pio.templates.default = "plotly_white"
+
+
+#Using the FRED api key
+api_key = os.environ.get("FRED_API_KEY")
+
+#Referencing the selected graph
+series_id_USA = "M2SL"
+
+#The API link call and params
+url = "https://api.stlouisfed.org/fred/series/observations"
+params_usa = {
+    "series_id": series_id_USA,
+    "api_key": api_key,
+    "file_type": "json"
+}
+
+#The request
+r_usa = requests.get(url, params=params_usa)
+
+#The data
+data_usa = r_usa.json()
+
+#Formating into a friendly format
+df_usa = pd.DataFrame(data_usa['observations'])
+df_usa = df_usa.reset_index()
+df_usa['date'] = pd.to_datetime(df_usa['date'])
+df_usa['value'] = pd.to_numeric(df_usa['value'])
+
+```
+
+```{python}
+# Calling the plot
+fig = px.line(df_usa,
+              x="date",
+              y="value",
+              title="M2 Money Stock (Monthly, Seasonally Adjusted)",
+              labels={"date":"Date", "value":"M2 (USD billions)"},
+              markers=True)
+
+# X axis is self-evident
+fig.update_layout(
+    xaxis_title=None
+)
+
+fig.update_traces(
+    line_color='blue',
+    line_width=3
+)
+
+fig.show()
+```
+\
+I believe the general trend is unmistakable. This data point in itself is not enough to make have any solid conclusion, outside of the observation that something is happening. For some reason.
+
+
+## Hungarian money supply
+
+Below is the Hungarian money supply over the very same years. 
+For the sake of accuracy this is officially the M3 not the M2 level. But I believe this does not hurt the general intent of the reasoning.
+
+```{python}
+
+#Hun M3 for lack of a better one
+series_id_hun = "MABMM301HUM189S"
+
+#The API link call and params
+url = "https://api.stlouisfed.org/fred/series/observations"
+params_hun = {
+    "series_id": series_id_hun,
+    "api_key": api_key,
+    "file_type": "json"
+}
+
+#The request
+r_hun = requests.get(url, params=params_hun)
+
+#The data
+data_hun = r_hun.json()
+
+#Formating into a friendly format
+df_hun = pd.DataFrame(data_hun['observations'])
+df_hun = df_hun.reset_index()
+df_hun['date'] = pd.to_datetime(df_hun['date'])
+df_hun['value'] = pd.to_numeric(df_hun['value'])
+```
+
+
+```{python}
+# Calling the plot
+fig = px.line(df_hun,
+              x="date",
+              y="value",
+              title="M3 Money Stock (Monthly, Seasonally Adjusted)",
+              labels={"date":"Date", "value":"M2 (HUF)"},
+              markers=True)
+
+# X axis is self-evident
+fig.update_layout(
+    xaxis_title=None
+)
+
+fig.update_traces(
+    line_color='goldenrod',
+    line_width=3
+)
+
+fig.show()
+```
+\
+A simple correlation between the two charts are visible without any stastical proof. To insert a fantastic quote. 
+
+> "You can observe a lot by watching"
+>                           Yogi Berra
+
+
+We can safely deduct that the two charts follow each other closely. Although for different reasons. 
+USD being the reserve currency could be expanded without suffering the drawback the Forint might ceteris paribus.
+That being said, the Forint had room to be expanded if the reserve currency is doing the same. Basically following the course of the dollar.
+
+## Bringing it down to the ground
+
+Fiat money is nominal. The experienced world seems less so. 
+Therefore in order anchor it down to something real, we need a common ground. 
+To explore what might have happened to the consumers I will take a look at Big Mac index.
+It is a well-established tool, originally published by the Economist, with rich academic background. 
+
+### The Big Mac index 
+
+
+```{python}
+#the source
+url_bm_index="https://raw.githubusercontent.com/TheEconomist/big-mac-data/refs/heads/master/source-data/big-mac-source-data-v2.csv"
+
+#the two countries
+req_cntries = ['HUN', 'USA']
+
+#filtering
+df_bm_souce=pd.read_csv(url_bm_index)
+df_bm=df_bm_souce[df_bm_souce['iso_a3'].isin(req_cntries)]
+```
+
+The first chart demonstrates the local price of the Big Mac in these countries.
+The brilliance of this is, that the essential value of the product is effectively the same. This traverses time and space, which my simple diagrams also intend to achieve.
+Everything that is dependent on technology gets outdated and or depreciated over time. Other products might have huge cultural and local variations. Big Mac is free of these burdens. 
+
+Writing these lines, it occured me that subscriptions prices in different countries could serve the same, or even better proxy for the purchasing power proxy. Given if enough data are gathered in the future.
+
+
+```{python}
+import plotly.graph_objects as go
+from plotly.subplots import make_subplots
+import pandas as p
+
+fig = make_subplots(specs=[[{"secondary_y":True}]])
+
+fig.add_trace(
+    go.Scatter(
+        x=df_bm[df_bm['iso_a3']=='HUN']['date'],
+        y=df_bm[df_bm['iso_a3']=='HUN']["local_price"],
+        name="Price in Hungarian Forints",
+        mode='lines+markers',
+        line=dict(color='goldenrod')
+    ),
+    secondary_y=False,
+)
+fig.add_trace(
+    go.Scatter(
+        x=df_bm[df_bm['iso_a3']=='USA']["date"],
+        y=df_bm[df_bm['iso_a3']=='USA']["local_price"],
+        name="Price in USA Dollars",
+        mode='lines+markers',
+        line=dict(color='blue')
+    ),
+    secondary_y=True,
+)
+fig.update_layout(
+    title_text="Big Mac in local prices",
+    hovermode='x unified',
+    legend=dict(yanchor="top", y=0.9, xanchor='left',x=0.01)
+
+)
+fig.update_yaxes(
+    title_text="Price in Hungarian Forint",
+    secondary_y=False,
+    color='goldenrod'
+
+)
+fig.update_yaxes(
+    title_text="Price in USA Dollars",
+    secondary_y=True,
+    color='blue'
+)
+fig.update_yaxes(
+    title_text="Price in Hungarian Forint",
+    secondary_y=False,
+    color='goldenrod'
+
+)
+fig.show()
+```
+\
+
+>The figure shows that there was a general uptrend in prices, although in Hungary there was a 5 year period of tranquility where the prices stayed flat.
+
+Even in this post financial crises period, the Hungarian money supply expanded substantially from 17T to 23T. Nonetheless the price of the Big Mac flatlined this. This might point to the fact, that there were real growth present in the Hungarian economy during this period, which could accomodate the extra money supply without causing inflation.
+
+Secondary, the impact of the rapid price increase starting 2020 is paramount. 
+Meaning that any theoretical person who was saving Forints before 2020 to buy Big Macs after 2020 had to face the grim fact, that their calculations were fundamentally altered during the currency expansion.
+This leads us back the first point. Our theoretical persons past decisions had been overwritten for the worst. Losing past time and utility forever.
+Leading the argument in another way, the units of Forints did not traverse space and time intact. 
+
+## Going further
+
+The local price increases without further information might be too little to showcase the **real prices** of the the product.
+
+It could very well happen that a currency is losing its posture to another currency while the currency users are not exposed to his to the same degree.
+
+For a simple definition the purchasing power expresses how the Forint could be translated into products on the local market.
+
+```{python}
+#Purchasing parity power
+
+#Date as and index for my sets of interests
+df_bm = df_bm.set_index('date')
+
+#Selecting the local price and put them series into frames
+df_hun = df_bm[df_bm['iso_a3']=='HUN']["local_price"].to_frame()
+df_usd = df_bm[df_bm['iso_a3']=='USA']["local_price"].to_frame()
+
+#Creating a new table from the frames
+df_ppp= df_hun.merge(df_usd, 
+            left_index=True, 
+            right_index=True, 
+            suffixes=('_HUF','_USD'))
+
+#Calculating purchasing power
+df_ppp['ppp'] = round(df_ppp['local_price_HUF'] / df_ppp['local_price_USD'],2)
+
+#Joining the dollar real exchange rate
+df_ppp = df_ppp.merge(df_bm[df_bm['iso_a3']=='HUN']['dollar_ex'], on = 'date', how='inner')
+
+#Calculating misvaluation
+df_ppp['misval']= round((df_ppp['ppp'] - df_ppp['dollar_ex'])/df_ppp['dollar_ex'],2)*100
+```
+
+
+```{python}
+#Making 1x2 subplots
+fig = make_subplots(
+    rows=1,
+    cols=2,
+    shared_xaxes=True,
+    horizontal_spacing=0.08,
+    subplot_titles=('Dollar price in HUF versus Implied PP','Misvaluation in percentage')
+    )
+fig.add_trace(go.Scatter(
+    x=df_ppp.index,
+    y=df_ppp['dollar_ex'],
+    mode='lines+markers',
+    name='Dollar exchange rate'
+), row=1, col=1
+)
+fig.add_trace(go.Scatter(
+    x= df_ppp.index,
+    y= df_ppp['ppp'],
+    mode='lines+markers',
+    name='Implied PP Rate'
+), row=1, col=1
+)
+fig.add_trace(go.Scatter(
+        x=df_ppp.index,
+        y=df_ppp['misval'],
+        mode='lines+markers',
+        name='Missvaluation in percentages'
+), row=1, col=2
+)
+fig.update_yaxes(#title='Missvaluation in percentages' 
+row=1, col=2, ticksuffix = '%', range = [-100,100])
+fig.update_yaxes(#title='Measured', 
+ticksuffix=' HUF', row=1, col=1)
+
+fig.update_layout(
+    legend=dict(
+        orientation='h',
+        yanchor='bottom',
+        y=-0.3,
+        xanchor='left'
+    )
+)
+```
+\
+
+>The above chart showcases, that the Forint has held its purchasing power in Big Macs. Even though the Forint's value decreased to dollars. Puting it another way, the depreciation of Forint to Dollars did not effect the price of Big Macs for the consumers on the local market.
+
+The chart on the rights points out that the forint is still undervalued.
+If the sellers of the Big Macs product on the hungarian market were entirely account in dollars, should they raise prices to balance this. Luckily, this is has not been the case.
+
+## By units of Big Mac
+
+Lastly, I'd like to relate the income of the economic actors measured in GDP per capita to the price of the Big Mac on the local market.
+
+Practically speaking, this measure is to express how many Big Macs one might get, having spent their entire income on this product.
+
+This will show two things:\
+1. How real income (expressed in Big Macs), changed over time in the countries\
+2. How the two countries fared to each other
+
+
+```{python}
+#date2 to work with
+df_bm['date2'] = df_bm.index
+
+#Calculating bigmac per capita for each country
+df_bm['rel']=round(df_bm['GDP_local']/df_bm['local_price'],2)
+
+#base in hun 2015
+base_date= '2015-01-01'
+price_2015_hun=df_bm[(df_bm['name']=='Hungary') & (df_bm['date2']==base_date)]['rel'].iloc[0]
+
+#base in usa 2015   
+price_2015_usa=df_bm[(df_bm['name']=='United States') & (df_bm['date2']==base_date)]['rel'].iloc[0]
+
+#based index
+df_bm_hun= df_bm[df_bm['iso_a3']=='HUN'].copy()
+df_bm_hun['based']= df_bm_hun['rel']/price_2015_hun
+
+#based index
+df_bm_usa= df_bm[df_bm['iso_a3']=='USA'].copy()
+df_bm_usa['based']= df_bm_usa['rel']/price_2015_usa
+
+#putting them into a wide format for the fig
+df_merged_bm_rel = pd.merge(
+    df_bm_hun[['date2','based']],
+    df_bm_usa[['date2','based']],
+    on='date2',
+    how='inner',
+    suffixes=('_HUN','_USA')
+)
+```
+
+```{python}
+fig = make_subplots(
+    rows=1,
+    cols=2,
+    shared_xaxes=True,
+    horizontal_spacing=0.08,
+    subplot_titles=('Big Macs per capita over time','Big Macs per capita indexed to 2010 price level')
+    )
+
+fig.add_trace(go.Scatter(
+    x=df_merged_bm_rel['date2'],
+    y=df_merged_bm_rel['based_HUN'],
+    mode='lines+markers',
+    name='Big Macs per capita indexed to 2010 Hungary'
+),row=1, col=2
+)
+
+fig.add_trace(go.Scatter(
+    x=df_merged_bm_rel['date2'],
+    y=df_merged_bm_rel['based_USA'],
+    mode='lines+markers',
+    name='Big Macs per capita indexed to 2010 USA'
+),row=1, col=2
+)
+
+fig.add_trace(go.Scatter(
+    x=df_bm_hun['date2'],
+    y=df_bm_hun['rel'],
+    mode='lines+markers',
+    name='Big Macs per capita in Hungary'
+),row=1,col=1)
+
+fig.add_trace(go.Scatter(
+    x=df_bm_usa['date2'],
+    y=df_bm_usa['rel'],
+    mode='lines+markers',
+    name='Big Macs per capita in the USA'
+),row=1,col=1)
+
+fig.update_layout(
+    legend=dict(
+        orientation='h',
+        yanchor='bottom',
+        y=-0.3,
+        xanchor='left'
+    )
+)
+```
+\
+
+The diagram on the right, indexed to 2010, shows that on the USD market, the consumers could afford 14% more units of Big Macs as of 2025.
+The consumers on the Forint market are now able to get around 50% more.
+Over a 15 years timespan this is an equavilent of the 
+`{python} round((1.52**(1/15) -1)*100,2)`% annual growth.
+\
+The bulk of this increase has happened between 2015 and 2020, as noted previously. After 2020 up until 2025 a period of income stagnation, with a visible price adjustment of 2022 likely to match the monetary expansion.
+

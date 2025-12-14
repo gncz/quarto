@@ -1,0 +1,10 @@
+---
+title: "quarto"
+---
+
+This is a my Quarto website.
+
+My aim with this site is to function as my personal pastime.  Highlight small projects, explore topics. Help me build and think things. Sharpen my written reasoning. Serve as a surface on the internet. Deepen my technical skills.
+
+
+
