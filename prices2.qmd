@@ -1,5 +1,5 @@
 ---
-title: "The Tastetime continuum"
+title: "The Tastetime Continuum"
 format: html
 ---
 ## The problem formulation
