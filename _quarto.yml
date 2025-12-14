@@ -7,7 +7,7 @@ website:
     left:
       - href: index.qmd
         text: Home
-      - href: prices2.qmd
+      - href: ttc.qmd
         text: The Tastetime continuum
       - href: about.qmd
         text: About
