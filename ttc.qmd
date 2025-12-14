@@ -4,9 +4,9 @@ format: html
 author: "Péter Gönczi"
 date: last-modified
 ---
-## The problem formulation
+## The hypothesis formulation
 
-Our money, as a measure of value, should be a to help us make real world choices, even as the alternatives are expressed in nominal currency terms.
+Our money, as a measure of value, should be able to help us make real world choices, even as the alternatives are expressed in nominal currency terms.
 It is a function of money it should be able to serve, by definition.
 Decisions over spending and/or saving is essentially the individual's past, the present and future compressed into simple numbers.
 
