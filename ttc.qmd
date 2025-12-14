@@ -1,6 +1,8 @@
 ---
 title: "The Tastetime Continuum"
 format: html
+author: "Péter Gönczi"
+date: last-modified
 ---
 ## The problem formulation
 
@@ -10,7 +12,7 @@ Decisions over spending and/or saving is essentially the individual's past, the 
 
 However, the people of the world today must navigate in a floating currency environment, where the value of the each currency changes, not only due to the real market conditions, but also according to the present **money supply**.
 
-The root of the problem is, that our past decisions are irreversible, while the present value of past decisions fluctuate, according to the money supply. 
+The root of the problem is, that our past decisions are irreversible, while the present value of past decisions fluctuate, according to the current money supply. 
 
 This page is lamentation for this conundrum.
 
@@ -91,7 +93,7 @@ fig.show()
 I believe the general trend is unmistakable. This data point in itself is not enough to make have any solid conclusion, outside of the observation that something is happening. For some reason.
 
 
-## Hungarian money supply
+## Hungarian Money Supply
 
 Below is the Hungarian money supply over the very same years. 
 For the sake of accuracy this is officially the M3 not the M2 level. But I believe this does not hurt the general intent of the reasoning.
@@ -145,7 +147,7 @@ fig.update_traces(
 fig.show()
 ```
 \
-A simple correlation between the two charts are visible without any stastical proof. To insert a fantastic quote. 
+A simple correlation between the two charts are apparent without any statistical device. To insert a fantastic quote. 
 
 > "You can observe a lot by watching"
 >                           Yogi Berra
@@ -159,7 +161,7 @@ That being said, the Forint had room to be expanded if the reserve currency is d
 
 Fiat money is nominal. The experienced world seems less so. 
 Therefore in order anchor it down to something real, we need a common ground. 
-To explore what might have happened to the consumers I will take a look at Big Mac index.
+To explore what might have happened to the consumers I will take a look at Big Mac Index.
 It is a well-established tool, originally published by the Economist, with rich academic background. 
 
 ### The Big Mac index 
@@ -178,7 +180,7 @@ df_bm=df_bm_souce[df_bm_souce['iso_a3'].isin(req_cntries)]
 ```
 
 The first chart demonstrates the local price of the Big Mac in these countries.
-The brilliance of this is, that the essential value of the product is effectively the same. This traverses time and space, which my simple diagrams also intend to achieve.
+The brilliance of this is, that the essential value proposition of the product is effectively the same. By that I mean calories, nutrition and taste. This traverses time and space, which my simple diagrams also intend to achieve.
 Everything that is dependent on technology gets outdated and or depreciated over time. Other products might have huge cultural and local variations. Big Mac is free of these burdens. 
 
 Writing these lines, it occured me that subscriptions prices in different countries could serve the same, or even better proxy for the purchasing power proxy. Given if enough data are gathered in the future.
@@ -330,8 +332,8 @@ fig.update_layout(
 
 >The above chart showcases, that the Forint has held its purchasing power in Big Macs. Even though the Forint's value decreased to dollars. Puting it another way, the depreciation of Forint to Dollars did not effect the price of Big Macs for the consumers on the local market.
 
-The chart on the rights points out that the forint is still undervalued.
-If the sellers of the Big Macs product on the hungarian market were entirely account in dollars, should they raise prices to balance this. Luckily, this is has not been the case.
+The chart on the rights points out that the Big Macs are could be considered undervalued.
+If the sellers of the Big Macs product on the Hungarian market were to account entirely in dollars, should they raise prices to balance this. Luckily, this is has not been the case.
 
 ## By units of Big Mac
 
@@ -351,11 +353,11 @@ df_bm['date2'] = df_bm.index
 #Calculating bigmac per capita for each country
 df_bm['rel']=round(df_bm['GDP_local']/df_bm['local_price'],2)
 
-#base in hun 2015
-base_date= '2015-01-01'
+#base in hun 2010
+base_date= '2010-01-01'
 price_2015_hun=df_bm[(df_bm['name']=='Hungary') & (df_bm['date2']==base_date)]['rel'].iloc[0]
 
-#base in usa 2015   
+#base in usa 2010   
 price_2015_usa=df_bm[(df_bm['name']=='United States') & (df_bm['date2']==base_date)]['rel'].iloc[0]
 
 #based index
@@ -428,8 +430,8 @@ fig.update_layout(
 
 The diagram on the right, indexed to 2010, shows that on the USD market, the consumers could afford 14% more units of Big Macs as of 2025.
 The consumers on the Forint market are now able to get around 50% more.
-Over a 15 years timespan this is an equavilent of the 
+Over a 15 years timespan this is an equivalent of the 
 `{python} round((1.52**(1/15) -1)*100,2)`% annual growth.
 \
-The bulk of this increase has happened between 2015 and 2020, as noted previously. After 2020 up until 2025 a period of income stagnation, with a visible price adjustment of 2022 likely to match the monetary expansion.
+The bulk of this increase has happened between 2015 and 2020, as noted previously. After 2020 up until 2025 a period of income stagnation (measured in this product), with a visible price adjustment of 2022 likely to match the monetary expansion.
 

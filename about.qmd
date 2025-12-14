@@ -2,4 +2,10 @@
 title: "About"
 ---
 
-About this site
+This is a my Quarto website. 
+Its created a my personal pastime so sharpen my skills and reasoning.
+
+This website and all associated content are a personal project for educational, analytical, and informational purposes only. It is not commercial and does not generate income.
+
+The analysis, data interpretations, and conclusions (especially concerning economics, finance, or policy) are the author's personal opinions and findings. They should not be considered professional financial, investment, or legal advice.
+

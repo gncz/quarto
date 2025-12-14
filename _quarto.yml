@@ -1,20 +1,23 @@
 project:
   type: website
+  resources: 
+    - assets/
 
 website:
-  title: "quarto"
+  title: "gnczi theorycrafts"
   navbar:
     left:
       - href: index.qmd
         text: Home
       - href: ttc.qmd
-        text: The Tastetime continuum
+        text: The Tastetime Continuum
       - href: about.qmd
         text: About
 
 
 format:
   html:
+    image: assets/foxi.jpg
     code-fold: true
     theme:
       - cosmo
