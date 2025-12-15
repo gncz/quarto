@@ -4,6 +4,9 @@ format: html
 author: "Péter Gönczi"
 date: last-modified
 ---
+
+![Emperor Gordian III Aureus(coin), Assesed from Art Institute of Chicago via Public Domain Image](assets/gordian_coin.jpg)
+
 ## The hypothesis formulation
 
 Our money, as a measure of value, should be able to help us make real world choices, even as the alternatives are expressed in nominal currency terms.
