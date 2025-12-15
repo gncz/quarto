@@ -5,7 +5,7 @@ project:
 
 website:
   title: "gnczi theorycrafts"
-  favicon: /assets/foxi.jpg
+  favicon: /assets/foxi.jpeg
   navbar:
     logo: /assets/foxi2.png
     left:
@@ -19,7 +19,7 @@ website:
 
 format:
   html:
-    #image: assets/foxi2.png
+    image: /assets/foxi.jpeg
     code-fold: true
     theme:
       - cosmo
