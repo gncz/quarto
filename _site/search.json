@@ -61,5 +61,33 @@
     "title": "Landing page",
     "section": "",
     "text": "Landing page under construction once I have an idea what to do with it."
+  },
+  {
+    "objectID": "housing.html",
+    "href": "housing.html",
+    "title": "Housing is a..",
+    "section": "",
+    "text": "Housing is a right, proclaimed in the Netherlands"
+  },
+  {
+    "objectID": "housing.html#purpose",
+    "href": "housing.html#purpose",
+    "title": "Housing is a..",
+    "section": "Purpose",
+    "text": "Purpose\nThe goal of this page to utilize Tableau public feature on a topical subject, which is housing in the Europe.\nHousing shortage in the Europe is becoming an acute problem with no end in sight. This below visualization is not supposed provide an in depth analysis. Rather to apply baseline reliable data with Tableau as leading BI solution. The topic selection is only to underline the imporantance of the topic."
+  },
+  {
+    "objectID": "housing.html#problem-formulation",
+    "href": "housing.html#problem-formulation",
+    "title": "Housing is a..",
+    "section": "Problem formulation",
+    "text": "Problem formulation\nHousing shortage in the Europe is becoming an acute problem with no end in sight. This below visualization is not supposed to solve that. The topic selection is only to underline the imporantance of the topic."
+  },
+  {
+    "objectID": "housing.html#the-tableau-dashboard",
+    "href": "housing.html#the-tableau-dashboard",
+    "title": "Housing is a..",
+    "section": "The Tableau Dashboard:",
+    "text": "The Tableau Dashboard:"
   }
 ]

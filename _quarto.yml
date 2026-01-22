@@ -13,9 +13,10 @@ website:
         text: Home
       - href: ttc.qmd
         text: The Tastetime Continuum
+      - href: housing.qmd
+        text: Housing is a..
       - href: about.qmd
         text: About
-
 
 format:
   html:

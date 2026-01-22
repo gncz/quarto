@@ -1,0 +1,35 @@
+---
+title: "Housing is a.."
+format: html
+---
+
+
+![Housing is a right, proclaimed in the Netherlands](assets/wonen.jpeg){width=90% fig-align="left"}
+
+## Purpose
+
+The goal of this page to utilize Tableau public feature on a topical subject, which is housing in the Europe.
+
+Housing shortage in the Europe is becoming an acute problem with no end in sight. This below visualization is not supposed provide an in depth analysis. Rather to apply baseline reliable data with Tableau as leading BI solution.
+The topic selection is only to underline the imporantance of the topic.
+
+## The Tableau Dashboard:
+
+
+```{=html}
+<div class='tableauPlaceholder' id='viz1769104872514' style='position: relative'><noscript><a href='#'><img alt='Dashboard 1 ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Dw&#47;Dwellings_gncz&#47;Dashboard1&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='Dwellings_gncz&#47;Dashboard1' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Dw&#47;Dwellings_gncz&#47;Dashboard1&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-US' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1769104872514');                    var vizElement = divElement.getElementsByTagName('object')[0];                    if ( divElement.offsetWidth > 800 ) { vizElement.style.width='1000px';vizElement.style.height='827px';} else if ( divElement.offsetWidth > 500 ) { vizElement.style.width='1000px';vizElement.style.height='827px';} else { vizElement.style.width='100%';vizElement.style.height='977px';}                     var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
+```
+
+# The Reading
+
+As per Edward Tufte a good dashboard should include both grapics, tables and text commentary.
+The combination of the three help users take away the best information out of data.
+The data table with absolute values is always is there to help to users to establish the facts. With that the reader is always able to validate, calculate themselves. 
+
+The derived visualizations like indexed data and the year over year data should communicate different aspect of the same things.
+Despite the opening picture, apparently the Netherlands is having similar new year buildings in the past 10 years.
+Certain countries on the perifery of Europe trend better and improving their output.
+Although this data is lacking internal and external migration, population data, living trends and regional differences to paint a more realistic picture.
+
+Ideally one dashboard should focus on aspect of the subject in question, if the reporting is well established. 
+In case the user's goal are exploratory, then it is handy to place different views in the same dashboard and let the users analyze the data themselves. The crossfiltering legends are a big help in that regard.
