@@ -7,6 +7,13 @@
     "text": "This is a my Quarto website. Its created a my personal pastime so sharpen my skills and reasoning.\nThis website and all associated content are a personal project for educational, analytical, and informational purposes only. It is not commercial and does not generate income.\nThe analysis, data interpretations, and conclusions (especially concerning economics, finance, or policy) are the author’s personal opinions and findings. They should not be considered professional financial, investment, or legal advice."
   },
   {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Landing page",
+    "section": "",
+    "text": "Landing page under construction once I have an idea what to do with it."
+  },
+  {
     "objectID": "ttc.html",
     "href": "ttc.html",
     "title": "The Tastetime Continuum",
@@ -56,13 +63,6 @@
     "text": "By units of Big Mac\nLastly, I’d like to relate the income of the economic actors measured in GDP per capita to the price of the Big Mac on the local market.\nPractically speaking, this measure is to express how many Big Macs one might get, having spent their entire income on this product.\nThis will show two things:\n1. How real income (expressed in Big Macs), changed over time in the countries\n2. How the two countries fared to each other\n\n\nCode\n#date2 to work with\ndf_bm['date2'] = df_bm.index\n\n#Calculating bigmac per capita for each country\ndf_bm['rel']=round(df_bm['GDP_local']/df_bm['local_price'],2)\n\n#base in hun 2010\nbase_date= '2010-01-01'\nprice_2015_hun=df_bm[(df_bm['name']=='Hungary') & (df_bm['date2']==base_date)]['rel'].iloc[0]\n\n#base in usa 2010   \nprice_2015_usa=df_bm[(df_bm['name']=='United States') & (df_bm['date2']==base_date)]['rel'].iloc[0]\n\n#based index\ndf_bm_hun= df_bm[df_bm['iso_a3']=='HUN'].copy()\ndf_bm_hun['based']= df_bm_hun['rel']/price_2015_hun\n\n#based index\ndf_bm_usa= df_bm[df_bm['iso_a3']=='USA'].copy()\ndf_bm_usa['based']= df_bm_usa['rel']/price_2015_usa\n\n#putting them into a wide format for the fig\ndf_merged_bm_rel = pd.merge(\n    df_bm_hun[['date2','based']],\n    df_bm_usa[['date2','based']],\n    on='date2',\n    how='inner',\n    suffixes=('_HUN','_USA')\n)\n\n\n\n\nCode\nfig = make_subplots(\n    rows=1,\n    cols=2,\n    shared_xaxes=True,\n    horizontal_spacing=0.08,\n    subplot_titles=('Big Macs per capita over time','Big Macs per capita indexed to 2010 price level')\n    )\n\nfig.add_trace(go.Scatter(\n    x=df_merged_bm_rel['date2'],\n    y=df_merged_bm_rel['based_HUN'],\n    mode='lines+markers',\n    name='Big Macs per capita indexed to 2010 Hungary'\n),row=1, col=2\n)\n\nfig.add_trace(go.Scatter(\n    x=df_merged_bm_rel['date2'],\n    y=df_merged_bm_rel['based_USA'],\n    mode='lines+markers',\n    name='Big Macs per capita indexed to 2010 USA'\n),row=1, col=2\n)\n\nfig.add_trace(go.Scatter(\n    x=df_bm_hun['date2'],\n    y=df_bm_hun['rel'],\n    mode='lines+markers',\n    name='Big Macs per capita in Hungary'\n),row=1,col=1)\n\nfig.add_trace(go.Scatter(\n    x=df_bm_usa['date2'],\n    y=df_bm_usa['rel'],\n    mode='lines+markers',\n    name='Big Macs per capita in the USA'\n),row=1,col=1)\n\nfig.update_layout(\n    legend=dict(\n        orientation='h',\n        yanchor='bottom',\n        y=-0.3,\n        xanchor='left'\n    )\n)\n\n\n                            \n                                            \n\n\n\n\nThe diagram on the right, indexed to 2010, shows that on the USD market, the consumers could afford 14% more units of Big Macs as of 2025. The consumers on the Forint market are now able to get around 50% more. Over a 15 years timespan this is an equivalent of the 2.83% annual growth.\nThe bulk of this increase has happened between 2015 and 2020, as noted previously. After 2020 up until 2025 a period of income stagnation (measured in this product), with a visible price adjustment of 2022 likely to match the monetary expansion."
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Landing page",
-    "section": "",
-    "text": "Landing page under construction once I have an idea what to do with it."
-  },
-  {
     "objectID": "housing.html",
     "href": "housing.html",
     "title": "Housing is a..",
@@ -75,13 +75,6 @@
     "title": "Housing is a..",
     "section": "Purpose",
     "text": "Purpose\nThe goal of this page to utilize Tableau public feature on a topical subject, which is housing in the Europe.\nHousing shortage in the Europe is becoming an acute problem with no end in sight. This below visualization is not supposed provide an in depth analysis. Rather to apply baseline reliable data with Tableau as leading BI solution. The topic selection is only to underline the imporantance of the topic."
-  },
-  {
-    "objectID": "housing.html#problem-formulation",
-    "href": "housing.html#problem-formulation",
-    "title": "Housing is a..",
-    "section": "Problem formulation",
-    "text": "Problem formulation\nHousing shortage in the Europe is becoming an acute problem with no end in sight. This below visualization is not supposed to solve that. The topic selection is only to underline the imporantance of the topic."
   },
   {
     "objectID": "housing.html#the-tableau-dashboard",

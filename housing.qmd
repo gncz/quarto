@@ -5,7 +5,6 @@ author: "pgncz"
 date: last-modified
 ---
 
-
 ![Housing is a right, proclaimed in the Netherlands](assets/wonen.jpeg){width=90% fig-align="left"}
 
 ## Purpose
