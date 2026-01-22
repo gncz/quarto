@@ -1,6 +1,8 @@
 ---
 title: "Housing is a.."
 format: html
+author: "pgncz"
+date: last-modified
 ---
 
 

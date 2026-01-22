@@ -1,7 +1,7 @@
 ---
 title: "The Tastetime Continuum"
 format: html
-author: "Péter Gönczi"
+author: "pgncz"
 date: last-modified
 ---
 
