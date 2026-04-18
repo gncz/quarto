@@ -8,7 +8,7 @@ date: last-modified
 
 # In Defense of Common Sense
 
-![The sky is blue, if you look up you can see it](assets/IMG_3615.jpeg){width=100% fig-align="left"}
+![The sky is blue, if you look up you can see it](assets/IMG_3615.jpeg){width=75% fig-align="left"}
 
 With this one I will do something different. <br>
 This will be a reasoning without data.
@@ -24,7 +24,6 @@ Although in our current age of quantity, I fear this is under attack.
 And all the data in the world won't help if we lose common sense.
 In fact the data will be no signal, but noise, and the abyss we stare at.
 
-
 But what if we do not look up to the sky.
 We just get the data. 
 The color of the sky is RGB 0,0,255.
@@ -35,7 +34,7 @@ Very convincing. <br>
 
 # Here We Go
 
-![The Great Pyramid, and the blue sky](assets/GP2.jpg){width=100% fig-align="left"}
+![The Great Pyramid, and the blue sky](assets/GP2.jpg){width=75% fig-align="left"}
 
 Everybody knows what this is. <br>
 Many people can imagine a weight around 50kg. Nobody can imagine 6 million tons.
