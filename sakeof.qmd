@@ -1,6 +1,9 @@
 ---
 title: "The Sky is Blue"
 format: html
+author: "vuk"
+date: last-modified
+
 ---
 
 # In Defense of Common Sense
