@@ -8,17 +8,13 @@ website:
   favicon: /assets/foxi.jpeg
   navbar:
     logo: /assets/foxi2.png
-    left:
+    right:
       - href: index.qmd
         text: Home
-      - href: ttc.qmd
-        text: The Tastetime Continuum
-      - href: housing.qmd
-        text: Housing is a..
-      - href: butwhy.qmd
-        text: But why?
       - href: about.qmd
         text: About
+  page-footer:
+    left: "© 2026 gnczi theorycrafts"
 
 format:
   html:

@@ -2,10 +2,17 @@
 title: "About"
 ---
 
-This is a my Quarto website. 
-Its created a my personal pastime so sharpen my skills and reasoning.
+Disclaimer
 
-This website and all associated content are a personal project for educational, analytical, and informational purposes only. It is not commercial and does not generate income.
+For Informational and Educational Purposes Only. > The contents of gnczi theorycrafts are provided solely for personal exploration, data visualization practice, and educational demonstration.
 
-The analysis, data interpretations, and conclusions (especially concerning economics, finance, or policy) are the author's personal opinions and findings. They should not be considered professional financial, investment, or legal advice.
+No Financial Advice: The economic analyses and purchasing power inquiries presented here do not constitute financial, investment, or legal advice. Historical data is not indicative of future results.
+
+Data Integrity: While every effort is made to utilize reputable sources (e.g., FRED, The Economist), the author makes no representations as to the accuracy, completeness, or suitability of the information.
+
+Non-Professional: The views expressed are those of a hobbyist researcher and do not reflect the opinions of any professional organization or institution.
+
+Proceed with a healthy degree of skepticism.
+
+
 

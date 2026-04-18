@@ -1,8 +1,15 @@
 ---
-title: "Landing page"
+subtitle: "Deeds will not be less valiant because they are unpraised. <br> ― J.R.R. Tolkien, The Lord of the Rings"
+listing:
+    contents:
+    - ttc.qmd
+    - housing.qmd
+    - butwhy.qmd
+    type: grid
+    sort: "desc desc"
+    fields: [image,title,description,categories]
+page-layout: full
 ---
-
-Landing page under construction once I have an idea what to do with it.
 
 
 
