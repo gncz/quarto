@@ -7,7 +7,7 @@ author: "vuk"
 date: last-modified
 ---
 
-# Forewords and Hope
+# Foreword and Hope
 
 There is no specific message intended to be conveyed via this page outside of the fact that there have been an popular existentially heavy meme in early 2026 about a penguin facing the mountains. <br>
 The penguin famously chose voluntarily death.<br>
@@ -299,7 +299,7 @@ fig_line.show()
 ```
 
 Apparently focusing this subset, now the temporal effects are clearly visible. We can now deduct meaningful observations both spatially and temporally. <br>
-This is finally now a controlled objective conclusion give the data are correct. 
+This is finally now a controlled objective conclusion given the data are correct. 
 Cape Shireff and Half Moon Island are counting much higher populations which make the Y axis for the other sites less visible.
 Nonetheless the number of nests are trending down in all observed locations. But Why?
 <br>
