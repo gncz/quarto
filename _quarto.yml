@@ -15,10 +15,10 @@ website:
         text: The Tastetime Continuum
       - href: housing.qmd
         text: Housing is a..
-      - href: about.qmd
-        text: About
       - href: butwhy.qmd
         text: But why?
+      - href: about.qmd
+        text: About
 
 format:
   html:

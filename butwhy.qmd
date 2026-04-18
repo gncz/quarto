@@ -2,18 +2,24 @@
 title: "But Why?"
 format: 
         html:
-                page-layout: full
+                page-layout: article
 author: "redfox"
 date: last-modified
 ---
 
-There is no specific message intended to be conveyed via this page outside of the fact that there have been an popular existentially loaded meme in early 2026 about the pinguin facing the mountains. <br>
-A pinguin famously choosing the death volunterally.<br>
-Many people included myself were deeply affected by it and that served as an inspiration.
+# Forewords and Hope
 
-![Penguin's decision for certain cold lonely death far from home <br> Werner Herzog - Encounters at the End of the World](assets/penguin.avif)
+There is no specific message intended to be conveyed via this page outside of the fact that there have been an popular existentially loaded meme in early 2026 about the penguin facing the mountains. <br>
+A penguin famously chose voluntarily death.<br>
+Many people including myself were deeply affected by it and this served as an inspiration.
+
+![Penguin's decision for certain cold lonely death far from home <br> Werner Herzog - Encounters at the End of the World](assets/penguin.avif){fig-align="left" width=75%}
 
 I hope there is a heaven for penguins as well.
+
+# Database and Preview
+
+This site will employ sqlite3 to make real SQL work possible in a Quarto Project.
 
 ```{python}
 # Opening sqlite3 for a new database.
@@ -39,12 +45,12 @@ for name, type in objects:
 df.to_sql('observations', conn, if_exists='replace',index=False)
 ```
 
-The following attributes are available in the below table.
+The attributes are available in the below table.
 Apparently there no forced not nulls, nor foreign keys present.
-A sole table is loaded into the database therefore no relational connections are built.
-Easy to target the penguin_count as a fact to be measured in the below visualizations.<br>
-The table could be considered ready to any kind of query for the 'business' or analysis.<br>
-I intend to run some basic sql queries for desciption and visualizations.
+Since a sole table is loaded into the database, no relational connections are built.
+Easy to target the penguin_count as a fact to be measured in the following visualizations.<br>
+The table could be considered 'business' ready for inquiry and analysis.<br>
+I intend to run some basic SQL queries for desciption and visualizations and no DML scripts.
 ```{python}
 # checking the fields and data types
 c.execute("PRAGMA table_info(observations);")
@@ -54,8 +60,8 @@ df_columns = pd.DataFrame(columns, columns=['cid', 'name', 'type', 'notnull', 'd
 print(df_columns)
 ```
 
-
-Example of 2 records from the dataset to get clarity and intuitive understanding:
+Seeing the real data 'in practice' is a good way to generate new ideas and from an intuitive understanding.
+Example of 2 records from the dataset:
 ```{python}
 c.execute("SELECT * FROM observations LIMIT 2;")
 
@@ -70,7 +76,7 @@ df_tworow
 ```
 
 <br>
-The data are
+The data consists of
 ```{python}
 # checking the different number of sites for observations
 different_sites= c.execute("SELECT count( DISTINCT site_id) FROM observations;")
@@ -82,6 +88,9 @@ different_sites= c.execute("SELECT min(season_starting), max(season_starting) FR
 print("Observation year ranges from:", different_sites.fetchall()[0])
 ```
 
+# Observations over Time and Space
+
+For the sake of simplicity I am selecting 20 of them in a pseudorandom order. In a real data inquiry, we would need a specified set of criteria, which islands - dates - types etc should be considered and compared.
 
 ```{python}
 
@@ -98,6 +107,7 @@ q_sites_obs_range = """SELECT site_id
       site_id
       ,site_name
       HAVING site_name not like '%Anvers%'
+      ORDER BY rowid * 1235 % 897
       LIMIT 20;"""
       
 df_sites_obs_range= pd.read_sql(q_sites_obs_range, conn)
@@ -111,7 +121,7 @@ fig = px.bar(
         base='First observation year',
         orientation='h',
         color='Number of observations',
-        title='Observation Ranges and Counts by Sites',
+        title='Observation Counts per Sites over Ranges',
         labels={"site_name": "Site Name"}
         )
 fig.update_layout(
@@ -124,14 +134,17 @@ fig.update_layout(
                 orientation="h",
         ),
         xaxis_title='<b>Observation range years</b>',
-        yaxis_title='<b>Site name</b>'
+        yaxis_title='<b>Site name</b>',
+        template="simple_white",
+        margin=dict(l=20,r=20,t=40, b=100)
 )
 fig.show()
 ```
 
+<br>
 Boxplotting the number of observations to get clarity below.
 Clearly saturation of the observations vary greatly which is always a risk for making premature conclusions. <br>
-One site is well observed but the most 50 percent of the observations range between 2 and 6.5.
+One site is well observed but the most 50 percent of the observations range between 1.5 and 9.5.
 This could point the reader to the fact that most sites are barely observed so do not have solid data to see the population dynamics. <br>
 Also there is a spatial and the temporal variation, and I am sure there should be a biologically significant factor of the penguin subspecies as well. <br>
 Therefore, this dataset is rather just a raw data to some glimpse into the penguin nests.
@@ -143,7 +156,8 @@ fig_boxplot = px.box(
         df_sites_obs_range[['Number of observations']],
         points="all",
         y='Number of observations',
-        title='Varying number of observations for the sites'
+        title='Varying number of observations for the sites',
+        template='plotly_white'
         )
 
 fig_boxplot.update_layout(
@@ -152,14 +166,23 @@ fig_boxplot.update_layout(
                 gridcolor='rgb(200, 200, 200)',
                 gridwidth=1,
         ),
-        paper_bgcolor='rgb(243, 243, 243)',
-        plot_bgcolor='rgb(243, 243, 243)',
-        width=800,
+        title={
+                'xanchor':'left'
+        },
+        width=800
 )
+fig_boxplot.update_traces(
+        fillcolor='turquoise',
+        line_color= 'turquoise',
+        marker = dict(
+                color=  'turquoise'
+        )
+)
+
 fig_boxplot.show()
 ```
 
-
+<br>
 The below visualization is will balance the variation slightly.
 Only the last observation years are present and for all of the sites.
 Therefore we meaningfully observe the population spatially, although not temporally.
@@ -214,7 +237,7 @@ layer = pdk.Layer(
 view_state= pdk.ViewState(
         latitude= -64.737905,
         longitude= -63.896758,
-        zoom=3.5,
+        zoom=3,
         pitch=45,
         bearing=0
 )
