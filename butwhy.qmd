@@ -1,0 +1,226 @@
+---
+title: "But Why?"
+format: 
+        html:
+                page-layout: full
+author: "redfox"
+date: last-modified
+---
+
+There is no specific message intended to be conveyed via this page outside of the fact that there have been an popular existentially loaded meme in early 2026 about the pinguin facing the mountains. <br>
+A pinguin famously choosing the death volunterally.<br>
+Many people included myself were deeply affected by it and that served as an inspiration.
+
+![Penguin's decision for certain cold lonely death far from home <br> Werner Herzog - Encounters at the End of the World](assets/penguin.avif)
+
+I hope there is a heaven for penguins as well.
+
+```{python}
+# Opening sqlite3 for a new database.
+import sqlite3
+import pandas as pd
+
+df = pd.read_csv('data/AllCounts_V_4_4.csv')
+conn = sqlite3.connect('data/penguins_sights.db')
+
+# Moving data to the DB for the flatfile source
+# Priority for this page has been to keep the data managable and and the database quarto applicable
+#learning the to work via cursor is the main takeaway with this site
+c = conn.cursor()
+# basics of the database
+x = c.execute("SELECT name, type FROM sqlite_master;")
+
+# checking the objects in the database
+objects = x.fetchall()
+
+for name, type in objects:
+        print(f"I found a {type} called: {name}")
+
+df.to_sql('observations', conn, if_exists='replace',index=False)
+```
+
+The following attributes are available in the below table.
+Apparently there no forced not nulls, nor foreign keys present.
+A sole table is loaded into the database therefore no relational connections are built.
+Easy to target the penguin_count as a fact to be measured in the below visualizations.<br>
+The table could be considered ready to any kind of query for the 'business' or analysis.<br>
+I intend to run some basic sql queries for desciption and visualizations.
+```{python}
+# checking the fields and data types
+c.execute("PRAGMA table_info(observations);")
+columns = c.fetchall()
+# print(columns)
+df_columns = pd.DataFrame(columns, columns=['cid', 'name', 'type', 'notnull', 'dflt_value', 'pk'])
+print(df_columns)
+```
+
+
+Example of 2 records from the dataset to get clarity and intuitive understanding:
+```{python}
+c.execute("SELECT * FROM observations LIMIT 2;")
+
+# getting headers
+cols= [desc[0] for desc in c.description]
+cols
+row = c.fetchall()
+##print(row)
+# dataframe for the headers
+df_tworow = pd.DataFrame(row, columns = cols)
+df_tworow
+```
+
+<br>
+The data are
+```{python}
+# checking the different number of sites for observations
+different_sites= c.execute("SELECT count( DISTINCT site_id) FROM observations;")
+print("Different Sites:", different_sites.fetchall()[0][0])
+```
+```{python}
+# max and min dates over time
+different_sites= c.execute("SELECT min(season_starting), max(season_starting) FROM observations;")
+print("Observation year ranges from:", different_sites.fetchall()[0])
+```
+
+
+```{python}
+
+# getting the first and last years and the number of observations
+# removing 'Anvers' for chart aesthetics
+q_sites_obs_range = """SELECT site_id
+      ,site_name
+      ,min(season_starting) AS "First observation year"
+      ,max(season_starting) AS "Last observation year"
+      ,max(season_starting) - min(season_starting)+1 AS "Observation range in years"
+      ,count(season_starting) AS "Number of observations"
+      FROM observations 
+      GROUP BY 
+      site_id
+      ,site_name
+      HAVING site_name not like '%Anvers%'
+      LIMIT 20;"""
+      
+df_sites_obs_range= pd.read_sql(q_sites_obs_range, conn)
+
+import plotly.express as px
+
+fig = px.bar(
+        df_sites_obs_range,
+        x='Observation range in years',
+        y='site_name',
+        base='First observation year',
+        orientation='h',
+        color='Number of observations',
+        title='Observation Ranges and Counts by Sites',
+        labels={"site_name": "Site Name"}
+        )
+fig.update_layout(
+        height=800,
+        width=1200,
+        coloraxis_colorbar=dict(
+                title="Number of Observations",
+                thicknessmode="pixels",
+                thickness=15,
+                orientation="h",
+        ),
+        xaxis_title='<b>Observation range years</b>',
+        yaxis_title='<b>Site name</b>'
+)
+fig.show()
+```
+
+Boxplotting the number of observations to get clarity below.
+Clearly saturation of the observations vary greatly which is always a risk for making premature conclusions. <br>
+One site is well observed but the most 50 percent of the observations range between 2 and 6.5.
+This could point the reader to the fact that most sites are barely observed so do not have solid data to see the population dynamics. <br>
+Also there is a spatial and the temporal variation, and I am sure there should be a biologically significant factor of the penguin subspecies as well. <br>
+Therefore, this dataset is rather just a raw data to some glimpse into the penguin nests.
+This is actually a good point to highlight that oftentimes the job of the data analysis is to clearly set the limitations of the dataset, to avoid false conlusions.
+
+```{python}
+# boxplot for number of observations
+fig_boxplot = px.box(
+        df_sites_obs_range[['Number of observations']],
+        points="all",
+        y='Number of observations',
+        title='Varying number of observations for the sites'
+        )
+
+fig_boxplot.update_layout(
+        yaxis=dict(
+                showgrid=True,
+                gridcolor='rgb(200, 200, 200)',
+                gridwidth=1,
+        ),
+        paper_bgcolor='rgb(243, 243, 243)',
+        plot_bgcolor='rgb(243, 243, 243)',
+        width=800,
+)
+fig_boxplot.show()
+```
+
+
+The below visualization is will balance the variation slightly.
+Only the last observation years are present and for all of the sites.
+Therefore we meaningfully observe the population spatially, although not temporally.
+Altough qualitative domain knowledge is always a prerequisit for real data analyis.
+
+```{python}
+# Selecting the last observation of each site for count visualization
+q_last_number_pingi = """WITH last_obs AS (
+        SELECT site_id
+        ,site_name
+        ,longitude_epsg_4326
+        ,latitude_epsg_4326
+        ,season_starting
+       --,printf('%04d-%02d-%02d', year, month,day) AS "DATE"
+      ,penguin_count
+      ,ROW_NUMBER() OVER (PARTITION BY SITE_ID ORDER BY year DESC, month DESC, day DESC) AS "RN"
+      FROM observations)
+      SELECT lo.site_id,
+      lo.site_name,
+      lo.season_starting,
+      lo.longitude_epsg_4326,
+      lo.latitude_epsg_4326,
+      lo.penguin_count 
+      FROM last_obs lo 
+      WHERE lo.RN = 1;"""
+
+df_last_number_pingi = pd.read_sql(q_last_number_pingi, conn)
+
+# changing numbers to whole number
+df_last_number_pingi['penguin_count']= df_last_number_pingi['penguin_count'].astype('Int64')
+
+df_last_number_pingi = df_last_number_pingi.astype({
+        'site_id': 'category',
+        'site_name': 'category',
+        'season_starting': 'category'
+})
+
+import pydeck as pdk
+
+layer = pdk.Layer(
+        "HexagonLayer",
+        data= df_last_number_pingi,
+        get_position=["longitude_epsg_4326","latitude_epsg_4326"],
+        auto_highlight=True,
+        elevation_scale=50,
+        pickable=True,
+        elevation_range=[0, 3000],
+        extruded=True,
+        coverage=1
+)
+
+view_state= pdk.ViewState(
+        latitude= -64.737905,
+        longitude= -63.896758,
+        zoom=3.5,
+        pitch=45,
+        bearing=0
+)
+#Render 
+r = pdk.Deck(layers=[layer], initial_view_state=view_state)
+r.to_html("hexagon_map.html")
+```
+
+

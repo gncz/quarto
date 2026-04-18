@@ -17,6 +17,8 @@ website:
         text: Housing is a..
       - href: about.qmd
         text: About
+      - href: butwhy.qmd
+        text: But why?
 
 format:
   html:

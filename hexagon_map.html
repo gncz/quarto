@@ -1,0 +1,5882 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <title>pydeck</title>
+        <script src="https://api.tiles.mapbox.com/mapbox-gl-js/v1.13.0/mapbox-gl.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" />
+    <script src='https://cdn.jsdelivr.net/npm/@deck.gl/jupyter-widget@~9.0.*/dist/index.js'></script>
+    <style>
+    body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+#deck-container {
+  width: 100vw;
+  height: 100vh;
+}
+
+#deck-container canvas {
+  z-index: 1;
+  background: none;
+}
+    </style>
+  </head>
+  <body>
+    <div id="deck-container">
+    </div>
+  </body>
+  <script>
+    const container = document.getElementById('deck-container');
+    const jsonInput = {
+  "initialViewState": {
+    "bearing": 0,
+    "latitude": -64.737905,
+    "longitude": -63.896758,
+    "pitch": 45,
+    "zoom": 3.5
+  },
+  "layers": [
+    {
+      "@@type": "HexagonLayer",
+      "autoHighlight": true,
+      "coverage": 1,
+      "data": [
+        {
+          "latitude_epsg_4326": -60.761,
+          "longitude_epsg_4326": -44.637,
+          "penguin_count": 3079,
+          "season_starting": 2010,
+          "site_id": "ACUN",
+          "site_name": "Acuna Island"
+        },
+        {
+          "latitude_epsg_4326": -66.546,
+          "longitude_epsg_4326": 92.549,
+          "penguin_count": 425,
+          "season_starting": 2010,
+          "site_id": "ADAM",
+          "site_name": "Adams Island"
+        },
+        {
+          "latitude_epsg_4326": -71.306,
+          "longitude_epsg_4326": 170.2,
+          "penguin_count": 504332,
+          "season_starting": 2018,
+          "site_id": "ADAR",
+          "site_name": "Cape Adare"
+        },
+        {
+          "latitude_epsg_4326": -60.78,
+          "longitude_epsg_4326": -44.631,
+          "penguin_count": 3000,
+          "season_starting": 2019,
+          "site_id": "AILS",
+          "site_name": "Ailsa Craig"
+        },
+        {
+          "latitude_epsg_4326": -62.407,
+          "longitude_epsg_4326": -59.752,
+          "penguin_count": 3797,
+          "season_starting": 2018,
+          "site_id": "AITC",
+          "site_name": "Barrientos Island (Aitcho Islands)"
+        },
+        {
+          "latitude_epsg_4326": -60.738,
+          "longitude_epsg_4326": -44.525,
+          "penguin_count": 3000,
+          "season_starting": 2018,
+          "site_id": "AITK",
+          "site_name": "Aitken Cove"
+        },
+        {
+          "latitude_epsg_4326": -68.5,
+          "longitude_epsg_4326": 41.39,
+          "penguin_count": 106,
+          "season_starting": 2010,
+          "site_id": "AKAR",
+          "site_name": "Akarui Point"
+        },
+        {
+          "latitude_epsg_4326": -67.654,
+          "longitude_epsg_4326": 46.109,
+          "penguin_count": 1080,
+          "season_starting": 2008,
+          "site_id": "ALAS",
+          "site_name": "Alasheyev Bight"
+        },
+        {
+          "latitude_epsg_4326": -64.24,
+          "longitude_epsg_4326": -61.127,
+          "penguin_count": 519,
+          "season_starting": 2020,
+          "site_id": "ALCO",
+          "site_name": "Alcock Island"
+        },
+        {
+          "latitude_epsg_4326": -64.896,
+          "longitude_epsg_4326": -62.87,
+          "penguin_count": 190,
+          "season_starting": 2024,
+          "site_id": "ALMI",
+          "site_name": "Brown Station"
+        },
+        {
+          "latitude_epsg_4326": -69.271,
+          "longitude_epsg_4326": 76.835,
+          "penguin_count": 1424,
+          "season_starting": 2022,
+          "site_id": "AMAN",
+          "site_name": "Amanda Bay"
+        },
+        {
+          "latitude_epsg_4326": -60.684,
+          "longitude_epsg_4326": -45.339,
+          "penguin_count": 2000,
+          "season_starting": 2019,
+          "site_id": "AMPH",
+          "site_name": "Amphibolite Point"
+        },
+        {
+          "latitude_epsg_4326": -66.783,
+          "longitude_epsg_4326": 50.544,
+          "penguin_count": 88,
+          "season_starting": 2009,
+          "site_id": "AMUN",
+          "site_name": "Amundsen Bay"
+        },
+        {
+          "latitude_epsg_4326": -67.604,
+          "longitude_epsg_4326": -68.209,
+          "penguin_count": 0,
+          "season_starting": 2016,
+          "site_id": "ANCH",
+          "site_name": "Anchorage Island"
+        },
+        {
+          "latitude_epsg_4326": -60.757,
+          "longitude_epsg_4326": -44.601,
+          "penguin_count": 200,
+          "season_starting": 2018,
+          "site_id": "ANDE",
+          "site_name": "Cape Anderson"
+        },
+        {
+          "latitude_epsg_4326": -66.875,
+          "longitude_epsg_4326": -66.711,
+          "penguin_count": 495,
+          "season_starting": 2015,
+          "site_id": "ANDI",
+          "site_name": "Andresen Island Site 2"
+        },
+        {
+          "latitude_epsg_4326": -66.879,
+          "longitude_epsg_4326": -66.649,
+          "penguin_count": 1433,
+          "season_starting": 2015,
+          "site_id": "ANDR",
+          "site_name": "Andresen Island Site 1"
+        },
+        {
+          "latitude_epsg_4326": -67.435,
+          "longitude_epsg_4326": 63.357,
+          "penguin_count": 5000,
+          "season_starting": 2005,
+          "site_id": "ANDS",
+          "site_name": "Andersen Island"
+        },
+        {
+          "latitude_epsg_4326": -73.617,
+          "longitude_epsg_4326": 169.85,
+          "penguin_count": 205,
+          "season_starting": 2018,
+          "site_id": "ANNE",
+          "site_name": "Cape Anne"
+        },
+        {
+          "latitude_epsg_4326": -64.661,
+          "longitude_epsg_4326": -64.247,
+          "penguin_count": 0,
+          "season_starting": 2019,
+          "site_id": "ANVS",
+          "site_name": "Anvers Island South West (7 km south of Gerlache Island)"
+        },
+        {
+          "latitude_epsg_4326": -62.213,
+          "longitude_epsg_4326": -58.933,
+          "penguin_count": 184,
+          "season_starting": 2022,
+          "site_id": "ARDL",
+          "site_name": "Ardley Island"
+        },
+        {
+          "latitude_epsg_4326": -65.884,
+          "longitude_epsg_4326": -66.197,
+          "penguin_count": 2813,
+          "season_starting": 2012,
+          "site_id": "ARMS",
+          "site_name": "Armstrong Reef"
+        },
+        {
+          "latitude_epsg_4326": -69.363,
+          "longitude_epsg_4326": 158.511,
+          "penguin_count": 14461,
+          "season_starting": 2011,
+          "site_id": "ARTH",
+          "site_name": "Arthurson Ridge"
+        },
+        {
+          "latitude_epsg_4326": -61.468,
+          "longitude_epsg_4326": -55.894,
+          "penguin_count": 21,
+          "season_starting": 1976,
+          "site_id": "ASPL",
+          "site_name": "Aspland Island"
+        },
+        {
+          "latitude_epsg_4326": -69.948,
+          "longitude_epsg_4326": 8.318,
+          "penguin_count": 1368,
+          "season_starting": 2009,
+          "site_id": "ASTD",
+          "site_name": "Astrid"
+        },
+        {
+          "latitude_epsg_4326": -63.292,
+          "longitude_epsg_4326": -58.673,
+          "penguin_count": 2500,
+          "season_starting": 1986,
+          "site_id": "ASTE",
+          "site_name": "Astrolabe Island East"
+        },
+        {
+          "latitude_epsg_4326": -63.327,
+          "longitude_epsg_4326": -58.704,
+          "penguin_count": 400,
+          "season_starting": 1986,
+          "site_id": "ASTS",
+          "site_name": "Astrolabe Island South"
+        },
+        {
+          "latitude_epsg_4326": -63.307,
+          "longitude_epsg_4326": -58.742,
+          "penguin_count": 200,
+          "season_starting": 1986,
+          "site_id": "ASTW",
+          "site_name": "Astrolabe Island West"
+        },
+        {
+          "latitude_epsg_4326": -70.614,
+          "longitude_epsg_4326": -8.132,
+          "penguin_count": 9657,
+          "season_starting": 2009,
+          "site_id": "ATKA",
+          "site_name": "Atka"
+        },
+        {
+          "latitude_epsg_4326": -60.783,
+          "longitude_epsg_4326": -45.151,
+          "penguin_count": 10000,
+          "season_starting": 2019,
+          "site_id": "ATRI",
+          "site_name": "Atriceps Island"
+        },
+        {
+          "latitude_epsg_4326": -67.397,
+          "longitude_epsg_4326": 63.974,
+          "penguin_count": 7855,
+          "season_starting": 2009,
+          "site_id": "AUST",
+          "site_name": "Auster Islands"
+        },
+        {
+          "latitude_epsg_4326": -67.773,
+          "longitude_epsg_4326": -68.885,
+          "penguin_count": 31006,
+          "season_starting": 2019,
+          "site_id": "AVIA",
+          "site_name": "Avian Island"
+        },
+        {
+          "latitude_epsg_4326": -61.91,
+          "longitude_epsg_4326": -58.049,
+          "penguin_count": 230,
+          "season_starting": 1980,
+          "site_id": "BACH",
+          "site_name": "Bach Quartet"
+        },
+        {
+          "latitude_epsg_4326": -74.411,
+          "longitude_epsg_4326": -102.552,
+          "penguin_count": 465,
+          "season_starting": 2010,
+          "site_id": "BACK",
+          "site_name": "Backer Islands"
+        },
+        {
+          "latitude_epsg_4326": -62.965,
+          "longitude_epsg_4326": -60.506,
+          "penguin_count": 38825,
+          "season_starting": 2018,
+          "site_id": "BAIL",
+          "site_name": "Baily Head (Deception Island)"
+        },
+        {
+          "latitude_epsg_4326": -66.016,
+          "longitude_epsg_4326": 111.069,
+          "penguin_count": 160,
+          "season_starting": 2011,
+          "site_id": "BALA",
+          "site_name": "Balaena Islands"
+        },
+        {
+          "latitude_epsg_4326": -66.457,
+          "longitude_epsg_4326": -67.14,
+          "penguin_count": 211,
+          "season_starting": 2012,
+          "site_id": "BARC",
+          "site_name": "Barcroft Islands"
+        },
+        {
+          "latitude_epsg_4326": -62.758,
+          "longitude_epsg_4326": -60.338,
+          "penguin_count": 13000,
+          "season_starting": 1987,
+          "site_id": "BARN",
+          "site_name": "Barnard Point (Livingston Island)"
+        },
+        {
+          "latitude_epsg_4326": -62.237,
+          "longitude_epsg_4326": -58.775,
+          "penguin_count": 2353,
+          "season_starting": 2019,
+          "site_id": "BART",
+          "site_name": "Barton Peninsula"
+        },
+        {
+          "latitude_epsg_4326": -62.381,
+          "longitude_epsg_4326": -59.789,
+          "penguin_count": 279,
+          "season_starting": 2018,
+          "site_id": "BATH",
+          "site_name": "Bath Island"
+        },
+        {
+          "latitude_epsg_4326": -65.842,
+          "longitude_epsg_4326": 53.813,
+          "penguin_count": 30746,
+          "season_starting": 2010,
+          "site_id": "BATT",
+          "site_name": "Cape Batterbee"
+        },
+        {
+          "latitude_epsg_4326": -67.225,
+          "longitude_epsg_4326": 81.931,
+          "penguin_count": 200,
+          "season_starting": 2012,
+          "site_id": "BBAY",
+          "site_name": "Barrier Bay"
+        },
+        {
+          "latitude_epsg_4326": -63.414,
+          "longitude_epsg_4326": -54.667,
+          "penguin_count": 284535,
+          "season_starting": 2015,
+          "site_id": "BEAG",
+          "site_name": "Beagle Island"
+        },
+        {
+          "latitude_epsg_4326": -76.929,
+          "longitude_epsg_4326": 166.881,
+          "penguin_count": 462,
+          "season_starting": 2018,
+          "site_id": "BEAN",
+          "site_name": "Beaufort Island North"
+        },
+        {
+          "latitude_epsg_4326": -74.392,
+          "longitude_epsg_4326": -110.192,
+          "penguin_count": 9457,
+          "season_starting": 2009,
+          "site_id": "BEAR",
+          "site_name": "Bear Peninsula"
+        },
+        {
+          "latitude_epsg_4326": -76.969,
+          "longitude_epsg_4326": 166.898,
+          "penguin_count": 70468,
+          "season_starting": 2013,
+          "site_id": "BEAU",
+          "site_name": "Beaufort Island"
+        },
+        {
+          "latitude_epsg_4326": -63.679,
+          "longitude_epsg_4326": -59.362,
+          "penguin_count": 100,
+          "season_starting": 1986,
+          "site_id": "BEAV",
+          "site_name": "Beaver Rocks"
+        },
+        {
+          "latitude_epsg_4326": -67.583,
+          "longitude_epsg_4326": 62.817,
+          "penguin_count": 2207,
+          "season_starting": 2001,
+          "site_id": "BECH",
+          "site_name": "Bechervaise Island"
+        },
+        {
+          "latitude_epsg_4326": -62.119,
+          "longitude_epsg_4326": -58.889,
+          "penguin_count": 827,
+          "season_starting": 2016,
+          "site_id": "BELL",
+          "site_name": "Bell Point to Kwarecki Point"
+        },
+        {
+          "latitude_epsg_4326": -61.096,
+          "longitude_epsg_4326": -54.883,
+          "penguin_count": 6000,
+          "season_starting": 2019,
+          "site_id": "BELS",
+          "site_name": "Cape Belsham"
+        },
+        {
+          "latitude_epsg_4326": -64.767,
+          "longitude_epsg_4326": -62.701,
+          "penguin_count": 1311,
+          "season_starting": 2015,
+          "site_id": "BENE",
+          "site_name": "Beneden Head"
+        },
+        {
+          "latitude_epsg_4326": -60.62,
+          "longitude_epsg_4326": -45.236,
+          "penguin_count": 6000,
+          "season_starting": 2019,
+          "site_id": "BENN",
+          "site_name": "Cape Bennett"
+        },
+        {
+          "latitude_epsg_4326": -69.042,
+          "longitude_epsg_4326": 39.25,
+          "penguin_count": 23,
+          "season_starting": 2004,
+          "site_id": "BENT",
+          "site_name": "Benten"
+        },
+        {
+          "latitude_epsg_4326": -66.216,
+          "longitude_epsg_4326": 110.64,
+          "penguin_count": 13423,
+          "season_starting": 2010,
+          "site_id": "BERK",
+          "site_name": "Berkley/Cameron"
+        },
+        {
+          "latitude_epsg_4326": -63.321,
+          "longitude_epsg_4326": -57.9,
+          "penguin_count": null,
+          "season_starting": 1996,
+          "site_id": "BERN",
+          "site_name": "Bernardo O'Higgins Station"
+        },
+        {
+          "latitude_epsg_4326": -65.333,
+          "longitude_epsg_4326": -64.112,
+          "penguin_count": 400,
+          "season_starting": 2023,
+          "site_id": "BERT",
+          "site_name": "Berthelot Islands (excl. Green Island)"
+        },
+        {
+          "latitude_epsg_4326": -66.72,
+          "longitude_epsg_4326": 140.525,
+          "penguin_count": 35466,
+          "season_starting": 2010,
+          "site_id": "BIEN",
+          "site_name": "Cape Bienvenue"
+        },
+        {
+          "latitude_epsg_4326": -64.824,
+          "longitude_epsg_4326": -63.491,
+          "penguin_count": 24,
+          "season_starting": 2024,
+          "site_id": "BILL",
+          "site_name": "Bills Island"
+        },
+        {
+          "latitude_epsg_4326": -64.811,
+          "longitude_epsg_4326": -63.778,
+          "penguin_count": 522,
+          "season_starting": 2012,
+          "site_id": "BISC",
+          "site_name": "Biscoe Point"
+        },
+        {
+          "latitude_epsg_4326": -63.649,
+          "longitude_epsg_4326": -59.03,
+          "penguin_count": 0,
+          "season_starting": 2019,
+          "site_id": "BLAK",
+          "site_name": "Blake Island"
+        },
+        {
+          "latitude_epsg_4326": -69.456,
+          "longitude_epsg_4326": 75.747,
+          "penguin_count": 465,
+          "season_starting": 1981,
+          "site_id": "BOLI",
+          "site_name": "Bolingen/Lichen Island"
+        },
+        {
+          "latitude_epsg_4326": -63.584,
+          "longitude_epsg_4326": -59.036,
+          "penguin_count": 25,
+          "season_starting": 2019,
+          "site_id": "BONE",
+          "site_name": "Bone Bay"
+        },
+        {
+          "latitude_epsg_4326": -67.723,
+          "longitude_epsg_4326": -67.732,
+          "penguin_count": 1625,
+          "season_starting": 2023,
+          "site_id": "BONG",
+          "site_name": "Bongrain Point (Pourquoi Pas Island)"
+        },
+        {
+          "latitude_epsg_4326": -63.129,
+          "longitude_epsg_4326": -55.82,
+          "penguin_count": 23,
+          "season_starting": 2015,
+          "site_id": "BORE",
+          "site_name": "Boreal Point"
+        },
+        {
+          "latitude_epsg_4326": -61.317,
+          "longitude_epsg_4326": -54.081,
+          "penguin_count": 13000,
+          "season_starting": 2010,
+          "site_id": "BOWL",
+          "site_name": "Cape Bowles"
+        },
+        {
+          "latitude_epsg_4326": -65.161,
+          "longitude_epsg_4326": 103.067,
+          "penguin_count": 399,
+          "season_starting": 2022,
+          "site_id": "BOWM",
+          "site_name": "Bowman Island"
+        },
+        {
+          "latitude_epsg_4326": -62.775,
+          "longitude_epsg_4326": -61.526,
+          "penguin_count": 2000,
+          "season_starting": 2012,
+          "site_id": "BPTS",
+          "site_name": "Byewater Point (south)"
+        },
+        {
+          "latitude_epsg_4326": -63.386,
+          "longitude_epsg_4326": -54.914,
+          "penguin_count": 94951,
+          "season_starting": 2015,
+          "site_id": "BRAS",
+          "site_name": "Brash Island"
+        },
+        {
+          "latitude_epsg_4326": -69.154,
+          "longitude_epsg_4326": 77.263,
+          "penguin_count": 5259,
+          "season_starting": 1981,
+          "site_id": "BRAT",
+          "site_name": "Brattstrand Bluff"
+        },
+        {
+          "latitude_epsg_4326": -77.23,
+          "longitude_epsg_4326": 166.419,
+          "penguin_count": 3958,
+          "season_starting": 2021,
+          "site_id": "BRDM",
+          "site_name": "Cape Bird Middle"
+        },
+        {
+          "latitude_epsg_4326": -77.214,
+          "longitude_epsg_4326": 166.446,
+          "penguin_count": 44661,
+          "season_starting": 2021,
+          "site_id": "BRDN",
+          "site_name": "Cape Bird North"
+        },
+        {
+          "latitude_epsg_4326": -77.259,
+          "longitude_epsg_4326": 166.379,
+          "penguin_count": 13251,
+          "season_starting": 2021,
+          "site_id": "BRDS",
+          "site_name": "Cape Bird South"
+        },
+        {
+          "latitude_epsg_4326": -64.796,
+          "longitude_epsg_4326": -63.226,
+          "penguin_count": null,
+          "season_starting": 2022,
+          "site_id": "BREA",
+          "site_name": "Breakwater Island"
+        },
+        {
+          "latitude_epsg_4326": -61.912,
+          "longitude_epsg_4326": -57.752,
+          "penguin_count": 4000,
+          "season_starting": 2019,
+          "site_id": "BRIM",
+          "site_name": "Brimstone Peak"
+        },
+        {
+          "latitude_epsg_4326": -61.278,
+          "longitude_epsg_4326": -55.213,
+          "penguin_count": 1526,
+          "season_starting": 2019,
+          "site_id": "BRIT",
+          "site_name": "Brittannia's Figleaf"
+        },
+        {
+          "latitude_epsg_4326": -63.522,
+          "longitude_epsg_4326": -56.905,
+          "penguin_count": 871,
+          "season_starting": 2023,
+          "site_id": "BROW",
+          "site_name": "Brown Bluff"
+        },
+        {
+          "latitude_epsg_4326": -61.918,
+          "longitude_epsg_4326": -57.763,
+          "penguin_count": 700,
+          "season_starting": 2019,
+          "site_id": "BRPW",
+          "site_name": "Brimstone Peak (west)"
+        },
+        {
+          "latitude_epsg_4326": -60.683,
+          "longitude_epsg_4326": -44.924,
+          "penguin_count": 5000,
+          "season_starting": 2019,
+          "site_id": "BRUC",
+          "site_name": "Bruce Islands"
+        },
+        {
+          "latitude_epsg_4326": -73.249,
+          "longitude_epsg_4326": -85.348,
+          "penguin_count": 1500,
+          "season_starting": 2014,
+          "site_id": "BRYA",
+          "site_name": "Bryan Coast"
+        },
+        {
+          "latitude_epsg_4326": -64.89,
+          "longitude_epsg_4326": -62.927,
+          "penguin_count": 743,
+          "season_starting": 2024,
+          "site_id": "BRYE",
+          "site_name": "Bryde Island East"
+        },
+        {
+          "latitude_epsg_4326": -64.901,
+          "longitude_epsg_4326": -62.951,
+          "penguin_count": 1031,
+          "season_starting": 2024,
+          "site_id": "BRYS",
+          "site_name": "Bryde Island South"
+        },
+        {
+          "latitude_epsg_4326": -74.14,
+          "longitude_epsg_4326": -103.48,
+          "penguin_count": 15962,
+          "season_starting": 2011,
+          "site_id": "BSON",
+          "site_name": "Brownson Islands"
+        },
+        {
+          "latitude_epsg_4326": -60.694,
+          "longitude_epsg_4326": -44.46,
+          "penguin_count": 6500,
+          "season_starting": 1983,
+          "site_id": "BUCH",
+          "site_name": "Buchanan Point"
+        },
+        {
+          "latitude_epsg_4326": -74.75,
+          "longitude_epsg_4326": -136.83,
+          "penguin_count": 1209,
+          "season_starting": 2010,
+          "site_id": "BURK",
+          "site_name": "Cape Burks"
+        },
+        {
+          "latitude_epsg_4326": -61.057,
+          "longitude_epsg_4326": -55.149,
+          "penguin_count": 400,
+          "season_starting": 1971,
+          "site_id": "BUSK",
+          "site_name": "Buskin Rocks"
+        },
+        {
+          "latitude_epsg_4326": -62.753,
+          "longitude_epsg_4326": -61.502,
+          "penguin_count": 400,
+          "season_starting": 2012,
+          "site_id": "BYEW",
+          "site_name": "Byewater Point"
+        },
+        {
+          "latitude_epsg_4326": -62.373,
+          "longitude_epsg_4326": -59.709,
+          "penguin_count": 0,
+          "season_starting": 2009,
+          "site_id": "CARL",
+          "site_name": "Carlota Cove"
+        },
+        {
+          "latitude_epsg_4326": -61.911,
+          "longitude_epsg_4326": -57.659,
+          "penguin_count": 4000,
+          "season_starting": 2019,
+          "site_id": "CARO",
+          "site_name": "Caroline Bluff"
+        },
+        {
+          "latitude_epsg_4326": -62.789,
+          "longitude_epsg_4326": -61.581,
+          "penguin_count": 2000,
+          "season_starting": 2012,
+          "site_id": "CAST",
+          "site_name": "Castle Rock"
+        },
+        {
+          "latitude_epsg_4326": -63.236,
+          "longitude_epsg_4326": -57.505,
+          "penguin_count": 30,
+          "season_starting": 1969,
+          "site_id": "CASY",
+          "site_name": "Casy Island"
+        },
+        {
+          "latitude_epsg_4326": -62.329,
+          "longitude_epsg_4326": -59.62,
+          "penguin_count": 2316,
+          "season_starting": 1988,
+          "site_id": "CATH",
+          "site_name": "Catharina Point"
+        },
+        {
+          "latitude_epsg_4326": -77.578,
+          "longitude_epsg_4326": 166.242,
+          "penguin_count": 0,
+          "season_starting": 2010,
+          "site_id": "CBAR",
+          "site_name": "Cape Barne"
+        },
+        {
+          "latitude_epsg_4326": -67.377,
+          "longitude_epsg_4326": 48.657,
+          "penguin_count": 95,
+          "season_starting": 2010,
+          "site_id": "CBAY",
+          "site_name": "Casey Bay"
+        },
+        {
+          "latitude_epsg_4326": -77.14,
+          "longitude_epsg_4326": -157.7,
+          "penguin_count": 17125,
+          "season_starting": 2012,
+          "site_id": "CBEK",
+          "site_name": "Cape Colbeck, Edward VII Peninsula"
+        },
+        {
+          "latitude_epsg_4326": -67.312,
+          "longitude_epsg_4326": 46.957,
+          "penguin_count": 1000,
+          "season_starting": 2019,
+          "site_id": "CBYW",
+          "site_name": "Casey Bay West"
+        },
+        {
+          "latitude_epsg_4326": -61.156,
+          "longitude_epsg_4326": -54.756,
+          "penguin_count": 7346,
+          "season_starting": 2019,
+          "site_id": "CCMP",
+          "site_name": "Chinstrap Camp"
+        },
+        {
+          "latitude_epsg_4326": -62.834,
+          "longitude_epsg_4326": -61.392,
+          "penguin_count": 929,
+          "season_starting": 2019,
+          "site_id": "CCOE",
+          "site_name": "Cape Conway (east)"
+        },
+        {
+          "latitude_epsg_4326": -66.716,
+          "longitude_epsg_4326": 163.226,
+          "penguin_count": 559,
+          "season_starting": 2005,
+          "site_id": "CDAV",
+          "site_name": "Cape Davis"
+        },
+        {
+          "latitude_epsg_4326": -62.413,
+          "longitude_epsg_4326": -59.728,
+          "penguin_count": 0,
+          "season_starting": 2010,
+          "site_id": "CECI",
+          "site_name": "Cecilia Island"
+        },
+        {
+          "latitude_epsg_4326": -62.187,
+          "longitude_epsg_4326": -58.296,
+          "penguin_count": 833,
+          "season_starting": 2004,
+          "site_id": "CHAB",
+          "site_name": "Chabrier Rock, Vaureal Peak"
+        },
+        {
+          "latitude_epsg_4326": -72.318,
+          "longitude_epsg_4326": 170.214,
+          "penguin_count": 43704,
+          "season_starting": 2019,
+          "site_id": "CHAL",
+          "site_name": "Cape Hallett"
+        },
+        {
+          "latitude_epsg_4326": -66.177,
+          "longitude_epsg_4326": 110.419,
+          "penguin_count": 4597,
+          "season_starting": 2010,
+          "site_id": "CHAP",
+          "site_name": "Chappel Island"
+        },
+        {
+          "latitude_epsg_4326": -69.762,
+          "longitude_epsg_4326": -75.407,
+          "penguin_count": 37,
+          "season_starting": 2021,
+          "site_id": "CHAR",
+          "site_name": "Charcot Island"
+        },
+        {
+          "latitude_epsg_4326": -67.66,
+          "longitude_epsg_4326": -69.152,
+          "penguin_count": 135,
+          "season_starting": 2012,
+          "site_id": "CHAT",
+          "site_name": "Chatos Island"
+        },
+        {
+          "latitude_epsg_4326": -60.633,
+          "longitude_epsg_4326": -45.994,
+          "penguin_count": 22500,
+          "season_starting": 1983,
+          "site_id": "CHEA",
+          "site_name": "Cheal Point"
+        },
+        {
+          "latitude_epsg_4326": -60.627,
+          "longitude_epsg_4326": -45.259,
+          "penguin_count": 5000,
+          "season_starting": 2019,
+          "site_id": "CHEC",
+          "site_name": "Crown Head (east coast)"
+        },
+        {
+          "latitude_epsg_4326": -67.438,
+          "longitude_epsg_4326": 63.275,
+          "penguin_count": 500,
+          "season_starting": 2005,
+          "site_id": "CHI1",
+          "site_name": "Child Rocks Islands 1"
+        },
+        {
+          "latitude_epsg_4326": -67.438,
+          "longitude_epsg_4326": 63.282,
+          "penguin_count": 5000,
+          "season_starting": 2005,
+          "site_id": "CHI2",
+          "site_name": "Child Rocks Islands 2"
+        },
+        {
+          "latitude_epsg_4326": -67.439,
+          "longitude_epsg_4326": 63.272,
+          "penguin_count": 500,
+          "season_starting": 2005,
+          "site_id": "CHI3",
+          "site_name": "Child Rocks Islands 3"
+        },
+        {
+          "latitude_epsg_4326": -66.792,
+          "longitude_epsg_4326": 120.993,
+          "penguin_count": 475,
+          "season_starting": 2010,
+          "site_id": "CHIC",
+          "site_name": "Chick Islands"
+        },
+        {
+          "latitude_epsg_4326": -66.912,
+          "longitude_epsg_4326": 163.317,
+          "penguin_count": 40,
+          "season_starting": 2013,
+          "site_id": "CHII",
+          "site_name": "Chinstrap Islet"
+        },
+        {
+          "latitude_epsg_4326": -61.245,
+          "longitude_epsg_4326": -54.197,
+          "penguin_count": 6000,
+          "season_starting": 2010,
+          "site_id": "CHIN",
+          "site_name": "Chinstrap Cove"
+        },
+        {
+          "latitude_epsg_4326": -64.795,
+          "longitude_epsg_4326": -64.024,
+          "penguin_count": 1151,
+          "season_starting": 1986,
+          "site_id": "CHIS",
+          "site_name": "Christine Island"
+        },
+        {
+          "latitude_epsg_4326": -64.042,
+          "longitude_epsg_4326": -60.986,
+          "penguin_count": 450,
+          "season_starting": 1986,
+          "site_id": "CHNE",
+          "site_name": "Cape Herschel (northeast)"
+        },
+        {
+          "latitude_epsg_4326": -64.236,
+          "longitude_epsg_4326": -61.0,
+          "penguin_count": 1,
+          "season_starting": 2023,
+          "site_id": "CHPT",
+          "site_name": "Charles Point"
+        },
+        {
+          "latitude_epsg_4326": -60.728,
+          "longitude_epsg_4326": -45.035,
+          "penguin_count": 378,
+          "season_starting": 1983,
+          "site_id": "CHRI",
+          "site_name": "Christoffersen Island"
+        },
+        {
+          "latitude_epsg_4326": -64.078,
+          "longitude_epsg_4326": -61.033,
+          "penguin_count": 650,
+          "season_starting": 2010,
+          "site_id": "CHSE",
+          "site_name": "Cape Herschel (southeast)"
+        },
+        {
+          "latitude_epsg_4326": -66.963,
+          "longitude_epsg_4326": 142.349,
+          "penguin_count": 7709,
+          "season_starting": 2009,
+          "site_id": "CHUN",
+          "site_name": "Cape Hunter"
+        },
+        {
+          "latitude_epsg_4326": -64.157,
+          "longitude_epsg_4326": -60.96,
+          "penguin_count": 3303,
+          "season_starting": 2014,
+          "site_id": "CIER",
+          "site_name": "Cierva Point"
+        },
+        {
+          "latitude_epsg_4326": -62.009,
+          "longitude_epsg_4326": -58.655,
+          "penguin_count": 955,
+          "season_starting": 1980,
+          "site_id": "CIPT",
+          "site_name": "Cieslak Point"
+        },
+        {
+          "latitude_epsg_4326": -74.056,
+          "longitude_epsg_4326": -105.193,
+          "penguin_count": 322,
+          "season_starting": 2011,
+          "site_id": "CLAR",
+          "site_name": "Clark Island"
+        },
+        {
+          "latitude_epsg_4326": -61.107,
+          "longitude_epsg_4326": -55.48,
+          "penguin_count": 163,
+          "season_starting": 2019,
+          "site_id": "CLIN",
+          "site_name": "Cape Lindsey"
+        },
+        {
+          "latitude_epsg_4326": -64.116,
+          "longitude_epsg_4326": -62.618,
+          "penguin_count": 200,
+          "season_starting": 2013,
+          "site_id": "CLPT",
+          "site_name": "Claude Point"
+        },
+        {
+          "latitude_epsg_4326": -62.022,
+          "longitude_epsg_4326": -57.58,
+          "penguin_count": 4960,
+          "season_starting": 2022,
+          "site_id": "CMEL",
+          "site_name": "Cape Melville"
+        },
+        {
+          "latitude_epsg_4326": -73.437,
+          "longitude_epsg_4326": 169.885,
+          "penguin_count": 13185,
+          "season_starting": 2018,
+          "site_id": "CMID",
+          "site_name": "Coulman Middle"
+        },
+        {
+          "latitude_epsg_4326": -64.366,
+          "longitude_epsg_4326": -61.621,
+          "penguin_count": 0,
+          "season_starting": 2015,
+          "site_id": "CMUR",
+          "site_name": "Cape Murray"
+        },
+        {
+          "latitude_epsg_4326": -73.382,
+          "longitude_epsg_4326": 169.84,
+          "penguin_count": 3128,
+          "season_starting": 2017,
+          "site_id": "CNOR",
+          "site_name": "Coulman North"
+        },
+        {
+          "latitude_epsg_4326": -64.179,
+          "longitude_epsg_4326": -61.652,
+          "penguin_count": 541,
+          "season_starting": 2023,
+          "site_id": "COBA",
+          "site_name": "Cobalescou Island"
+        },
+        {
+          "latitude_epsg_4326": -64.201,
+          "longitude_epsg_4326": -56.841,
+          "penguin_count": 15721,
+          "season_starting": 2010,
+          "site_id": "COCK",
+          "site_name": "Cockburn Island"
+        },
+        {
+          "latitude_epsg_4326": -60.742,
+          "longitude_epsg_4326": -45.138,
+          "penguin_count": 3000,
+          "season_starting": 2019,
+          "site_id": "COFF",
+          "site_name": "Coffer Island"
+        },
+        {
+          "latitude_epsg_4326": -67.344,
+          "longitude_epsg_4326": 61.065,
+          "penguin_count": 958,
+          "season_starting": 2010,
+          "site_id": "COLB",
+          "site_name": "Colbeck Archipelago Unnamed 1"
+        },
+        {
+          "latitude_epsg_4326": -67.675,
+          "longitude_epsg_4326": -69.153,
+          "penguin_count": 3051,
+          "season_starting": 2012,
+          "site_id": "CONE",
+          "site_name": "Cone Island"
+        },
+        {
+          "latitude_epsg_4326": -60.738,
+          "longitude_epsg_4326": -45.636,
+          "penguin_count": 7736,
+          "season_starting": 1978,
+          "site_id": "CONF",
+          "site_name": "Confusion Island"
+        },
+        {
+          "latitude_epsg_4326": -69.275,
+          "longitude_epsg_4326": 158.78,
+          "penguin_count": 128,
+          "season_starting": 1985,
+          "site_id": "CONI",
+          "site_name": "Conical Island (Aviation Islands)"
+        },
+        {
+          "latitude_epsg_4326": -62.842,
+          "longitude_epsg_4326": -61.422,
+          "penguin_count": 0,
+          "season_starting": 2019,
+          "site_id": "CONW",
+          "site_name": "Cape Conway"
+        },
+        {
+          "latitude_epsg_4326": -62.343,
+          "longitude_epsg_4326": -59.709,
+          "penguin_count": 0,
+          "season_starting": 2019,
+          "site_id": "CORI",
+          "site_name": "Cornwall Island"
+        },
+        {
+          "latitude_epsg_4326": -64.794,
+          "longitude_epsg_4326": -63.967,
+          "penguin_count": 693,
+          "season_starting": 1986,
+          "site_id": "CORM",
+          "site_name": "Cormorant Island"
+        },
+        {
+          "latitude_epsg_4326": -66.686,
+          "longitude_epsg_4326": 163.103,
+          "penguin_count": 401,
+          "season_starting": 2005,
+          "site_id": "CORN",
+          "site_name": "Cape Cornish (NE Buckle)"
+        },
+        {
+          "latitude_epsg_4326": -72.404,
+          "longitude_epsg_4326": 170.312,
+          "penguin_count": 47424,
+          "season_starting": 2018,
+          "site_id": "COTT",
+          "site_name": "Cape Cotter"
+        },
+        {
+          "latitude_epsg_4326": -73.348,
+          "longitude_epsg_4326": 169.624,
+          "penguin_count": 19822,
+          "season_starting": 2018,
+          "site_id": "COUL",
+          "site_name": "Coulman Island"
+        },
+        {
+          "latitude_epsg_4326": -62.012,
+          "longitude_epsg_4326": -58.689,
+          "penguin_count": 400,
+          "season_starting": 2005,
+          "site_id": "CPTW",
+          "site_name": "Cieslak Point (west)"
+        },
+        {
+          "latitude_epsg_4326": -61.246,
+          "longitude_epsg_4326": -55.17,
+          "penguin_count": 1228,
+          "season_starting": 2019,
+          "site_id": "CRAB",
+          "site_name": "Crab Beach"
+        },
+        {
+          "latitude_epsg_4326": -61.278,
+          "longitude_epsg_4326": -54.172,
+          "penguin_count": 300,
+          "season_starting": 2010,
+          "site_id": "CRAG",
+          "site_name": "Near Craggy Point"
+        },
+        {
+          "latitude_epsg_4326": -62.385,
+          "longitude_epsg_4326": -59.774,
+          "penguin_count": 2674,
+          "season_starting": 2018,
+          "site_id": "CRIC",
+          "site_name": "Cricklewood Island"
+        },
+        {
+          "latitude_epsg_4326": -60.714,
+          "longitude_epsg_4326": -44.837,
+          "penguin_count": 30000,
+          "season_starting": 2019,
+          "site_id": "CROB",
+          "site_name": "Cape Robertson"
+        },
+        {
+          "latitude_epsg_4326": -60.623,
+          "longitude_epsg_4326": -45.316,
+          "penguin_count": 5000,
+          "season_starting": 2019,
+          "site_id": "CROW",
+          "site_name": "Crown Head"
+        },
+        {
+          "latitude_epsg_4326": -77.46,
+          "longitude_epsg_4326": 169.32,
+          "penguin_count": 1664,
+          "season_starting": 2018,
+          "site_id": "CROZ",
+          "site_name": "Cape Crozier"
+        },
+        {
+          "latitude_epsg_4326": -74.734,
+          "longitude_epsg_4326": -140.327,
+          "penguin_count": 1000,
+          "season_starting": 2019,
+          "site_id": "CRUZ",
+          "site_name": "Cruzen Island"
+        },
+        {
+          "latitude_epsg_4326": -61.08,
+          "longitude_epsg_4326": -54.46,
+          "penguin_count": 6000,
+          "season_starting": 2019,
+          "site_id": "CRWL",
+          "site_name": "Cornwallis Island"
+        },
+        {
+          "latitude_epsg_4326": -77.462,
+          "longitude_epsg_4326": 169.288,
+          "penguin_count": 23902,
+          "season_starting": 2021,
+          "site_id": "CRZE",
+          "site_name": "Cape Crozier (east)"
+        },
+        {
+          "latitude_epsg_4326": -77.454,
+          "longitude_epsg_4326": 169.238,
+          "penguin_count": 226228,
+          "season_starting": 2021,
+          "site_id": "CRZW",
+          "site_name": "Cape Crozier (west)"
+        },
+        {
+          "latitude_epsg_4326": -73.514,
+          "longitude_epsg_4326": 169.878,
+          "penguin_count": 27292,
+          "season_starting": 2018,
+          "site_id": "CSOU",
+          "site_name": "Coulman South"
+        },
+        {
+          "latitude_epsg_4326": -66.767,
+          "longitude_epsg_4326": 141.567,
+          "penguin_count": 14694,
+          "season_starting": 2010,
+          "site_id": "CURZ",
+          "site_name": "Curzon Islands"
+        },
+        {
+          "latitude_epsg_4326": -64.684,
+          "longitude_epsg_4326": -62.626,
+          "penguin_count": 9083,
+          "season_starting": 2024,
+          "site_id": "CUVE",
+          "site_name": "Cuverville Island"
+        },
+        {
+          "latitude_epsg_4326": -60.655,
+          "longitude_epsg_4326": -45.663,
+          "penguin_count": 7000,
+          "season_starting": 2012,
+          "site_id": "CVIK",
+          "site_name": "Cape Vik"
+        },
+        {
+          "latitude_epsg_4326": -63.184,
+          "longitude_epsg_4326": -55.393,
+          "penguin_count": 55528,
+          "season_starting": 2015,
+          "site_id": "DALR",
+          "site_name": "Dalrymple Point"
+        },
+        {
+          "latitude_epsg_4326": -64.815,
+          "longitude_epsg_4326": -63.497,
+          "penguin_count": 1187,
+          "season_starting": 2024,
+          "site_id": "DAMO",
+          "site_name": "Dorian Bay/Damoy Point"
+        },
+        {
+          "latitude_epsg_4326": -64.734,
+          "longitude_epsg_4326": -62.594,
+          "penguin_count": 2443,
+          "season_starting": 2024,
+          "site_id": "DANC",
+          "site_name": "Danco Island"
+        },
+        {
+          "latitude_epsg_4326": -66.381,
+          "longitude_epsg_4326": -65.9,
+          "penguin_count": 324,
+          "season_starting": 2012,
+          "site_id": "DARB",
+          "site_name": "Darbel Island"
+        },
+        {
+          "latitude_epsg_4326": -71.887,
+          "longitude_epsg_4326": -60.134,
+          "penguin_count": 1000,
+          "season_starting": 2019,
+          "site_id": "DARL",
+          "site_name": "Cape Darlington"
+        },
+        {
+          "latitude_epsg_4326": -67.887,
+          "longitude_epsg_4326": 69.696,
+          "penguin_count": 1378,
+          "season_starting": 2022,
+          "site_id": "DARN",
+          "site_name": "Flutter/Cape Darnley"
+        },
+        {
+          "latitude_epsg_4326": -63.437,
+          "longitude_epsg_4326": -54.726,
+          "penguin_count": 5804,
+          "season_starting": 2015,
+          "site_id": "DARW",
+          "site_name": "Darwin Island"
+        },
+        {
+          "latitude_epsg_4326": -65.403,
+          "longitude_epsg_4326": -64.215,
+          "penguin_count": 0,
+          "season_starting": 2012,
+          "site_id": "DARX",
+          "site_name": "Darboux Island"
+        },
+        {
+          "latitude_epsg_4326": -61.969,
+          "longitude_epsg_4326": -58.53,
+          "penguin_count": 25000,
+          "season_starting": 1986,
+          "site_id": "DAVE",
+          "site_name": "Davey Point"
+        },
+        {
+          "latitude_epsg_4326": -66.664,
+          "longitude_epsg_4326": 108.444,
+          "penguin_count": 8418,
+          "season_starting": 2010,
+          "site_id": "DAVI",
+          "site_name": "Davis Island"
+        },
+        {
+          "latitude_epsg_4326": -76.014,
+          "longitude_epsg_4326": -26.648,
+          "penguin_count": 2597,
+          "season_starting": 2009,
+          "site_id": "DAWS",
+          "site_name": "Dawson-Lambton"
+        },
+        {
+          "latitude_epsg_4326": -69.348,
+          "longitude_epsg_4326": 158.492,
+          "penguin_count": 1745,
+          "season_starting": 2009,
+          "site_id": "DBAY",
+          "site_name": "Davies Bay"
+        },
+        {
+          "latitude_epsg_4326": -61.097,
+          "longitude_epsg_4326": -54.702,
+          "penguin_count": 100,
+          "season_starting": 2019,
+          "site_id": "DECI",
+          "site_name": "Decimal Point"
+        },
+        {
+          "latitude_epsg_4326": -61.105,
+          "longitude_epsg_4326": -54.709,
+          "penguin_count": 47,
+          "season_starting": 2019,
+          "site_id": "DECS",
+          "site_name": "Decimal Point South"
+        },
+        {
+          "latitude_epsg_4326": -62.423,
+          "longitude_epsg_4326": -59.784,
+          "penguin_count": 0,
+          "season_starting": 2010,
+          "site_id": "DEEI",
+          "site_name": "Dee Island"
+        },
+        {
+          "latitude_epsg_4326": -64.564,
+          "longitude_epsg_4326": -62.188,
+          "penguin_count": 108,
+          "season_starting": 2016,
+          "site_id": "DELA",
+          "site_name": "Delaite Island"
+        },
+        {
+          "latitude_epsg_4326": -62.214,
+          "longitude_epsg_4326": -58.419,
+          "penguin_count": 14,
+          "season_starting": 2015,
+          "site_id": "DEMA",
+          "site_name": "Demay Point"
+        },
+        {
+          "latitude_epsg_4326": -67.007,
+          "longitude_epsg_4326": 142.665,
+          "penguin_count": 13834,
+          "season_starting": 2010,
+          "site_id": "DENI",
+          "site_name": "Cape Denison"
+        },
+        {
+          "latitude_epsg_4326": -62.664,
+          "longitude_epsg_4326": -61.159,
+          "penguin_count": 2000,
+          "season_starting": 2019,
+          "site_id": "DEPT",
+          "site_name": "Devils Point"
+        },
+        {
+          "latitude_epsg_4326": -62.458,
+          "longitude_epsg_4326": -60.347,
+          "penguin_count": 70000,
+          "season_starting": 2013,
+          "site_id": "DESO",
+          "site_name": "Desolation Island"
+        },
+        {
+          "latitude_epsg_4326": -66.871,
+          "longitude_epsg_4326": -66.787,
+          "penguin_count": 301,
+          "season_starting": 2024,
+          "site_id": "DETA",
+          "site_name": "Detaille Island"
+        },
+        {
+          "latitude_epsg_4326": -63.799,
+          "longitude_epsg_4326": -57.289,
+          "penguin_count": 21003,
+          "season_starting": 2023,
+          "site_id": "DEVI",
+          "site_name": "Devil Island"
+        },
+        {
+          "latitude_epsg_4326": -63.293,
+          "longitude_epsg_4326": -58.754,
+          "penguin_count": 300,
+          "season_starting": 1986,
+          "site_id": "DIAZ",
+          "site_name": "Diaz Rocks"
+        },
+        {
+          "latitude_epsg_4326": -66.0,
+          "longitude_epsg_4326": 134.8,
+          "penguin_count": 12476,
+          "season_starting": 2009,
+          "site_id": "DIBB",
+          "site_name": "Dibble Glacier"
+        },
+        {
+          "latitude_epsg_4326": -64.811,
+          "longitude_epsg_4326": -63.511,
+          "penguin_count": 147,
+          "season_starting": 2024,
+          "site_id": "DOBE",
+          "site_name": "Dorian Beacon"
+        },
+        {
+          "latitude_epsg_4326": -70.611,
+          "longitude_epsg_4326": -60.421,
+          "penguin_count": 1620,
+          "season_starting": 2009,
+          "site_id": "DOLL",
+          "site_name": "Dolleman"
+        },
+        {
+          "latitude_epsg_4326": -69.275,
+          "longitude_epsg_4326": 158.78,
+          "penguin_count": 161,
+          "season_starting": 1985,
+          "site_id": "DOME",
+          "site_name": "Dome Island (Aviation Islands)"
+        },
+        {
+          "latitude_epsg_4326": -67.38,
+          "longitude_epsg_4326": 63.389,
+          "penguin_count": 50,
+          "season_starting": 2005,
+          "site_id": "DOU1",
+          "site_name": "Douglas Islands 1"
+        },
+        {
+          "latitude_epsg_4326": -67.385,
+          "longitude_epsg_4326": 63.389,
+          "penguin_count": 500,
+          "season_starting": 2005,
+          "site_id": "DOU2",
+          "site_name": "Douglas Islands 2"
+        },
+        {
+          "latitude_epsg_4326": -71.558,
+          "longitude_epsg_4326": 170.592,
+          "penguin_count": 35640,
+          "season_starting": 2013,
+          "site_id": "DOWN",
+          "site_name": "Downshire Cliffs"
+        },
+        {
+          "latitude_epsg_4326": -64.725,
+          "longitude_epsg_4326": -64.226,
+          "penguin_count": 1887,
+          "season_starting": 2007,
+          "site_id": "DREA",
+          "site_name": "Dream Island"
+        },
+        {
+          "latitude_epsg_4326": -72.826,
+          "longitude_epsg_4326": -19.326,
+          "penguin_count": 2305,
+          "season_starting": 2009,
+          "site_id": "DRES",
+          "site_name": "Drescher"
+        },
+        {
+          "latitude_epsg_4326": -64.73,
+          "longitude_epsg_4326": -64.254,
+          "penguin_count": 68,
+          "season_starting": 1986,
+          "site_id": "DREW",
+          "site_name": "Dream Island West (Casey Islands)"
+        },
+        {
+          "latitude_epsg_4326": -71.624,
+          "longitude_epsg_4326": 170.064,
+          "penguin_count": 10045,
+          "season_starting": 2018,
+          "site_id": "DUKE",
+          "site_name": "Duke of York Island"
+        },
+        {
+          "latitude_epsg_4326": -63.483,
+          "longitude_epsg_4326": -55.966,
+          "penguin_count": 0,
+          "season_starting": 2021,
+          "site_id": "DUND",
+          "site_name": "Dundee Island"
+        },
+        {
+          "latitude_epsg_4326": -64.805,
+          "longitude_epsg_4326": -62.818,
+          "penguin_count": 14,
+          "season_starting": 2018,
+          "site_id": "DUPT",
+          "site_name": "Duthiers Point"
+        },
+        {
+          "latitude_epsg_4326": -63.303,
+          "longitude_epsg_4326": -57.89,
+          "penguin_count": 800,
+          "season_starting": 1990,
+          "site_id": "DURO",
+          "site_name": "Duroch Islands"
+        },
+        {
+          "latitude_epsg_4326": -63.427,
+          "longitude_epsg_4326": -56.294,
+          "penguin_count": 18415,
+          "season_starting": 2016,
+          "site_id": "DURV",
+          "site_name": "d'Urville Monument"
+        },
+        {
+          "latitude_epsg_4326": -62.307,
+          "longitude_epsg_4326": -58.835,
+          "penguin_count": 1,
+          "season_starting": 1993,
+          "site_id": "DUTH",
+          "site_name": "Duthoit Point"
+        },
+        {
+          "latitude_epsg_4326": -61.476,
+          "longitude_epsg_4326": -55.94,
+          "penguin_count": 8000,
+          "season_starting": 2018,
+          "site_id": "EADI",
+          "site_name": "Eadie Island"
+        },
+        {
+          "latitude_epsg_4326": -63.483,
+          "longitude_epsg_4326": -54.783,
+          "penguin_count": 21071,
+          "season_starting": 2015,
+          "site_id": "EARL",
+          "site_name": "Earle Island"
+        },
+        {
+          "latitude_epsg_4326": -60.633,
+          "longitude_epsg_4326": -45.201,
+          "penguin_count": 500,
+          "season_starting": 2019,
+          "site_id": "ECAP",
+          "site_name": "East Cape"
+        },
+        {
+          "latitude_epsg_4326": -64.431,
+          "longitude_epsg_4326": -61.604,
+          "penguin_count": 42,
+          "season_starting": 2019,
+          "site_id": "ECKE",
+          "site_name": "Eckener Point"
+        },
+        {
+          "latitude_epsg_4326": -63.495,
+          "longitude_epsg_4326": -55.702,
+          "penguin_count": 43709,
+          "season_starting": 2021,
+          "site_id": "EDEN",
+          "site_name": "Eden Rocks"
+        },
+        {
+          "latitude_epsg_4326": -62.463,
+          "longitude_epsg_4326": -59.498,
+          "penguin_count": 100,
+          "season_starting": 2015,
+          "site_id": "EDWA",
+          "site_name": "Edwards Point"
+        },
+        {
+          "latitude_epsg_4326": -73.87,
+          "longitude_epsg_4326": -103.006,
+          "penguin_count": 58058,
+          "season_starting": 2009,
+          "site_id": "EDWI",
+          "site_name": "Edwards Islands"
+        },
+        {
+          "latitude_epsg_4326": -62.706,
+          "longitude_epsg_4326": -60.317,
+          "penguin_count": 50,
+          "season_starting": 1986,
+          "site_id": "EFAL",
+          "site_name": "East side of False Bay"
+        },
+        {
+          "latitude_epsg_4326": -63.355,
+          "longitude_epsg_4326": -62.213,
+          "penguin_count": 6000,
+          "season_starting": 1986,
+          "site_id": "EGAR",
+          "site_name": "East 2-3 km of Cape Garry"
+        },
+        {
+          "latitude_epsg_4326": -61.077,
+          "longitude_epsg_4326": -55.145,
+          "penguin_count": 250,
+          "season_starting": 1970,
+          "site_id": "EIP0",
+          "site_name": "Elephant Island (north coast point 0)"
+        },
+        {
+          "latitude_epsg_4326": -61.091,
+          "longitude_epsg_4326": -55.113,
+          "penguin_count": 3389,
+          "season_starting": 2019,
+          "site_id": "EIP1",
+          "site_name": "Elephant Island (north coast point 1)"
+        },
+        {
+          "latitude_epsg_4326": -61.093,
+          "longitude_epsg_4326": -55.087,
+          "penguin_count": 840,
+          "season_starting": 2019,
+          "site_id": "EIP2",
+          "site_name": "Elephant Island (north coast point 2)"
+        },
+        {
+          "latitude_epsg_4326": -61.092,
+          "longitude_epsg_4326": -55.074,
+          "penguin_count": 1088,
+          "season_starting": 2019,
+          "site_id": "EIP3",
+          "site_name": "Elephant Island (north coast point 3)"
+        },
+        {
+          "latitude_epsg_4326": -61.094,
+          "longitude_epsg_4326": -55.067,
+          "penguin_count": 0,
+          "season_starting": 2019,
+          "site_id": "EIP4",
+          "site_name": "Elephant Island (north coast point 4)"
+        },
+        {
+          "latitude_epsg_4326": -61.094,
+          "longitude_epsg_4326": -55.057,
+          "penguin_count": 15,
+          "season_starting": 2019,
+          "site_id": "EIP5",
+          "site_name": "Elephant Island (north coast point 5)"
+        },
+        {
+          "latitude_epsg_4326": -61.097,
+          "longitude_epsg_4326": -55.057,
+          "penguin_count": 61,
+          "season_starting": 2019,
+          "site_id": "EIP6",
+          "site_name": "Elephant Island (north coast point 6)"
+        },
+        {
+          "latitude_epsg_4326": -60.694,
+          "longitude_epsg_4326": -44.871,
+          "penguin_count": 20000,
+          "season_starting": 2019,
+          "site_id": "ELLI",
+          "site_name": "Ellium Island"
+        },
+        {
+          "latitude_epsg_4326": -62.687,
+          "longitude_epsg_4326": -60.849,
+          "penguin_count": 4366,
+          "season_starting": 2023,
+          "site_id": "ELPT",
+          "site_name": "Elephant Point"
+        },
+        {
+          "latitude_epsg_4326": -60.62,
+          "longitude_epsg_4326": -45.87,
+          "penguin_count": 4000,
+          "season_starting": 2013,
+          "site_id": "EMEI",
+          "site_name": "East of Meier Point"
+        },
+        {
+          "latitude_epsg_4326": -61.906,
+          "longitude_epsg_4326": -57.682,
+          "penguin_count": 40,
+          "season_starting": 2019,
+          "site_id": "EMER",
+          "site_name": "Emerald Cove"
+        },
+        {
+          "latitude_epsg_4326": -67.865,
+          "longitude_epsg_4326": -68.71,
+          "penguin_count": 813,
+          "season_starting": 2023,
+          "site_id": "EMPE",
+          "site_name": "Emperor Island"
+        },
+        {
+          "latitude_epsg_4326": -62.999,
+          "longitude_epsg_4326": -60.557,
+          "penguin_count": 1084,
+          "season_starting": 2024,
+          "site_id": "ENTR",
+          "site_name": "Entrance Point"
+        },
+        {
+          "latitude_epsg_4326": -63.008,
+          "longitude_epsg_4326": -60.562,
+          "penguin_count": 3584,
+          "season_starting": 2018,
+          "site_id": "ENTW",
+          "site_name": "Entrance Point West"
+        },
+        {
+          "latitude_epsg_4326": -60.583,
+          "longitude_epsg_4326": -45.385,
+          "penguin_count": 2000,
+          "season_starting": 2019,
+          "site_id": "EPUR",
+          "site_name": "East of Purdy Point"
+        },
+        {
+          "latitude_epsg_4326": -60.781,
+          "longitude_epsg_4326": -45.111,
+          "penguin_count": 700,
+          "season_starting": 2019,
+          "site_id": "ESKI",
+          "site_name": "East of Skilling Island"
+        },
+        {
+          "latitude_epsg_4326": -63.095,
+          "longitude_epsg_4326": -55.179,
+          "penguin_count": 275,
+          "season_starting": 2015,
+          "site_id": "ETNA",
+          "site_name": "Etna Island"
+        },
+        {
+          "latitude_epsg_4326": -66.164,
+          "longitude_epsg_4326": -65.683,
+          "penguin_count": 163,
+          "season_starting": 2012,
+          "site_id": "EVEN",
+          "site_name": "Cape Evensen (mainland)"
+        },
+        {
+          "latitude_epsg_4326": -66.158,
+          "longitude_epsg_4326": -65.72,
+          "penguin_count": 211,
+          "season_starting": 2012,
+          "site_id": "EVER",
+          "site_name": "Cape Evensen (offshore rocks)"
+        },
+        {
+          "latitude_epsg_4326": -63.868,
+          "longitude_epsg_4326": -61.018,
+          "penguin_count": 58,
+          "season_starting": 2024,
+          "site_id": "FARE",
+          "site_name": "Farewell Rock"
+        },
+        {
+          "latitude_epsg_4326": -61.288,
+          "longitude_epsg_4326": -54.067,
+          "penguin_count": 2000,
+          "season_starting": 2010,
+          "site_id": "FARI",
+          "site_name": "False Ridge"
+        },
+        {
+          "latitude_epsg_4326": -70.766,
+          "longitude_epsg_4326": 167.079,
+          "penguin_count": 342,
+          "season_starting": 2011,
+          "site_id": "FBER",
+          "site_name": "Fortenberry"
+        },
+        {
+          "latitude_epsg_4326": -60.693,
+          "longitude_epsg_4326": -44.567,
+          "penguin_count": 7268,
+          "season_starting": 2004,
+          "site_id": "FERG",
+          "site_name": "Ferguslie Peninsula"
+        },
+        {
+          "latitude_epsg_4326": -60.715,
+          "longitude_epsg_4326": -44.425,
+          "penguin_count": 35858,
+          "season_starting": 2004,
+          "site_id": "FERR",
+          "site_name": "Ferrier Peninsula"
+        },
+        {
+          "latitude_epsg_4326": -62.173,
+          "longitude_epsg_4326": -58.97,
+          "penguin_count": 229,
+          "season_starting": 2016,
+          "site_id": "FILD",
+          "site_name": "Fildes Peninsula (northwest side)"
+        },
+        {
+          "latitude_epsg_4326": -66.028,
+          "longitude_epsg_4326": -65.361,
+          "penguin_count": 744,
+          "season_starting": 2024,
+          "site_id": "FISH",
+          "site_name": "Fish Islands"
+        },
+        {
+          "latitude_epsg_4326": -60.714,
+          "longitude_epsg_4326": -44.494,
+          "penguin_count": 0,
+          "season_starting": 2004,
+          "site_id": "FITC",
+          "site_name": "Fitchie Bay"
+        },
+        {
+          "latitude_epsg_4326": -65.514,
+          "longitude_epsg_4326": -65.48,
+          "penguin_count": 113,
+          "season_starting": 2012,
+          "site_id": "FIZK",
+          "site_name": "Fizkin Island (islet northeast of Fizkin Island)"
+        },
+        {
+          "latitude_epsg_4326": -63.205,
+          "longitude_epsg_4326": -55.241,
+          "penguin_count": 77,
+          "season_starting": 2010,
+          "site_id": "FLIE",
+          "site_name": "Fliess Bay"
+        },
+        {
+          "latitude_epsg_4326": -60.768,
+          "longitude_epsg_4326": -44.622,
+          "penguin_count": 2000,
+          "season_starting": 2018,
+          "site_id": "FLOR",
+          "site_name": "Florence Rock"
+        },
+        {
+          "latitude_epsg_4326": -67.324,
+          "longitude_epsg_4326": 59.316,
+          "penguin_count": 361,
+          "season_starting": 2022,
+          "site_id": "FOLD",
+          "site_name": "Fold Island"
+        },
+        {
+          "latitude_epsg_4326": -67.596,
+          "longitude_epsg_4326": 62.286,
+          "penguin_count": 1028,
+          "season_starting": 2010,
+          "site_id": "FORB",
+          "site_name": "Forbes Glacier"
+        },
+        {
+          "latitude_epsg_4326": -62.542,
+          "longitude_epsg_4326": -59.58,
+          "penguin_count": 920,
+          "season_starting": 2023,
+          "site_id": "FORT",
+          "site_name": "Fort Point (Greenwich Island)"
+        },
+        {
+          "latitude_epsg_4326": -76.158,
+          "longitude_epsg_4326": 168.41,
+          "penguin_count": 255,
+          "season_starting": 2010,
+          "site_id": "FRAE",
+          "site_name": "Franklin Island East"
+        },
+        {
+          "latitude_epsg_4326": -66.637,
+          "longitude_epsg_4326": 139.825,
+          "penguin_count": 878,
+          "season_starting": 2010,
+          "site_id": "FRAM",
+          "site_name": "Fram Islands"
+        },
+        {
+          "latitude_epsg_4326": -76.187,
+          "longitude_epsg_4326": 168.44,
+          "penguin_count": 3171,
+          "season_starting": 2012,
+          "site_id": "FRAN",
+          "site_name": "Franklin Island"
+        },
+        {
+          "latitude_epsg_4326": -76.162,
+          "longitude_epsg_4326": 168.338,
+          "penguin_count": 41339,
+          "season_starting": 2010,
+          "site_id": "FRAW",
+          "site_name": "Franklin Island West"
+        },
+        {
+          "latitude_epsg_4326": -60.733,
+          "longitude_epsg_4326": -44.99,
+          "penguin_count": 20000,
+          "season_starting": 2019,
+          "site_id": "FRED",
+          "site_name": "Fredriksen Island"
+        },
+        {
+          "latitude_epsg_4326": -63.028,
+          "longitude_epsg_4326": -56.009,
+          "penguin_count": 1250,
+          "season_starting": 2015,
+          "site_id": "FRNC",
+          "site_name": "Francais Rocks"
+        },
+        {
+          "latitude_epsg_4326": -61.898,
+          "longitude_epsg_4326": -57.989,
+          "penguin_count": 19886,
+          "season_starting": 2024,
+          "site_id": "FRPT",
+          "site_name": "False Round Point"
+        },
+        {
+          "latitude_epsg_4326": -61.215,
+          "longitude_epsg_4326": -54.04,
+          "penguin_count": 20000,
+          "season_starting": 2010,
+          "site_id": "FURS",
+          "site_name": "Fur Seal Point"
+        },
+        {
+          "latitude_epsg_4326": -60.73,
+          "longitude_epsg_4326": -45.669,
+          "penguin_count": 1170,
+          "season_starting": 1978,
+          "site_id": "FYRC",
+          "site_name": "Fyr Channel"
+        },
+        {
+          "latitude_epsg_4326": -65.248,
+          "longitude_epsg_4326": -64.24,
+          "penguin_count": 1362,
+          "season_starting": 2023,
+          "site_id": "GALE",
+          "site_name": "Galindez Island East"
+        },
+        {
+          "latitude_epsg_4326": -65.252,
+          "longitude_epsg_4326": -64.246,
+          "penguin_count": 49,
+          "season_starting": 2012,
+          "site_id": "GALS",
+          "site_name": "Galindez Island South"
+        },
+        {
+          "latitude_epsg_4326": -61.923,
+          "longitude_epsg_4326": -57.955,
+          "penguin_count": 90,
+          "season_starting": 1980,
+          "site_id": "GAMP",
+          "site_name": "Gam Point Area"
+        },
+        {
+          "latitude_epsg_4326": -63.361,
+          "longitude_epsg_4326": -62.258,
+          "penguin_count": 200000,
+          "season_starting": 1986,
+          "site_id": "GARY",
+          "site_name": "Cape Garry"
+        },
+        {
+          "latitude_epsg_4326": -64.485,
+          "longitude_epsg_4326": -61.827,
+          "penguin_count": 390,
+          "season_starting": 2023,
+          "site_id": "GAST",
+          "site_name": "Gaston Islands"
+        },
+        {
+          "latitude_epsg_4326": -73.661,
+          "longitude_epsg_4326": -122.697,
+          "penguin_count": 4500,
+          "season_starting": 2019,
+          "site_id": "GATE",
+          "site_name": "Cape Gates"
+        },
+        {
+          "latitude_epsg_4326": -60.685,
+          "longitude_epsg_4326": -44.59,
+          "penguin_count": 7116,
+          "season_starting": 2004,
+          "site_id": "GEDD",
+          "site_name": "Cape Geddes"
+        },
+        {
+          "latitude_epsg_4326": -64.669,
+          "longitude_epsg_4326": -62.67,
+          "penguin_count": 78,
+          "season_starting": 2024,
+          "site_id": "GEOR",
+          "site_name": "Georges Point (Ronge Island)"
+        },
+        {
+          "latitude_epsg_4326": -60.657,
+          "longitude_epsg_4326": -45.744,
+          "penguin_count": 1086,
+          "season_starting": 2010,
+          "site_id": "GERD",
+          "site_name": "Gerd Island"
+        },
+        {
+          "latitude_epsg_4326": -64.601,
+          "longitude_epsg_4326": -64.214,
+          "penguin_count": 68,
+          "season_starting": 2021,
+          "site_id": "GERL",
+          "site_name": "Gerlache Island"
+        },
+        {
+          "latitude_epsg_4326": -60.649,
+          "longitude_epsg_4326": -45.214,
+          "penguin_count": 0,
+          "season_starting": 2019,
+          "site_id": "GIBA",
+          "site_name": "Gibbon Bay"
+        },
+        {
+          "latitude_epsg_4326": -61.471,
+          "longitude_epsg_4326": -55.639,
+          "penguin_count": 80000,
+          "season_starting": 2003,
+          "site_id": "GIBB",
+          "site_name": "Gibbs Island"
+        },
+        {
+          "latitude_epsg_4326": -67.749,
+          "longitude_epsg_4326": -68.686,
+          "penguin_count": 2192,
+          "season_starting": 2023,
+          "site_id": "GING",
+          "site_name": "Ginger Island"
+        },
+        {
+          "latitude_epsg_4326": -65.091,
+          "longitude_epsg_4326": -63.959,
+          "penguin_count": 95,
+          "season_starting": 2019,
+          "site_id": "GLAN",
+          "site_name": "Glandaz Point"
+        },
+        {
+          "latitude_epsg_4326": -67.554,
+          "longitude_epsg_4326": 62.321,
+          "penguin_count": 12246,
+          "season_starting": 2010,
+          "site_id": "GNEY",
+          "site_name": "Gibbney Island"
+        },
+        {
+          "latitude_epsg_4326": -61.128,
+          "longitude_epsg_4326": -55.473,
+          "penguin_count": 20,
+          "season_starting": 2019,
+          "site_id": "GOLF",
+          "site_name": "Golfcourse Point"
+        },
+        {
+          "latitude_epsg_4326": -60.731,
+          "longitude_epsg_4326": -45.586,
+          "penguin_count": 3926,
+          "season_starting": 2010,
+          "site_id": "GOPT",
+          "site_name": "Gourlay Point"
+        },
+        {
+          "latitude_epsg_4326": -60.642,
+          "longitude_epsg_4326": -45.924,
+          "penguin_count": 8523,
+          "season_starting": 1983,
+          "site_id": "GOSL",
+          "site_name": "Gosling Islands"
+        },
+        {
+          "latitude_epsg_4326": -77.71,
+          "longitude_epsg_4326": -47.656,
+          "penguin_count": 8242,
+          "season_starting": 2009,
+          "site_id": "GOUL",
+          "site_name": "Gould"
+        },
+        {
+          "latitude_epsg_4326": -63.197,
+          "longitude_epsg_4326": -57.307,
+          "penguin_count": 24239,
+          "season_starting": 2015,
+          "site_id": "GOUR",
+          "site_name": "Gourdin Island"
+        },
+        {
+          "latitude_epsg_4326": -60.64,
+          "longitude_epsg_4326": -45.908,
+          "penguin_count": 10000,
+          "season_starting": 2013,
+          "site_id": "GOWC",
+          "site_name": "Gosling Islands (west coast)"
+        },
+        {
+          "latitude_epsg_4326": -60.716,
+          "longitude_epsg_4326": -44.462,
+          "penguin_count": 16300,
+          "season_starting": 2004,
+          "site_id": "GRAP",
+          "site_name": "Graptolite Island"
+        },
+        {
+          "latitude_epsg_4326": -61.271,
+          "longitude_epsg_4326": -55.266,
+          "penguin_count": 3099,
+          "season_starting": 2019,
+          "site_id": "GREE",
+          "site_name": "The Green Glen"
+        },
+        {
+          "latitude_epsg_4326": -65.324,
+          "longitude_epsg_4326": -64.149,
+          "penguin_count": 82,
+          "season_starting": 2023,
+          "site_id": "GREI",
+          "site_name": "Green Island"
+        },
+        {
+          "latitude_epsg_4326": -60.749,
+          "longitude_epsg_4326": -45.015,
+          "penguin_count": 1000,
+          "season_starting": 2019,
+          "site_id": "GREY",
+          "site_name": "Grey Island"
+        },
+        {
+          "latitude_epsg_4326": -61.157,
+          "longitude_epsg_4326": -54.973,
+          "penguin_count": 500,
+          "season_starting": 1970,
+          "site_id": "GRIB",
+          "site_name": "Georges Rib"
+        },
+        {
+          "latitude_epsg_4326": -63.966,
+          "longitude_epsg_4326": -61.426,
+          "penguin_count": 120,
+          "season_starting": 1985,
+          "site_id": "GRIN",
+          "site_name": "Grinder Rock"
+        },
+        {
+          "latitude_epsg_4326": -64.275,
+          "longitude_epsg_4326": -61.982,
+          "penguin_count": 8,
+          "season_starting": 2024,
+          "site_id": "GUES",
+          "site_name": "Guesalaga Island"
+        },
+        {
+          "latitude_epsg_4326": -63.137,
+          "longitude_epsg_4326": -56.053,
+          "penguin_count": 34,
+          "season_starting": 2015,
+          "site_id": "GULL",
+          "site_name": "Gull Rock"
+        },
+        {
+          "latitude_epsg_4326": -68.763,
+          "longitude_epsg_4326": 34.382,
+          "penguin_count": 4652,
+          "season_starting": 2009,
+          "site_id": "GUNN",
+          "site_name": "Gunnerus"
+        },
+        {
+          "latitude_epsg_4326": -62.596,
+          "longitude_epsg_4326": -59.918,
+          "penguin_count": 1237,
+          "season_starting": 2024,
+          "site_id": "HALF",
+          "site_name": "Half Moon Island"
+        },
+        {
+          "latitude_epsg_4326": -75.54,
+          "longitude_epsg_4326": -27.43,
+          "penguin_count": 22510,
+          "season_starting": 2009,
+          "site_id": "HALY",
+          "site_name": "Halley"
+        },
+        {
+          "latitude_epsg_4326": -62.651,
+          "longitude_epsg_4326": -60.585,
+          "penguin_count": 3812,
+          "season_starting": 2019,
+          "site_id": "HANE",
+          "site_name": "Hannah Point East"
+        },
+        {
+          "latitude_epsg_4326": -62.654,
+          "longitude_epsg_4326": -60.613,
+          "penguin_count": 975,
+          "season_starting": 2019,
+          "site_id": "HANN",
+          "site_name": "Hannah Point"
+        },
+        {
+          "latitude_epsg_4326": -60.659,
+          "longitude_epsg_4326": -45.584,
+          "penguin_count": 5980,
+          "season_starting": 2011,
+          "site_id": "HANS",
+          "site_name": "Cape Hansen, Coronation Island"
+        },
+        {
+          "latitude_epsg_4326": -62.268,
+          "longitude_epsg_4326": -59.186,
+          "penguin_count": 989,
+          "season_starting": 2016,
+          "site_id": "HARE",
+          "site_name": "Harmony Point (east)"
+        },
+        {
+          "latitude_epsg_4326": -62.306,
+          "longitude_epsg_4326": -59.242,
+          "penguin_count": 38080,
+          "season_starting": 2024,
+          "site_id": "HARM",
+          "site_name": "Harmony Point"
+        },
+        {
+          "latitude_epsg_4326": -66.531,
+          "longitude_epsg_4326": 93.008,
+          "penguin_count": 4011,
+          "season_starting": 2011,
+          "site_id": "HASW",
+          "site_name": "Haswell Island"
+        },
+        {
+          "latitude_epsg_4326": -69.198,
+          "longitude_epsg_4326": 157.689,
+          "penguin_count": 21033,
+          "season_starting": 2011,
+          "site_id": "HBAY",
+          "site_name": "Harald Bay"
+        },
+        {
+          "latitude_epsg_4326": -62.124,
+          "longitude_epsg_4326": -58.396,
+          "penguin_count": null,
+          "season_starting": 1956,
+          "site_id": "HENN",
+          "site_name": "Hennequin Point"
+        },
+        {
+          "latitude_epsg_4326": -66.878,
+          "longitude_epsg_4326": 120.621,
+          "penguin_count": 58,
+          "season_starting": 2009,
+          "site_id": "HENR",
+          "site_name": "Henry Islands"
+        },
+        {
+          "latitude_epsg_4326": -63.394,
+          "longitude_epsg_4326": -54.608,
+          "penguin_count": 919,
+          "season_starting": 2023,
+          "site_id": "HERO",
+          "site_name": "Heroina Island"
+        },
+        {
+          "latitude_epsg_4326": -62.317,
+          "longitude_epsg_4326": -59.685,
+          "penguin_count": 23000,
+          "season_starting": 1965,
+          "site_id": "HEYW",
+          "site_name": "Heywood Island"
+        },
+        {
+          "latitude_epsg_4326": -68.145,
+          "longitude_epsg_4326": 42.661,
+          "penguin_count": 360,
+          "season_starting": 2008,
+          "site_id": "HINO",
+          "site_name": "Cape Hinode"
+        },
+        {
+          "latitude_epsg_4326": -66.792,
+          "longitude_epsg_4326": -66.587,
+          "penguin_count": 435,
+          "season_starting": 2012,
+          "site_id": "HOLD",
+          "site_name": "Holdfast Point (mainland and offshore rocks)"
+        },
+        {
+          "latitude_epsg_4326": -66.412,
+          "longitude_epsg_4326": 110.431,
+          "penguin_count": 30514,
+          "season_starting": 2010,
+          "site_id": "HOLL",
+          "site_name": "Holl/O'Connor"
+        },
+        {
+          "latitude_epsg_4326": -63.334,
+          "longitude_epsg_4326": -61.963,
+          "penguin_count": 10000,
+          "season_starting": 2019,
+          "site_id": "HOOK",
+          "site_name": "Cape Hooker"
+        },
+        {
+          "latitude_epsg_4326": -63.397,
+          "longitude_epsg_4326": -56.998,
+          "penguin_count": 467,
+          "season_starting": 2017,
+          "site_id": "HOPE",
+          "site_name": "Hope Bay"
+        },
+        {
+          "latitude_epsg_4326": -63.345,
+          "longitude_epsg_4326": -61.982,
+          "penguin_count": 200,
+          "season_starting": 2019,
+          "site_id": "HORS",
+          "site_name": "Cape Hooker Rock (south)"
+        },
+        {
+          "latitude_epsg_4326": -65.131,
+          "longitude_epsg_4326": -64.126,
+          "penguin_count": 2301,
+          "season_starting": 2017,
+          "site_id": "HOVG",
+          "site_name": "Hovgaard Island"
+        },
+        {
+          "latitude_epsg_4326": -62.769,
+          "longitude_epsg_4326": -61.241,
+          "penguin_count": 1052,
+          "season_starting": 2021,
+          "site_id": "HPNE",
+          "site_name": "Hall Peninsula (northeast)"
+        },
+        {
+          "latitude_epsg_4326": -62.775,
+          "longitude_epsg_4326": -61.244,
+          "penguin_count": 694,
+          "season_starting": 2021,
+          "site_id": "HPSW",
+          "site_name": "Hall Peninsula (southwest)"
+        },
+        {
+          "latitude_epsg_4326": -69.213,
+          "longitude_epsg_4326": 39.629,
+          "penguin_count": 143,
+          "season_starting": 2016,
+          "site_id": "HUKU",
+          "site_name": "Hukuro Cove"
+        },
+        {
+          "latitude_epsg_4326": -64.765,
+          "longitude_epsg_4326": -64.088,
+          "penguin_count": 587,
+          "season_starting": 2011,
+          "site_id": "HUMB",
+          "site_name": "Humble Island"
+        },
+        {
+          "latitude_epsg_4326": -65.043,
+          "longitude_epsg_4326": -63.862,
+          "penguin_count": 5,
+          "season_starting": 2019,
+          "site_id": "HUMN",
+          "site_name": "Humphries Heights North"
+        },
+        {
+          "latitude_epsg_4326": -65.056,
+          "longitude_epsg_4326": -63.864,
+          "penguin_count": 58,
+          "season_starting": 2014,
+          "site_id": "HUMP",
+          "site_name": "Humphries Heights"
+        },
+        {
+          "latitude_epsg_4326": -64.34,
+          "longitude_epsg_4326": -62.141,
+          "penguin_count": 500,
+          "season_starting": 2019,
+          "site_id": "HUNT",
+          "site_name": "Hunt Island"
+        },
+        {
+          "latitude_epsg_4326": -62.695,
+          "longitude_epsg_4326": -60.379,
+          "penguin_count": 100,
+          "season_starting": 1987,
+          "site_id": "HURE",
+          "site_name": "Hurd Peninsula (east)"
+        },
+        {
+          "latitude_epsg_4326": -62.674,
+          "longitude_epsg_4326": -60.406,
+          "penguin_count": 0,
+          "season_starting": 2010,
+          "site_id": "HURW",
+          "site_name": "Hurd Peninsula (west)"
+        },
+        {
+          "latitude_epsg_4326": -61.219,
+          "longitude_epsg_4326": -55.14,
+          "penguin_count": 1785,
+          "season_starting": 2019,
+          "site_id": "HUTB",
+          "site_name": "Hut Bluff"
+        },
+        {
+          "latitude_epsg_4326": -64.145,
+          "longitude_epsg_4326": -61.626,
+          "penguin_count": 945,
+          "season_starting": 2024,
+          "site_id": "HYDR",
+          "site_name": "Hydrurga Rocks"
+        },
+        {
+          "latitude_epsg_4326": -64.15,
+          "longitude_epsg_4326": -61.626,
+          "penguin_count": 557,
+          "season_starting": 2023,
+          "site_id": "HYDS",
+          "site_name": "Hydrurga Rocks South"
+        },
+        {
+          "latitude_epsg_4326": -66.627,
+          "longitude_epsg_4326": 139.728,
+          "penguin_count": 834,
+          "season_starting": 1998,
+          "site_id": "IFOI",
+          "site_name": "Ifo Island Area"
+        },
+        {
+          "latitude_epsg_4326": -60.567,
+          "longitude_epsg_4326": -46.733,
+          "penguin_count": 2000,
+          "season_starting": 2019,
+          "site_id": "INAC",
+          "site_name": "Inaccessible Island"
+        },
+        {
+          "latitude_epsg_4326": -74.901,
+          "longitude_epsg_4326": 163.729,
+          "penguin_count": 29899,
+          "season_starting": 2019,
+          "site_id": "INEX",
+          "site_name": "Inexpressible Island"
+        },
+        {
+          "latitude_epsg_4326": -63.933,
+          "longitude_epsg_4326": -61.416,
+          "penguin_count": 500,
+          "season_starting": 1985,
+          "site_id": "INTE",
+          "site_name": "Intercurrence Island"
+        },
+        {
+          "latitude_epsg_4326": -61.987,
+          "longitude_epsg_4326": -58.565,
+          "penguin_count": 1300,
+          "season_starting": 2005,
+          "site_id": "IOLB",
+          "site_name": "Isles of Litwin Bay"
+        },
+        {
+          "latitude_epsg_4326": -66.88,
+          "longitude_epsg_4326": 109.128,
+          "penguin_count": 6130,
+          "season_starting": 2009,
+          "site_id": "IVAN",
+          "site_name": "Ivanhoff Head"
+        },
+        {
+          "latitude_epsg_4326": -61.152,
+          "longitude_epsg_4326": -54.737,
+          "penguin_count": 1064,
+          "season_starting": 2019,
+          "site_id": "JACO",
+          "site_name": "Jacobs Ladder"
+        },
+        {
+          "latitude_epsg_4326": -64.509,
+          "longitude_epsg_4326": -61.849,
+          "penguin_count": 59,
+          "season_starting": 2018,
+          "site_id": "JACP",
+          "site_name": "Jacques Peak"
+        },
+        {
+          "latitude_epsg_4326": -63.603,
+          "longitude_epsg_4326": -57.593,
+          "penguin_count": 1,
+          "season_starting": 2001,
+          "site_id": "JADE",
+          "site_name": "Jade Point"
+        },
+        {
+          "latitude_epsg_4326": -63.09,
+          "longitude_epsg_4326": -62.698,
+          "penguin_count": 10000,
+          "season_starting": 1986,
+          "site_id": "JAME",
+          "site_name": "Cape James"
+        },
+        {
+          "latitude_epsg_4326": -66.57,
+          "longitude_epsg_4326": 139.165,
+          "penguin_count": 1899,
+          "season_starting": 2010,
+          "site_id": "JANE",
+          "site_name": "Janet Rock"
+        },
+        {
+          "latitude_epsg_4326": -63.441,
+          "longitude_epsg_4326": -58.421,
+          "penguin_count": 35,
+          "season_starting": 1990,
+          "site_id": "JAQU",
+          "site_name": "Jacquinot Rocks"
+        },
+        {
+          "latitude_epsg_4326": -66.1,
+          "longitude_epsg_4326": -60.674,
+          "penguin_count": 1500,
+          "season_starting": 2012,
+          "site_id": "JASN",
+          "site_name": "Jason Peninsula"
+        },
+        {
+          "latitude_epsg_4326": -60.719,
+          "longitude_epsg_4326": -44.694,
+          "penguin_count": 2000,
+          "season_starting": 2018,
+          "site_id": "JESS",
+          "site_name": "Jessie Bay"
+        },
+        {
+          "latitude_epsg_4326": -65.429,
+          "longitude_epsg_4326": -65.321,
+          "penguin_count": 592,
+          "season_starting": 2012,
+          "site_id": "JING",
+          "site_name": "Jingle Island"
+        },
+        {
+          "latitude_epsg_4326": -62.66,
+          "longitude_epsg_4326": -60.367,
+          "penguin_count": 66,
+          "season_starting": 1987,
+          "site_id": "JOHN",
+          "site_name": "Johnson's Dock"
+        },
+        {
+          "latitude_epsg_4326": -63.542,
+          "longitude_epsg_4326": -56.683,
+          "penguin_count": 45,
+          "season_starting": 2016,
+          "site_id": "JONA",
+          "site_name": "Jonassen Island"
+        },
+        {
+          "latitude_epsg_4326": -73.276,
+          "longitude_epsg_4326": 169.227,
+          "penguin_count": 40,
+          "season_starting": 2018,
+          "site_id": "JONE",
+          "site_name": "Cape Jones"
+        },
+        {
+          "latitude_epsg_4326": -62.38,
+          "longitude_epsg_4326": -59.761,
+          "penguin_count": 3733,
+          "season_starting": 1999,
+          "site_id": "JORG",
+          "site_name": "Jorge Island"
+        },
+        {
+          "latitude_epsg_4326": -64.774,
+          "longitude_epsg_4326": -64.399,
+          "penguin_count": 289,
+          "season_starting": 2021,
+          "site_id": "JOUB",
+          "site_name": "Joubin Islands"
+        },
+        {
+          "latitude_epsg_4326": -64.827,
+          "longitude_epsg_4326": -63.493,
+          "penguin_count": 1309,
+          "season_starting": 2024,
+          "site_id": "JOUG",
+          "site_name": "Jougla Point"
+        },
+        {
+          "latitude_epsg_4326": -63.331,
+          "longitude_epsg_4326": -62.248,
+          "penguin_count": 2750,
+          "season_starting": 1986,
+          "site_id": "JPTI",
+          "site_name": "Jameson Point Islands"
+        },
+        {
+          "latitude_epsg_4326": -63.308,
+          "longitude_epsg_4326": -62.252,
+          "penguin_count": 1500,
+          "season_starting": 1986,
+          "site_id": "JPTS",
+          "site_name": "Jameson Point (south)"
+        },
+        {
+          "latitude_epsg_4326": -63.296,
+          "longitude_epsg_4326": -62.258,
+          "penguin_count": 10000,
+          "season_starting": 2012,
+          "site_id": "JPTV",
+          "site_name": "Jameson Point (vicinity)"
+        },
+        {
+          "latitude_epsg_4326": -66.744,
+          "longitude_epsg_4326": 140.919,
+          "penguin_count": 56399,
+          "season_starting": 2010,
+          "site_id": "JULE",
+          "site_name": "Cape Jules"
+        },
+        {
+          "latitude_epsg_4326": -66.412,
+          "longitude_epsg_4326": 85.384,
+          "penguin_count": 1000,
+          "season_starting": 2019,
+          "site_id": "KARE",
+          "site_name": "Karelin Bay"
+        },
+        {
+          "latitude_epsg_4326": -63.774,
+          "longitude_epsg_4326": -59.847,
+          "penguin_count": 0,
+          "season_starting": 2017,
+          "site_id": "KATE",
+          "site_name": "Cape Kater"
+        },
+        {
+          "latitude_epsg_4326": -64.126,
+          "longitude_epsg_4326": -60.935,
+          "penguin_count": 0,
+          "season_starting": 2023,
+          "site_id": "KAYR",
+          "site_name": "Kay Rock"
+        },
+        {
+          "latitude_epsg_4326": -61.919,
+          "longitude_epsg_4326": -58.393,
+          "penguin_count": 4000,
+          "season_starting": 2005,
+          "site_id": "KELL",
+          "site_name": "Kellick Island"
+        },
+        {
+          "latitude_epsg_4326": -64.707,
+          "longitude_epsg_4326": -62.763,
+          "penguin_count": 571,
+          "season_starting": 2023,
+          "site_id": "KETL",
+          "site_name": "Ketley Point"
+        },
+        {
+          "latitude_epsg_4326": -67.214,
+          "longitude_epsg_4326": 61.187,
+          "penguin_count": 1334,
+          "season_starting": 2010,
+          "site_id": "KIDS",
+          "site_name": "Kidson Island"
+        },
+        {
+          "latitude_epsg_4326": -62.374,
+          "longitude_epsg_4326": -59.787,
+          "penguin_count": null,
+          "season_starting": 2018,
+          "site_id": "KILI",
+          "site_name": "Kilifarevo Island"
+        },
+        {
+          "latitude_epsg_4326": -63.16,
+          "longitude_epsg_4326": -55.481,
+          "penguin_count": 59,
+          "season_starting": 2015,
+          "site_id": "KING",
+          "site_name": "King Point"
+        },
+        {
+          "latitude_epsg_4326": -67.273,
+          "longitude_epsg_4326": 46.537,
+          "penguin_count": 4325,
+          "season_starting": 2011,
+          "site_id": "KIRB",
+          "site_name": "Kirby Head"
+        },
+        {
+          "latitude_epsg_4326": -67.491,
+          "longitude_epsg_4326": 63.638,
+          "penguin_count": 12955,
+          "season_starting": 2006,
+          "site_id": "KIRT",
+          "site_name": "Kirton/Macklin"
+        },
+        {
+          "latitude_epsg_4326": -62.387,
+          "longitude_epsg_4326": -59.347,
+          "penguin_count": 700,
+          "season_starting": 2015,
+          "site_id": "KITC",
+          "site_name": "Kitchen Point"
+        },
+        {
+          "latitude_epsg_4326": -63.725,
+          "longitude_epsg_4326": -59.414,
+          "penguin_count": null,
+          "season_starting": 1986,
+          "site_id": "KJEL",
+          "site_name": "Cape Kjellman"
+        },
+        {
+          "latitude_epsg_4326": -66.641,
+          "longitude_epsg_4326": 57.278,
+          "penguin_count": 3470,
+          "season_starting": 2022,
+          "site_id": "KLOA",
+          "site_name": "Kloa Point"
+        },
+        {
+          "latitude_epsg_4326": -63.162,
+          "longitude_epsg_4326": -56.569,
+          "penguin_count": 320,
+          "season_starting": 2015,
+          "site_id": "KNOB",
+          "site_name": "Knobble Head, Bransfield Island"
+        },
+        {
+          "latitude_epsg_4326": -66.398,
+          "longitude_epsg_4326": -67.16,
+          "penguin_count": 235,
+          "season_starting": 2012,
+          "site_id": "KUNO",
+          "site_name": "Kuno Point"
+        },
+        {
+          "latitude_epsg_4326": -69.6,
+          "longitude_epsg_4326": 38.267,
+          "penguin_count": 0,
+          "season_starting": 2009,
+          "site_id": "KUZI",
+          "site_name": "Kuzira Point"
+        },
+        {
+          "latitude_epsg_4326": -63.209,
+          "longitude_epsg_4326": -57.549,
+          "penguin_count": 4000,
+          "season_starting": 2012,
+          "site_id": "LAFA",
+          "site_name": "Lafarge Rocks"
+        },
+        {
+          "latitude_epsg_4326": -67.887,
+          "longitude_epsg_4326": -67.402,
+          "penguin_count": 7483,
+          "season_starting": 2012,
+          "site_id": "LAGO",
+          "site_name": "Lagotellerie Island"
+        },
+        {
+          "latitude_epsg_4326": -62.615,
+          "longitude_epsg_4326": -61.035,
+          "penguin_count": 50,
+          "season_starting": 1986,
+          "site_id": "LAIR",
+          "site_name": "Lair Point"
+        },
+        {
+          "latitude_epsg_4326": -64.236,
+          "longitude_epsg_4326": -63.475,
+          "penguin_count": 800,
+          "season_starting": 1990,
+          "site_id": "LAJA",
+          "site_name": "Lajarte Island"
+        },
+        {
+          "latitude_epsg_4326": -65.759,
+          "longitude_epsg_4326": -65.79,
+          "penguin_count": 38,
+          "season_starting": 2012,
+          "site_id": "LAKT",
+          "site_name": "Islet next to Laktionov Island"
+        },
+        {
+          "latitude_epsg_4326": -60.596,
+          "longitude_epsg_4326": -46.078,
+          "penguin_count": 10000,
+          "season_starting": 1983,
+          "site_id": "LARS",
+          "site_name": "Larsen Island"
+        },
+        {
+          "latitude_epsg_4326": -73.233,
+          "longitude_epsg_4326": -126.775,
+          "penguin_count": 0,
+          "season_starting": 2009,
+          "site_id": "LAUF",
+          "site_name": "Lauff Island"
+        },
+        {
+          "latitude_epsg_4326": -64.829,
+          "longitude_epsg_4326": -63.103,
+          "penguin_count": 206,
+          "season_starting": 2010,
+          "site_id": "LAUT",
+          "site_name": "Lautaro Neck"
+        },
+        {
+          "latitude_epsg_4326": -66.122,
+          "longitude_epsg_4326": -66.829,
+          "penguin_count": 17,
+          "season_starting": 2012,
+          "site_id": "LAVO",
+          "site_name": "Islet 1 km west of Lavosier Island"
+        },
+        {
+          "latitude_epsg_4326": -69.75,
+          "longitude_epsg_4326": 15.549,
+          "penguin_count": 821,
+          "season_starting": 2009,
+          "site_id": "LAZA",
+          "site_name": "Lazarev"
+        },
+        {
+          "latitude_epsg_4326": -74.42,
+          "longitude_epsg_4326": -130.96,
+          "penguin_count": 0,
+          "season_starting": 2009,
+          "site_id": "LEDD",
+          "site_name": "Ledda Bay"
+        },
+        {
+          "latitude_epsg_4326": -63.543,
+          "longitude_epsg_4326": -59.843,
+          "penguin_count": 6,
+          "season_starting": 1990,
+          "site_id": "LEGU",
+          "site_name": "Cape Leguillou"
+        },
+        {
+          "latitude_epsg_4326": -61.902,
+          "longitude_epsg_4326": -58.028,
+          "penguin_count": 230,
+          "season_starting": 1980,
+          "site_id": "LEPP",
+          "site_name": "Islet south of Le Petit Prince"
+        },
+        {
+          "latitude_epsg_4326": -66.105,
+          "longitude_epsg_4326": 134.385,
+          "penguin_count": 1719,
+          "season_starting": 2009,
+          "site_id": "LEWI",
+          "site_name": "Lewis Island"
+        },
+        {
+          "latitude_epsg_4326": -62.133,
+          "longitude_epsg_4326": -58.123,
+          "penguin_count": 2716,
+          "season_starting": 2023,
+          "site_id": "LION",
+          "site_name": "Lions Rump"
+        },
+        {
+          "latitude_epsg_4326": -64.771,
+          "longitude_epsg_4326": -64.092,
+          "penguin_count": 0,
+          "season_starting": 2008,
+          "site_id": "LITC",
+          "site_name": "Litchfield Island"
+        },
+        {
+          "latitude_epsg_4326": -61.984,
+          "longitude_epsg_4326": -58.541,
+          "penguin_count": 464,
+          "season_starting": 2001,
+          "site_id": "LITW",
+          "site_name": "Litwin Bay (southwest of Davey Point)"
+        },
+        {
+          "latitude_epsg_4326": -62.176,
+          "longitude_epsg_4326": -58.446,
+          "penguin_count": 10,
+          "season_starting": 2015,
+          "site_id": "LLAN",
+          "site_name": "Llano Point"
+        },
+        {
+          "latitude_epsg_4326": -61.13,
+          "longitude_epsg_4326": -54.01,
+          "penguin_count": 400,
+          "season_starting": 2010,
+          "site_id": "LLOY",
+          "site_name": "Cape Lloyd"
+        },
+        {
+          "latitude_epsg_4326": -64.086,
+          "longitude_epsg_4326": -61.601,
+          "penguin_count": 10,
+          "season_starting": 1985,
+          "site_id": "LOBO",
+          "site_name": "Lobodon Island"
+        },
+        {
+          "latitude_epsg_4326": -64.825,
+          "longitude_epsg_4326": -63.494,
+          "penguin_count": 978,
+          "season_starting": 2021,
+          "site_id": "LOCK",
+          "site_name": "Port Lockroy"
+        },
+        {
+          "latitude_epsg_4326": -60.724,
+          "longitude_epsg_4326": -44.742,
+          "penguin_count": 855,
+          "season_starting": 2004,
+          "site_id": "LOLA",
+          "site_name": "Lola Point"
+        },
+        {
+          "latitude_epsg_4326": -68.416,
+          "longitude_epsg_4326": 78.324,
+          "penguin_count": 3252,
+          "season_starting": 2011,
+          "site_id": "LONG",
+          "site_name": "Long Peninsula Island"
+        },
+        {
+          "latitude_epsg_4326": -61.278,
+          "longitude_epsg_4326": -55.205,
+          "penguin_count": 1914,
+          "season_starting": 2019,
+          "site_id": "LOOK",
+          "site_name": "Cape Lookout"
+        },
+        {
+          "latitude_epsg_4326": -65.078,
+          "longitude_epsg_4326": -63.926,
+          "penguin_count": 235,
+          "season_starting": 2023,
+          "site_id": "LOUB",
+          "site_name": "Loubat Point"
+        },
+        {
+          "latitude_epsg_4326": -73.538,
+          "longitude_epsg_4326": -127.436,
+          "penguin_count": 1540,
+          "season_starting": 2009,
+          "site_id": "LOVI",
+          "site_name": "Lovill Bluff"
+        },
+        {
+          "latitude_epsg_4326": -67.546,
+          "longitude_epsg_4326": 61.991,
+          "penguin_count": 4455,
+          "season_starting": 2008,
+          "site_id": "LOWT",
+          "site_name": "Low Tongue"
+        },
+        {
+          "latitude_epsg_4326": -73.609,
+          "longitude_epsg_4326": -103.183,
+          "penguin_count": 80704,
+          "season_starting": 2010,
+          "site_id": "LSAY",
+          "site_name": "Lindsay Islands"
+        },
+        {
+          "latitude_epsg_4326": -77.271,
+          "longitude_epsg_4326": -33.552,
+          "penguin_count": 6498,
+          "season_starting": 2009,
+          "site_id": "LUIT",
+          "site_name": "Luitpold"
+        },
+        {
+          "latitude_epsg_4326": -60.675,
+          "longitude_epsg_4326": -44.701,
+          "penguin_count": 1000,
+          "season_starting": 2019,
+          "site_id": "MABE",
+          "site_name": "Mabel Island"
+        },
+        {
+          "latitude_epsg_4326": -66.967,
+          "longitude_epsg_4326": 142.65,
+          "penguin_count": 80360,
+          "season_starting": 2010,
+          "site_id": "MACK",
+          "site_name": "MacKellar Islands"
+        },
+        {
+          "latitude_epsg_4326": -60.686,
+          "longitude_epsg_4326": -44.487,
+          "penguin_count": 3800,
+          "season_starting": 1983,
+          "site_id": "MACO",
+          "site_name": "Mackintosh Cove (east coast)"
+        },
+        {
+          "latitude_epsg_4326": -63.299,
+          "longitude_epsg_4326": -56.483,
+          "penguin_count": 36616,
+          "season_starting": 2024,
+          "site_id": "MADD",
+          "site_name": "Madder Cliff (Joinville Island)"
+        },
+        {
+          "latitude_epsg_4326": -63.306,
+          "longitude_epsg_4326": -56.499,
+          "penguin_count": 488,
+          "season_starting": 2019,
+          "site_id": "MADI",
+          "site_name": "Madder Cliff Island"
+        },
+        {
+          "latitude_epsg_4326": -73.198,
+          "longitude_epsg_4326": -127.05,
+          "penguin_count": 10111,
+          "season_starting": 2010,
+          "site_id": "MAHE",
+          "site_name": "Maher Island"
+        },
+        {
+          "latitude_epsg_4326": -66.83,
+          "longitude_epsg_4326": 108.643,
+          "penguin_count": 4621,
+          "season_starting": 2010,
+          "site_id": "MALL",
+          "site_name": "Mallory Point"
+        },
+        {
+          "latitude_epsg_4326": -69.025,
+          "longitude_epsg_4326": 39.479,
+          "penguin_count": 621,
+          "season_starting": 2004,
+          "site_id": "MAME",
+          "site_name": "Mame-zima"
+        },
+        {
+          "latitude_epsg_4326": -73.1,
+          "longitude_epsg_4326": 169.458,
+          "penguin_count": 24721,
+          "season_starting": 2018,
+          "site_id": "MAND",
+          "site_name": "Mandible Cirque"
+        },
+        {
+          "latitude_epsg_4326": -60.642,
+          "longitude_epsg_4326": -45.74,
+          "penguin_count": 50,
+          "season_starting": 2012,
+          "site_id": "MANS",
+          "site_name": "Mansfield Point"
+        },
+        {
+          "latitude_epsg_4326": -60.746,
+          "longitude_epsg_4326": -45.693,
+          "penguin_count": 4149,
+          "season_starting": 1978,
+          "site_id": "MARI",
+          "site_name": "Mariholm"
+        },
+        {
+          "latitude_epsg_4326": -60.678,
+          "longitude_epsg_4326": -44.527,
+          "penguin_count": 11200,
+          "season_starting": 1983,
+          "site_id": "MARR",
+          "site_name": "Marr Bay (east coast)"
+        },
+        {
+          "latitude_epsg_4326": -60.768,
+          "longitude_epsg_4326": -44.719,
+          "penguin_count": 26450,
+          "season_starting": 2004,
+          "site_id": "MART",
+          "site_name": "Point Martin"
+        },
+        {
+          "latitude_epsg_4326": -60.745,
+          "longitude_epsg_4326": -45.155,
+          "penguin_count": 20000,
+          "season_starting": 2019,
+          "site_id": "MATH",
+          "site_name": "Matthews Island"
+        },
+        {
+          "latitude_epsg_4326": -67.556,
+          "longitude_epsg_4326": 62.941,
+          "penguin_count": 39691,
+          "season_starting": 2010,
+          "site_id": "MAWS",
+          "site_name": "Mawson Coast (excl. Bechervaise Island)"
+        },
+        {
+          "latitude_epsg_4326": -66.221,
+          "longitude_epsg_4326": 51.328,
+          "penguin_count": 28536,
+          "season_starting": 2010,
+          "site_id": "MBIS",
+          "site_name": "Mount Biscoe"
+        },
+        {
+          "latitude_epsg_4326": -62.701,
+          "longitude_epsg_4326": -60.381,
+          "penguin_count": 200,
+          "season_starting": 1986,
+          "site_id": "MBNE",
+          "site_name": "Miers Bluff Cove (northeast)"
+        },
+        {
+          "latitude_epsg_4326": -62.716,
+          "longitude_epsg_4326": -60.431,
+          "penguin_count": 80,
+          "season_starting": 1986,
+          "site_id": "MBNW",
+          "site_name": "Miers Bluff (northwest)"
+        },
+        {
+          "latitude_epsg_4326": -67.343,
+          "longitude_epsg_4326": 59.665,
+          "penguin_count": 20,
+          "season_starting": 2009,
+          "site_id": "MCDO",
+          "site_name": "McDonald Point"
+        },
+        {
+          "latitude_epsg_4326": -62.997,
+          "longitude_epsg_4326": -56.023,
+          "penguin_count": 4563,
+          "season_starting": 2021,
+          "site_id": "MEDL",
+          "site_name": "Medley Rocks"
+        },
+        {
+          "latitude_epsg_4326": -63.676,
+          "longitude_epsg_4326": -60.828,
+          "penguin_count": 900,
+          "season_starting": 1986,
+          "site_id": "MEGA",
+          "site_name": "Megaptera Island"
+        },
+        {
+          "latitude_epsg_4326": -68.97,
+          "longitude_epsg_4326": 39.504,
+          "penguin_count": 0,
+          "season_starting": 1984,
+          "site_id": "MEHO",
+          "site_name": "Meholmen Island"
+        },
+        {
+          "latitude_epsg_4326": -60.636,
+          "longitude_epsg_4326": -45.896,
+          "penguin_count": 400,
+          "season_starting": 2012,
+          "site_id": "MEIE",
+          "site_name": "Meier Point"
+        },
+        {
+          "latitude_epsg_4326": -66.459,
+          "longitude_epsg_4326": 107.156,
+          "penguin_count": 532,
+          "season_starting": 2009,
+          "site_id": "MERR",
+          "site_name": "Merritt Island"
+        },
+        {
+          "latitude_epsg_4326": -66.892,
+          "longitude_epsg_4326": 146.62,
+          "penguin_count": 4781,
+          "season_starting": 2009,
+          "site_id": "MERT",
+          "site_name": "Mertz Glacier"
+        },
+        {
+          "latitude_epsg_4326": -64.041,
+          "longitude_epsg_4326": -62.575,
+          "penguin_count": 3750,
+          "season_starting": 2023,
+          "site_id": "METC",
+          "site_name": "Metchnikoff Point"
+        },
+        {
+          "latitude_epsg_4326": -60.751,
+          "longitude_epsg_4326": -44.576,
+          "penguin_count": 3000,
+          "season_starting": 2018,
+          "site_id": "METH",
+          "site_name": "Methuen Cove"
+        },
+        {
+          "latitude_epsg_4326": -66.941,
+          "longitude_epsg_4326": 50.44,
+          "penguin_count": 1576,
+          "season_starting": 2009,
+          "site_id": "MGLE",
+          "site_name": "Mount Gleadell"
+        },
+        {
+          "latitude_epsg_4326": -60.732,
+          "longitude_epsg_4326": -45.023,
+          "penguin_count": 3861,
+          "season_starting": 1983,
+          "site_id": "MICH",
+          "site_name": "Michelsen Island"
+        },
+        {
+          "latitude_epsg_4326": -64.168,
+          "longitude_epsg_4326": -61.101,
+          "penguin_count": 180,
+          "season_starting": 2015,
+          "site_id": "MIDA",
+          "site_name": "Midas Island"
+        },
+        {
+          "latitude_epsg_4326": -61.967,
+          "longitude_epsg_4326": -57.633,
+          "penguin_count": 627,
+          "season_starting": 2022,
+          "site_id": "MIDD",
+          "site_name": "Middle Island"
+        },
+        {
+          "latitude_epsg_4326": -66.326,
+          "longitude_epsg_4326": 110.404,
+          "penguin_count": 6311,
+          "season_starting": 2010,
+          "site_id": "MIDG",
+          "site_name": "Hollin/Midgley"
+        },
+        {
+          "latitude_epsg_4326": -62.721,
+          "longitude_epsg_4326": -60.428,
+          "penguin_count": 2307,
+          "season_starting": 2010,
+          "site_id": "MIER",
+          "site_name": "Miers Bluff"
+        },
+        {
+          "latitude_epsg_4326": -63.902,
+          "longitude_epsg_4326": -60.791,
+          "penguin_count": 1381,
+          "season_starting": 2024,
+          "site_id": "MIKK",
+          "site_name": "Mikkelsen Harbor (Trinity Island)"
+        },
+        {
+          "latitude_epsg_4326": -60.753,
+          "longitude_epsg_4326": -44.614,
+          "penguin_count": 886,
+          "season_starting": 2004,
+          "site_id": "MILL",
+          "site_name": "Mill Cove"
+        },
+        {
+          "latitude_epsg_4326": -69.197,
+          "longitude_epsg_4326": 39.614,
+          "penguin_count": 1144,
+          "season_starting": 2004,
+          "site_id": "MIZU",
+          "site_name": "Mizukuguri Cove"
+        },
+        {
+          "latitude_epsg_4326": -60.727,
+          "longitude_epsg_4326": -45.608,
+          "penguin_count": 585,
+          "season_starting": 1978,
+          "site_id": "MLGE",
+          "site_name": "McLeod Glacier (east)"
+        },
+        {
+          "latitude_epsg_4326": -60.731,
+          "longitude_epsg_4326": -45.62,
+          "penguin_count": 1651,
+          "season_starting": 1978,
+          "site_id": "MLGW",
+          "site_name": "McLeod Glacier (west)"
+        },
+        {
+          "latitude_epsg_4326": -60.734,
+          "longitude_epsg_4326": -45.691,
+          "penguin_count": 11622,
+          "season_starting": 1978,
+          "site_id": "MOEI",
+          "site_name": "Moe Island"
+        },
+        {
+          "latitude_epsg_4326": -64.717,
+          "longitude_epsg_4326": -64.278,
+          "penguin_count": 950,
+          "season_starting": 1978,
+          "site_id": "MONA",
+          "site_name": "Cape Monaco"
+        },
+        {
+          "latitude_epsg_4326": -60.6,
+          "longitude_epsg_4326": -46.057,
+          "penguin_count": null,
+          "season_starting": 1983,
+          "site_id": "MONR",
+          "site_name": "Monroe Island"
+        },
+        {
+          "latitude_epsg_4326": -64.017,
+          "longitude_epsg_4326": -60.943,
+          "penguin_count": 180,
+          "season_starting": 2019,
+          "site_id": "MONU",
+          "site_name": "Monument Rocks"
+        },
+        {
+          "latitude_epsg_4326": -65.206,
+          "longitude_epsg_4326": -64.078,
+          "penguin_count": 743,
+          "season_starting": 2022,
+          "site_id": "MOOT",
+          "site_name": "Moot Point"
+        },
+        {
+          "latitude_epsg_4326": -62.811,
+          "longitude_epsg_4326": -61.516,
+          "penguin_count": 7000,
+          "season_starting": 2012,
+          "site_id": "MOPT",
+          "site_name": "Monroe Point"
+        },
+        {
+          "latitude_epsg_4326": -60.612,
+          "longitude_epsg_4326": -46.031,
+          "penguin_count": 23000,
+          "season_starting": 1983,
+          "site_id": "MORE",
+          "site_name": "Moreton Point"
+        },
+        {
+          "latitude_epsg_4326": -62.369,
+          "longitude_epsg_4326": -59.797,
+          "penguin_count": 5093,
+          "season_starting": 1988,
+          "site_id": "MORR",
+          "site_name": "Morris Rocks"
+        },
+        {
+          "latitude_epsg_4326": -60.772,
+          "longitude_epsg_4326": -44.753,
+          "penguin_count": 2000,
+          "season_starting": 2018,
+          "site_id": "MOSS",
+          "site_name": "West coast of Mossman Peninsula"
+        },
+        {
+          "latitude_epsg_4326": -60.732,
+          "longitude_epsg_4326": -45.66,
+          "penguin_count": 4241,
+          "season_starting": 1978,
+          "site_id": "MOYE",
+          "site_name": "Moyes"
+        },
+        {
+          "latitude_epsg_4326": -60.577,
+          "longitude_epsg_4326": -46.0,
+          "penguin_count": 1200,
+          "season_starting": 1983,
+          "site_id": "MPNC",
+          "site_name": "Moreton Point North Coast"
+        },
+        {
+          "latitude_epsg_4326": -62.899,
+          "longitude_epsg_4326": -60.543,
+          "penguin_count": 0,
+          "season_starting": 2011,
+          "site_id": "MPTE",
+          "site_name": "Macaroni Point (east)"
+        },
+        {
+          "latitude_epsg_4326": -62.899,
+          "longitude_epsg_4326": -60.583,
+          "penguin_count": 2448,
+          "season_starting": 2011,
+          "site_id": "MPTW",
+          "site_name": "Macaroni Point (west)"
+        },
+        {
+          "latitude_epsg_4326": -66.791,
+          "longitude_epsg_4326": 50.551,
+          "penguin_count": 1562,
+          "season_starting": 2009,
+          "site_id": "MRII",
+          "site_name": "Mount Riiser-Larsen"
+        },
+        {
+          "latitude_epsg_4326": -61.157,
+          "longitude_epsg_4326": -54.86,
+          "penguin_count": 2114,
+          "season_starting": 2019,
+          "site_id": "MUCK",
+          "site_name": "Muckle Bluff"
+        },
+        {
+          "latitude_epsg_4326": -60.773,
+          "longitude_epsg_4326": -44.524,
+          "penguin_count": 4000,
+          "season_starting": 2018,
+          "site_id": "MURR",
+          "site_name": "Murray Islands"
+        },
+        {
+          "latitude_epsg_4326": -67.672,
+          "longitude_epsg_4326": 45.736,
+          "penguin_count": 686,
+          "season_starting": 2010,
+          "site_id": "MYAL",
+          "site_name": "Myall/McMahon"
+        },
+        {
+          "latitude_epsg_4326": -62.23,
+          "longitude_epsg_4326": -59.099,
+          "penguin_count": 9464,
+          "season_starting": 2016,
+          "site_id": "NANC",
+          "site_name": "Nancy Rock"
+        },
+        {
+          "latitude_epsg_4326": -62.974,
+          "longitude_epsg_4326": -56.489,
+          "penguin_count": 75,
+          "season_starting": 1960,
+          "site_id": "NCAP",
+          "site_name": "North Cape (d'Urville Island)"
+        },
+        {
+          "latitude_epsg_4326": -62.332,
+          "longitude_epsg_4326": -59.702,
+          "penguin_count": 3000,
+          "season_starting": 1987,
+          "site_id": "NCOI",
+          "site_name": "North of Cornwall Island"
+        },
+        {
+          "latitude_epsg_4326": -62.286,
+          "longitude_epsg_4326": -58.846,
+          "penguin_count": 900,
+          "season_starting": 1986,
+          "site_id": "NDUT",
+          "site_name": "North of Duthoit Point"
+        },
+        {
+          "latitude_epsg_4326": -62.183,
+          "longitude_epsg_4326": -58.867,
+          "penguin_count": 2500,
+          "season_starting": 1986,
+          "site_id": "NEBL",
+          "site_name": "Nebles Point"
+        },
+        {
+          "latitude_epsg_4326": -62.993,
+          "longitude_epsg_4326": -56.172,
+          "penguin_count": 1253,
+          "season_starting": 2021,
+          "site_id": "NEDU",
+          "site_name": "Northeast D'Urville Island"
+        },
+        {
+          "latitude_epsg_4326": -66.229,
+          "longitude_epsg_4326": 110.178,
+          "penguin_count": 1316,
+          "season_starting": 2010,
+          "site_id": "NEIS",
+          "site_name": "Nelly Island"
+        },
+        {
+          "latitude_epsg_4326": -64.838,
+          "longitude_epsg_4326": -62.533,
+          "penguin_count": 1353,
+          "season_starting": 2024,
+          "site_id": "NEKO",
+          "site_name": "Neko Harbor (Andvord Bay)"
+        },
+        {
+          "latitude_epsg_4326": -70.614,
+          "longitude_epsg_4326": 166.087,
+          "penguin_count": 477,
+          "season_starting": 2010,
+          "site_id": "NELL",
+          "site_name": "Nella/Thalla Islands"
+        },
+        {
+          "latitude_epsg_4326": -61.157,
+          "longitude_epsg_4326": -54.775,
+          "penguin_count": 70,
+          "season_starting": 2015,
+          "site_id": "NEPT",
+          "site_name": "Nelly Point"
+        },
+        {
+          "latitude_epsg_4326": -65.452,
+          "longitude_epsg_4326": -65.346,
+          "penguin_count": 11,
+          "season_starting": 2012,
+          "site_id": "NESM",
+          "site_name": "Northeast of Smiggers Island"
+        },
+        {
+          "latitude_epsg_4326": -62.337,
+          "longitude_epsg_4326": -59.52,
+          "penguin_count": 17500,
+          "season_starting": 1986,
+          "site_id": "NEWE",
+          "site_name": "Newell Point"
+        },
+        {
+          "latitude_epsg_4326": -61.271,
+          "longitude_epsg_4326": -54.042,
+          "penguin_count": 300,
+          "season_starting": 2010,
+          "site_id": "NFAL",
+          "site_name": "North of False Ridge"
+        },
+        {
+          "latitude_epsg_4326": -61.893,
+          "longitude_epsg_4326": -57.688,
+          "penguin_count": 20000,
+          "season_starting": 2019,
+          "site_id": "NFOR",
+          "site_name": "North Foreland"
+        },
+        {
+          "latitude_epsg_4326": -62.33,
+          "longitude_epsg_4326": -59.624,
+          "penguin_count": 2778,
+          "season_starting": 1988,
+          "site_id": "NHAM",
+          "site_name": "North of Hammer Point"
+        },
+        {
+          "latitude_epsg_4326": -66.723,
+          "longitude_epsg_4326": 149.677,
+          "penguin_count": 3000,
+          "season_starting": 2019,
+          "site_id": "NINN",
+          "site_name": "Ninnis Bank"
+        },
+        {
+          "latitude_epsg_4326": -62.995,
+          "longitude_epsg_4326": -55.98,
+          "penguin_count": 1008,
+          "season_starting": 2021,
+          "site_id": "NMED",
+          "site_name": "North of Medley Rocks"
+        },
+        {
+          "latitude_epsg_4326": -64.785,
+          "longitude_epsg_4326": -63.434,
+          "penguin_count": 49,
+          "season_starting": 2024,
+          "site_id": "NOBL",
+          "site_name": "Noble Rocks"
+        },
+        {
+          "latitude_epsg_4326": -69.381,
+          "longitude_epsg_4326": 39.464,
+          "penguin_count": 34,
+          "season_starting": 2009,
+          "site_id": "NOKK",
+          "site_name": "Nokkelholmane Islands"
+        },
+        {
+          "latitude_epsg_4326": -60.672,
+          "longitude_epsg_4326": -45.626,
+          "penguin_count": 2047,
+          "season_starting": 2015,
+          "site_id": "NOPT",
+          "site_name": "North Point"
+        },
+        {
+          "latitude_epsg_4326": -74.768,
+          "longitude_epsg_4326": 164.023,
+          "penguin_count": 11438,
+          "season_starting": 2018,
+          "site_id": "NORF",
+          "site_name": "Northern Foothills (Terra Nova Bay)"
+        },
+        {
+          "latitude_epsg_4326": -60.616,
+          "longitude_epsg_4326": -45.816,
+          "penguin_count": 100,
+          "season_starting": 2012,
+          "site_id": "NORW",
+          "site_name": "Norway Bight"
+        },
+        {
+          "latitude_epsg_4326": -71.769,
+          "longitude_epsg_4326": -98.447,
+          "penguin_count": 3568,
+          "season_starting": 2009,
+          "site_id": "NOVI",
+          "site_name": "Noville Peninsula"
+        },
+        {
+          "latitude_epsg_4326": -63.25,
+          "longitude_epsg_4326": -62.075,
+          "penguin_count": 20000,
+          "season_starting": 2012,
+          "site_id": "NPRO",
+          "site_name": "Promontories on north-central coast"
+        },
+        {
+          "latitude_epsg_4326": -61.919,
+          "longitude_epsg_4326": -57.648,
+          "penguin_count": 70,
+          "season_starting": 2019,
+          "site_id": "NTAY",
+          "site_name": "North of Taylor Point"
+        },
+        {
+          "latitude_epsg_4326": -66.635,
+          "longitude_epsg_4326": 108.213,
+          "penguin_count": 1412,
+          "season_starting": 2010,
+          "site_id": "NUTT",
+          "site_name": "Cape Nutt"
+        },
+        {
+          "latitude_epsg_4326": -61.507,
+          "longitude_epsg_4326": -55.956,
+          "penguin_count": 7000,
+          "season_starting": 2018,
+          "site_id": "OBRI",
+          "site_name": "O'Brien Island"
+        },
+        {
+          "latitude_epsg_4326": -66.374,
+          "longitude_epsg_4326": 110.542,
+          "penguin_count": 9247,
+          "season_starting": 2010,
+          "site_id": "ODBE",
+          "site_name": "Odbert Island"
+        },
+        {
+          "latitude_epsg_4326": -62.372,
+          "longitude_epsg_4326": -59.763,
+          "penguin_count": 3704,
+          "season_starting": 1988,
+          "site_id": "OKOL",
+          "site_name": "Okol Rocks"
+        },
+        {
+          "latitude_epsg_4326": -67.521,
+          "longitude_epsg_4326": 61.725,
+          "penguin_count": 3570,
+          "season_starting": 2008,
+          "site_id": "OLDH",
+          "site_name": "Oldham Island"
+        },
+        {
+          "latitude_epsg_4326": -60.729,
+          "longitude_epsg_4326": -45.591,
+          "penguin_count": 143,
+          "season_starting": 1979,
+          "site_id": "OLIC",
+          "site_name": "Oliphant Channel"
+        },
+        {
+          "latitude_epsg_4326": -60.736,
+          "longitude_epsg_4326": -45.594,
+          "penguin_count": 4502,
+          "season_starting": 1979,
+          "site_id": "OLII",
+          "site_name": "Oliphant Islands"
+        },
+        {
+          "latitude_epsg_4326": -68.567,
+          "longitude_epsg_4326": 40.983,
+          "penguin_count": 0,
+          "season_starting": 2012,
+          "site_id": "OMGA",
+          "site_name": "Cape Omega"
+        },
+        {
+          "latitude_epsg_4326": -64.816,
+          "longitude_epsg_4326": -63.09,
+          "penguin_count": 271,
+          "season_starting": 2018,
+          "site_id": "ONEI",
+          "site_name": "O'Neill Point"
+        },
+        {
+          "latitude_epsg_4326": -69.017,
+          "longitude_epsg_4326": 39.425,
+          "penguin_count": 650,
+          "season_starting": 2004,
+          "site_id": "ONGU",
+          "site_name": "Ongulkaven"
+        },
+        {
+          "latitude_epsg_4326": -63.235,
+          "longitude_epsg_4326": -62.228,
+          "penguin_count": 6062,
+          "season_starting": 2019,
+          "site_id": "ORCW",
+          "site_name": "Offshore Rocks off Cape Wallace"
+        },
+        {
+          "latitude_epsg_4326": -64.662,
+          "longitude_epsg_4326": -62.673,
+          "penguin_count": 222,
+          "season_starting": 2024,
+          "site_id": "ORNE",
+          "site_name": "Orne Islands"
+        },
+        {
+          "latitude_epsg_4326": -62.009,
+          "longitude_epsg_4326": -57.566,
+          "penguin_count": 0,
+          "season_starting": 2022,
+          "site_id": "ORRO",
+          "site_name": "Ornen Rocks"
+        },
+        {
+          "latitude_epsg_4326": -60.707,
+          "longitude_epsg_4326": -45.581,
+          "penguin_count": 155,
+          "season_starting": 2010,
+          "site_id": "OUTE",
+          "site_name": "Outer Island"
+        },
+        {
+          "latitude_epsg_4326": -61.933,
+          "longitude_epsg_4326": -58.389,
+          "penguin_count": 9000,
+          "season_starting": 2005,
+          "site_id": "OWEN",
+          "site_name": "Owen Island"
+        },
+        {
+          "latitude_epsg_4326": -64.911,
+          "longitude_epsg_4326": -62.931,
+          "penguin_count": 0,
+          "season_starting": 2018,
+          "site_id": "PABE",
+          "site_name": "Paradise Harbor Beacon (Paradise Bay)"
+        },
+        {
+          "latitude_epsg_4326": -60.729,
+          "longitude_epsg_4326": -45.584,
+          "penguin_count": 220,
+          "season_starting": 2010,
+          "site_id": "PAGE",
+          "site_name": "Pageant Point"
+        },
+        {
+          "latitude_epsg_4326": -64.149,
+          "longitude_epsg_4326": -61.759,
+          "penguin_count": 1309,
+          "season_starting": 2024,
+          "site_id": "PALA",
+          "site_name": "Palaver Point"
+        },
+        {
+          "latitude_epsg_4326": -60.736,
+          "longitude_epsg_4326": -45.648,
+          "penguin_count": 2385,
+          "season_starting": 2009,
+          "site_id": "PAND",
+          "site_name": "Pandemonium Point"
+        },
+        {
+          "latitude_epsg_4326": -60.727,
+          "longitude_epsg_4326": -45.583,
+          "penguin_count": 792,
+          "season_starting": 2010,
+          "site_id": "PANT",
+          "site_name": "Pantomime Point"
+        },
+        {
+          "latitude_epsg_4326": -62.235,
+          "longitude_epsg_4326": -58.472,
+          "penguin_count": 465,
+          "season_starting": 2015,
+          "site_id": "PAPT",
+          "site_name": "Patelnia Point"
+        },
+        {
+          "latitude_epsg_4326": -63.133,
+          "longitude_epsg_4326": -55.95,
+          "penguin_count": 86,
+          "season_starting": 2015,
+          "site_id": "PAPU",
+          "site_name": "Papua Island"
+        },
+        {
+          "latitude_epsg_4326": -63.129,
+          "longitude_epsg_4326": -55.524,
+          "penguin_count": 1000,
+          "season_starting": 1960,
+          "site_id": "PATE",
+          "site_name": "Patella Island"
+        },
+        {
+          "latitude_epsg_4326": -63.58,
+          "longitude_epsg_4326": -55.788,
+          "penguin_count": 107285,
+          "season_starting": 2010,
+          "site_id": "PAUL",
+          "site_name": "Paulet Island"
+        },
+        {
+          "latitude_epsg_4326": -66.32,
+          "longitude_epsg_4326": 129.75,
+          "penguin_count": 1000,
+          "season_starting": 2019,
+          "site_id": "PBAY",
+          "site_name": "Porpoise Bay"
+        },
+        {
+          "latitude_epsg_4326": -65.067,
+          "longitude_epsg_4326": -64.026,
+          "penguin_count": 4,
+          "season_starting": 2024,
+          "site_id": "PCHA",
+          "site_name": "Port Charcot"
+        },
+        {
+          "latitude_epsg_4326": -60.756,
+          "longitude_epsg_4326": -44.732,
+          "penguin_count": 96,
+          "season_starting": 2004,
+          "site_id": "PCOR",
+          "site_name": "Point Cormorant"
+        },
+        {
+          "latitude_epsg_4326": -63.411,
+          "longitude_epsg_4326": -54.717,
+          "penguin_count": 12000,
+          "season_starting": 2015,
+          "site_id": "PEIN",
+          "site_name": "Peine Island (Comb Island)"
+        },
+        {
+          "latitude_epsg_4326": -62.102,
+          "longitude_epsg_4326": -57.927,
+          "penguin_count": 142,
+          "season_starting": 2017,
+          "site_id": "PENG",
+          "site_name": "Penguin Island"
+        },
+        {
+          "latitude_epsg_4326": -64.295,
+          "longitude_epsg_4326": -56.691,
+          "penguin_count": 21561,
+          "season_starting": 2021,
+          "site_id": "PEPO",
+          "site_name": "Penguin Point (Seymour Island)"
+        },
+        {
+          "latitude_epsg_4326": -65.176,
+          "longitude_epsg_4326": -64.137,
+          "penguin_count": 185,
+          "season_starting": 2023,
+          "site_id": "PETE",
+          "site_name": "Petermann Island"
+        },
+        {
+          "latitude_epsg_4326": -72.569,
+          "longitude_epsg_4326": -89.906,
+          "penguin_count": 1500,
+          "season_starting": 2019,
+          "site_id": "PFRO",
+          "site_name": "Pfrogner Point"
+        },
+        {
+          "latitude_epsg_4326": -66.674,
+          "longitude_epsg_4326": 140.005,
+          "penguin_count": 47058,
+          "season_starting": 2017,
+          "site_id": "PGEO",
+          "site_name": "Point Geologie"
+        },
+        {
+          "latitude_epsg_4326": -63.198,
+          "longitude_epsg_4326": -56.697,
+          "penguin_count": 21,
+          "season_starting": 2015,
+          "site_id": "PHEA",
+          "site_name": "Phil's Head"
+        },
+        {
+          "latitude_epsg_4326": -73.071,
+          "longitude_epsg_4326": 169.617,
+          "penguin_count": 15685,
+          "season_starting": 2017,
+          "site_id": "PHIL",
+          "site_name": "Cape Phillips"
+        },
+        {
+          "latitude_epsg_4326": -66.933,
+          "longitude_epsg_4326": 143.894,
+          "penguin_count": 64607,
+          "season_starting": 2010,
+          "site_id": "PIGE",
+          "site_name": "Cape Pigeon Rocks"
+        },
+        {
+          "latitude_epsg_4326": -68.835,
+          "longitude_epsg_4326": -90.492,
+          "penguin_count": 2,
+          "season_starting": 2010,
+          "site_id": "PIIS",
+          "site_name": "Peter I Island"
+        },
+        {
+          "latitude_epsg_4326": -61.27,
+          "longitude_epsg_4326": -54.23,
+          "penguin_count": 10370,
+          "season_starting": 1976,
+          "site_id": "PILL",
+          "site_name": "Pillar Ridge"
+        },
+        {
+          "latitude_epsg_4326": -64.144,
+          "longitude_epsg_4326": -60.986,
+          "penguin_count": 5452,
+          "season_starting": 2024,
+          "site_id": "PING",
+          "site_name": "Pinguino Island"
+        },
+        {
+          "latitude_epsg_4326": -60.69,
+          "longitude_epsg_4326": -44.662,
+          "penguin_count": 17101,
+          "season_starting": 2004,
+          "site_id": "PIRI",
+          "site_name": "Pirie Peninsula"
+        },
+        {
+          "latitude_epsg_4326": -66.466,
+          "longitude_epsg_4326": 110.499,
+          "penguin_count": 30448,
+          "season_starting": 2010,
+          "site_id": "PISL",
+          "site_name": "Peterson Island"
+        },
+        {
+          "latitude_epsg_4326": -61.116,
+          "longitude_epsg_4326": -54.645,
+          "penguin_count": 200,
+          "season_starting": 2019,
+          "site_id": "PKUP",
+          "site_name": "Pickup Point"
+        },
+        {
+          "latitude_epsg_4326": -63.433,
+          "longitude_epsg_4326": -54.674,
+          "penguin_count": 40803,
+          "season_starting": 2015,
+          "site_id": "PLAT",
+          "site_name": "Plato Island (Platter Island)"
+        },
+        {
+          "latitude_epsg_4326": -61.143,
+          "longitude_epsg_4326": -54.72,
+          "penguin_count": 5165,
+          "season_starting": 2019,
+          "site_id": "PLDR",
+          "site_name": "Penguin Ladder"
+        },
+        {
+          "latitude_epsg_4326": -65.104,
+          "longitude_epsg_4326": -64.056,
+          "penguin_count": 2642,
+          "season_starting": 2022,
+          "site_id": "PLEN",
+          "site_name": "Pleneau Island"
+        },
+        {
+          "latitude_epsg_4326": -66.811,
+          "longitude_epsg_4326": 141.4,
+          "penguin_count": 37994,
+          "season_starting": 2010,
+          "site_id": "PMAR",
+          "site_name": "Port Martin"
+        },
+        {
+          "latitude_epsg_4326": -65.782,
+          "longitude_epsg_4326": 113.235,
+          "penguin_count": 1500,
+          "season_starting": 2019,
+          "site_id": "POIN",
+          "site_name": "Cape Poinsett"
+        },
+        {
+          "latitude_epsg_4326": -61.932,
+          "longitude_epsg_4326": -58.358,
+          "penguin_count": 175550,
+          "season_starting": 1986,
+          "site_id": "POPO",
+          "site_name": "Pottinger Point"
+        },
+        {
+          "latitude_epsg_4326": -60.724,
+          "longitude_epsg_4326": -45.675,
+          "penguin_count": 0,
+          "season_starting": 2009,
+          "site_id": "PORT",
+          "site_name": "Porteous Point"
+        },
+        {
+          "latitude_epsg_4326": -66.783,
+          "longitude_epsg_4326": 89.45,
+          "penguin_count": 123,
+          "season_starting": 2022,
+          "site_id": "POSA",
+          "site_name": "Posadowsky Bay"
+        },
+        {
+          "latitude_epsg_4326": -71.895,
+          "longitude_epsg_4326": 171.169,
+          "penguin_count": 177097,
+          "season_starting": 2013,
+          "site_id": "POSS",
+          "site_name": "Possession Island"
+        },
+        {
+          "latitude_epsg_4326": -60.725,
+          "longitude_epsg_4326": -45.029,
+          "penguin_count": 24560,
+          "season_starting": 1983,
+          "site_id": "POWE",
+          "site_name": "Powell Island"
+        },
+        {
+          "latitude_epsg_4326": -61.31,
+          "longitude_epsg_4326": -54.081,
+          "penguin_count": 20000,
+          "season_starting": 2010,
+          "site_id": "PPPT",
+          "site_name": "Pink Pool Point"
+        },
+        {
+          "latitude_epsg_4326": -60.757,
+          "longitude_epsg_4326": -44.633,
+          "penguin_count": 1000,
+          "season_starting": 2019,
+          "site_id": "PRAE",
+          "site_name": "Point Rae"
+        },
+        {
+          "latitude_epsg_4326": -62.725,
+          "longitude_epsg_4326": -61.2,
+          "penguin_count": 0,
+          "season_starting": 2021,
+          "site_id": "PRES",
+          "site_name": "President Head (Snow Island)"
+        },
+        {
+          "latitude_epsg_4326": -63.213,
+          "longitude_epsg_4326": -57.305,
+          "penguin_count": 565,
+          "season_starting": 2016,
+          "site_id": "PRIM",
+          "site_name": "Prime Head"
+        },
+        {
+          "latitude_epsg_4326": -64.912,
+          "longitude_epsg_4326": -63.431,
+          "penguin_count": 567,
+          "season_starting": 2012,
+          "site_id": "PRIN",
+          "site_name": "Principal Point"
+        },
+        {
+          "latitude_epsg_4326": -65.842,
+          "longitude_epsg_4326": 53.688,
+          "penguin_count": 9277,
+          "season_starting": 2010,
+          "site_id": "PROC",
+          "site_name": "Proclamation Island"
+        },
+        {
+          "latitude_epsg_4326": -65.918,
+          "longitude_epsg_4326": 110.236,
+          "penguin_count": 1500,
+          "season_starting": 2012,
+          "site_id": "PSON",
+          "site_name": "Peterson Bank"
+        },
+        {
+          "latitude_epsg_4326": -62.163,
+          "longitude_epsg_4326": -58.462,
+          "penguin_count": 14,
+          "season_starting": 2013,
+          "site_id": "PTHO",
+          "site_name": "Point Thomas (Rakusa Point)"
+        },
+        {
+          "latitude_epsg_4326": -60.554,
+          "longitude_epsg_4326": -45.432,
+          "penguin_count": 3000,
+          "season_starting": 2019,
+          "site_id": "PURD",
+          "site_name": "Purdy Point"
+        },
+        {
+          "latitude_epsg_4326": -64.879,
+          "longitude_epsg_4326": -63.597,
+          "penguin_count": 2355,
+          "season_starting": 2009,
+          "site_id": "PYPT",
+          "site_name": "Py Point"
+        },
+        {
+          "latitude_epsg_4326": -61.924,
+          "longitude_epsg_4326": -57.949,
+          "penguin_count": 366,
+          "season_starting": 1980,
+          "site_id": "PYRI",
+          "site_name": "Pyrites Island"
+        },
+        {
+          "latitude_epsg_4326": -64.335,
+          "longitude_epsg_4326": -63.683,
+          "penguin_count": 485,
+          "season_starting": 2019,
+          "site_id": "QPTM",
+          "site_name": "Quinton Point (middle)"
+        },
+        {
+          "latitude_epsg_4326": -64.312,
+          "longitude_epsg_4326": -63.663,
+          "penguin_count": 1281,
+          "season_starting": 2019,
+          "site_id": "QPTN",
+          "site_name": "Quinton Point (north)"
+        },
+        {
+          "latitude_epsg_4326": -64.345,
+          "longitude_epsg_4326": -63.687,
+          "penguin_count": 1344,
+          "season_starting": 2019,
+          "site_id": "QPTS",
+          "site_name": "Quinton Point (south)"
+        },
+        {
+          "latitude_epsg_4326": -64.331,
+          "longitude_epsg_4326": -63.699,
+          "penguin_count": 377,
+          "season_starting": 2019,
+          "site_id": "QPTW",
+          "site_name": "Quinton Point (west)"
+        },
+        {
+          "latitude_epsg_4326": -69.908,
+          "longitude_epsg_4326": 27.155,
+          "penguin_count": 6870,
+          "season_starting": 2009,
+          "site_id": "RAGN",
+          "site_name": "Ragnhild"
+        },
+        {
+          "latitude_epsg_4326": -65.248,
+          "longitude_epsg_4326": -64.085,
+          "penguin_count": 156,
+          "season_starting": 2023,
+          "site_id": "RASM",
+          "site_name": "Rasmussen Island"
+        },
+        {
+          "latitude_epsg_4326": -68.833,
+          "longitude_epsg_4326": 77.677,
+          "penguin_count": 115034,
+          "season_starting": 2010,
+          "site_id": "RAUE",
+          "site_name": "Rauer Islands"
+        },
+        {
+          "latitude_epsg_4326": -60.648,
+          "longitude_epsg_4326": -45.191,
+          "penguin_count": 7000,
+          "season_starting": 2019,
+          "site_id": "RAYN",
+          "site_name": "Rayner Point"
+        },
+        {
+          "latitude_epsg_4326": -67.454,
+          "longitude_epsg_4326": 63.46,
+          "penguin_count": 609,
+          "season_starting": 2006,
+          "site_id": "RBSN",
+          "site_name": "Robinson"
+        },
+        {
+          "latitude_epsg_4326": -62.609,
+          "longitude_epsg_4326": -59.81,
+          "penguin_count": 27,
+          "season_starting": 2024,
+          "site_id": "RENI",
+          "site_name": "Renier Point"
+        },
+        {
+          "latitude_epsg_4326": -60.627,
+          "longitude_epsg_4326": -46.033,
+          "penguin_count": 15600,
+          "season_starting": 1983,
+          "site_id": "RETU",
+          "site_name": "Return Point"
+        },
+        {
+          "latitude_epsg_4326": -69.649,
+          "longitude_epsg_4326": -68.571,
+          "penguin_count": 36,
+          "season_starting": 2010,
+          "site_id": "RHYO",
+          "site_name": "Rhyolite Island"
+        },
+        {
+          "latitude_epsg_4326": -61.85,
+          "longitude_epsg_4326": -58.016,
+          "penguin_count": 4035,
+          "season_starting": 1980,
+          "site_id": "RIDL",
+          "site_name": "Ridley Island"
+        },
+        {
+          "latitude_epsg_4326": -72.124,
+          "longitude_epsg_4326": -15.106,
+          "penguin_count": 4013,
+          "season_starting": 2009,
+          "site_id": "RIIS",
+          "site_name": "Riiser-Larsen"
+        },
+        {
+          "latitude_epsg_4326": -62.45,
+          "longitude_epsg_4326": -59.383,
+          "penguin_count": 2889,
+          "season_starting": 2016,
+          "site_id": "ROBE",
+          "site_name": "Robert Point (Robert Island)"
+        },
+        {
+          "latitude_epsg_4326": -60.75,
+          "longitude_epsg_4326": -44.817,
+          "penguin_count": 5000,
+          "season_starting": 2019,
+          "site_id": "ROCA",
+          "site_name": "Cape Roca"
+        },
+        {
+          "latitude_epsg_4326": -63.144,
+          "longitude_epsg_4326": -55.715,
+          "penguin_count": 1360,
+          "season_starting": 2015,
+          "site_id": "ROCK",
+          "site_name": "Rockpepper Island"
+        },
+        {
+          "latitude_epsg_4326": -71.988,
+          "longitude_epsg_4326": 170.597,
+          "penguin_count": 5221,
+          "season_starting": 2018,
+          "site_id": "ROGE",
+          "site_name": "Cape Roget"
+        },
+        {
+          "latitude_epsg_4326": -62.376,
+          "longitude_epsg_4326": -59.927,
+          "penguin_count": 500,
+          "season_starting": 1986,
+          "site_id": "ROME",
+          "site_name": "Romeo Island"
+        },
+        {
+          "latitude_epsg_4326": -64.688,
+          "longitude_epsg_4326": -62.644,
+          "penguin_count": 827,
+          "season_starting": 2024,
+          "site_id": "RONE",
+          "site_name": "Ronge Island East"
+        },
+        {
+          "latitude_epsg_4326": -67.449,
+          "longitude_epsg_4326": 63.413,
+          "penguin_count": 111,
+          "season_starting": 2006,
+          "site_id": "RONW",
+          "site_name": "Robinson (northwest)"
+        },
+        {
+          "latitude_epsg_4326": -67.604,
+          "longitude_epsg_4326": 62.51,
+          "penguin_count": 43989,
+          "season_starting": 2010,
+          "site_id": "ROOK",
+          "site_name": "Rookery Islands"
+        },
+        {
+          "latitude_epsg_4326": -63.549,
+          "longitude_epsg_4326": -58.965,
+          "penguin_count": 300,
+          "season_starting": 2019,
+          "site_id": "ROQU",
+          "site_name": "Cape Roquemaurel"
+        },
+        {
+          "latitude_epsg_4326": -67.475,
+          "longitude_epsg_4326": 63.496,
+          "penguin_count": 800,
+          "season_starting": 2006,
+          "site_id": "ROSE",
+          "site_name": "Robinson (southeast)"
+        },
+        {
+          "latitude_epsg_4326": -62.238,
+          "longitude_epsg_4326": -59.09,
+          "penguin_count": 383,
+          "season_starting": 2016,
+          "site_id": "ROTA",
+          "site_name": "Rotalia Island"
+        },
+        {
+          "latitude_epsg_4326": -69.521,
+          "longitude_epsg_4326": -72.229,
+          "penguin_count": 1000,
+          "season_starting": 2014,
+          "site_id": "ROTS",
+          "site_name": "Rothschild Island"
+        },
+        {
+          "latitude_epsg_4326": -61.285,
+          "longitude_epsg_4326": -55.214,
+          "penguin_count": 575,
+          "season_starting": 2019,
+          "site_id": "ROWE",
+          "site_name": "Rowett Island"
+        },
+        {
+          "latitude_epsg_4326": -77.555,
+          "longitude_epsg_4326": 166.164,
+          "penguin_count": 1807,
+          "season_starting": 2021,
+          "site_id": "ROYD",
+          "site_name": "Cape Royds"
+        },
+        {
+          "latitude_epsg_4326": -68.288,
+          "longitude_epsg_4326": -67.169,
+          "penguin_count": 3245,
+          "season_starting": 2019,
+          "site_id": "RRRI",
+          "site_name": "Red Rock Ridge"
+        },
+        {
+          "latitude_epsg_4326": -63.126,
+          "longitude_epsg_4326": -55.852,
+          "penguin_count": 3833,
+          "season_starting": 2015,
+          "site_id": "RSAL",
+          "site_name": "Rocksalt Rocks"
+        },
+        {
+          "latitude_epsg_4326": -60.676,
+          "longitude_epsg_4326": -44.602,
+          "penguin_count": 6818,
+          "season_starting": 2004,
+          "site_id": "RUDM",
+          "site_name": "Rudmose Rocks"
+        },
+        {
+          "latitude_epsg_4326": -62.601,
+          "longitude_epsg_4326": -59.816,
+          "penguin_count": 1142,
+          "season_starting": 2024,
+          "site_id": "RUGG",
+          "site_name": "Rugged Rocks"
+        },
+        {
+          "latitude_epsg_4326": -69.144,
+          "longitude_epsg_4326": 39.391,
+          "penguin_count": 3515,
+          "season_starting": 2004,
+          "site_id": "RUMP",
+          "site_name": "Rumpa Island"
+        },
+        {
+          "latitude_epsg_4326": -75.382,
+          "longitude_epsg_4326": -143.308,
+          "penguin_count": 1550,
+          "season_starting": 2008,
+          "site_id": "RUPE",
+          "site_name": "Rupert Coast"
+        },
+        {
+          "latitude_epsg_4326": -62.15,
+          "longitude_epsg_4326": -58.133,
+          "penguin_count": 75,
+          "season_starting": 1986,
+          "site_id": "RXLH",
+          "site_name": "Rocks near Low Head"
+        },
+        {
+          "latitude_epsg_4326": -62.099,
+          "longitude_epsg_4326": -58.824,
+          "penguin_count": 7162,
+          "season_starting": 2016,
+          "site_id": "RZEP",
+          "site_name": "Rzepeki Islands"
+        },
+        {
+          "latitude_epsg_4326": -66.177,
+          "longitude_epsg_4326": 121.058,
+          "penguin_count": 672,
+          "season_starting": 2022,
+          "site_id": "SABC",
+          "site_name": "Sabrina Coast"
+        },
+        {
+          "latitude_epsg_4326": -66.917,
+          "longitude_epsg_4326": 163.309,
+          "penguin_count": 84,
+          "season_starting": 2013,
+          "site_id": "SABR",
+          "site_name": "Sabrina Island"
+        },
+        {
+          "latitude_epsg_4326": -60.617,
+          "longitude_epsg_4326": -44.855,
+          "penguin_count": 60000,
+          "season_starting": 2019,
+          "site_id": "SADD",
+          "site_name": "Saddle Island"
+        },
+        {
+          "latitude_epsg_4326": -69.999,
+          "longitude_epsg_4326": -1.413,
+          "penguin_count": 3193,
+          "season_starting": 2009,
+          "site_id": "SANA",
+          "site_name": "Sanae"
+        },
+        {
+          "latitude_epsg_4326": -64.844,
+          "longitude_epsg_4326": -63.117,
+          "penguin_count": 168,
+          "season_starting": 2018,
+          "site_id": "SANE",
+          "site_name": "San Eliado Point"
+        },
+        {
+          "latitude_epsg_4326": -61.099,
+          "longitude_epsg_4326": -54.901,
+          "penguin_count": 6196,
+          "season_starting": 2019,
+          "site_id": "SAPT",
+          "site_name": "Saddleback Point"
+        },
+        {
+          "latitude_epsg_4326": -62.56,
+          "longitude_epsg_4326": -59.657,
+          "penguin_count": 303,
+          "season_starting": 2018,
+          "site_id": "SART",
+          "site_name": "Sartorius Point"
+        },
+        {
+          "latitude_epsg_4326": -63.141,
+          "longitude_epsg_4326": -56.047,
+          "penguin_count": 124,
+          "season_starting": 2015,
+          "site_id": "SAXU",
+          "site_name": "Saxum Nunatak"
+        },
+        {
+          "latitude_epsg_4326": -63.566,
+          "longitude_epsg_4326": -56.455,
+          "penguin_count": 75,
+          "season_starting": 2021,
+          "site_id": "SCRY",
+          "site_name": "Cape Scrymgeour"
+        },
+        {
+          "latitude_epsg_4326": -67.783,
+          "longitude_epsg_4326": 66.697,
+          "penguin_count": 54499,
+          "season_starting": 2010,
+          "site_id": "SCUL",
+          "site_name": "Scullin/Murray"
+        },
+        {
+          "latitude_epsg_4326": -60.975,
+          "longitude_epsg_4326": -55.393,
+          "penguin_count": 336,
+          "season_starting": 2015,
+          "site_id": "SEAL",
+          "site_name": "Seal Islands"
+        },
+        {
+          "latitude_epsg_4326": -67.595,
+          "longitude_epsg_4326": 146.081,
+          "penguin_count": 9,
+          "season_starting": 2011,
+          "site_id": "SEFB",
+          "site_name": "SE Fisher Bay"
+        },
+        {
+          "latitude_epsg_4326": -64.604,
+          "longitude_epsg_4326": -64.204,
+          "penguin_count": 56,
+          "season_starting": 2019,
+          "site_id": "SEGI",
+          "site_name": "Small island southeast on Gerlache Island"
+        },
+        {
+          "latitude_epsg_4326": -64.641,
+          "longitude_epsg_4326": -62.569,
+          "penguin_count": 58,
+          "season_starting": 2024,
+          "site_id": "SELV",
+          "site_name": "Selvick Cove"
+        },
+        {
+          "latitude_epsg_4326": -70.754,
+          "longitude_epsg_4326": 167.405,
+          "penguin_count": 344,
+          "season_starting": 2011,
+          "site_id": "SENT",
+          "site_name": "Sentry Rocks"
+        },
+        {
+          "latitude_epsg_4326": -66.891,
+          "longitude_epsg_4326": 163.287,
+          "penguin_count": 277,
+          "season_starting": 2010,
+          "site_id": "SEPR",
+          "site_name": "SE Promontory"
+        },
+        {
+          "latitude_epsg_4326": -61.177,
+          "longitude_epsg_4326": -54.026,
+          "penguin_count": 8000,
+          "season_starting": 2010,
+          "site_id": "SERA",
+          "site_name": "Serac Point"
+        },
+        {
+          "latitude_epsg_4326": -65.089,
+          "longitude_epsg_4326": 96.02,
+          "penguin_count": 1339,
+          "season_starting": 2022,
+          "site_id": "SHAC",
+          "site_name": "Shackleton Ice Shelf"
+        },
+        {
+          "latitude_epsg_4326": -60.732,
+          "longitude_epsg_4326": -45.618,
+          "penguin_count": 2837,
+          "season_starting": 1978,
+          "site_id": "SHAG",
+          "site_name": "Shagnasty Island"
+        },
+        {
+          "latitude_epsg_4326": -60.736,
+          "longitude_epsg_4326": -44.788,
+          "penguin_count": 137,
+          "season_starting": 1994,
+          "site_id": "SHCO",
+          "site_name": "Sheila Cove"
+        },
+        {
+          "latitude_epsg_4326": -66.546,
+          "longitude_epsg_4326": 50.18,
+          "penguin_count": 7587,
+          "season_starting": 2009,
+          "site_id": "SHEE",
+          "site_name": "Sheelagh Islands"
+        },
+        {
+          "latitude_epsg_4326": -74.377,
+          "longitude_epsg_4326": -132.552,
+          "penguin_count": 28934,
+          "season_starting": 2010,
+          "site_id": "SHEI",
+          "site_name": "Shepard Island"
+        },
+        {
+          "latitude_epsg_4326": -63.363,
+          "longitude_epsg_4326": -57.015,
+          "penguin_count": 1523,
+          "season_starting": 2004,
+          "site_id": "SHEN",
+          "site_name": "Sheppard Nunatak"
+        },
+        {
+          "latitude_epsg_4326": -63.371,
+          "longitude_epsg_4326": -56.984,
+          "penguin_count": 3182,
+          "season_starting": 2004,
+          "site_id": "SHEP",
+          "site_name": "Sheppard Point"
+        },
+        {
+          "latitude_epsg_4326": -61.097,
+          "longitude_epsg_4326": -54.735,
+          "penguin_count": 1014,
+          "season_starting": 2019,
+          "site_id": "SHIL",
+          "site_name": "Shilling Shelf"
+        },
+        {
+          "latitude_epsg_4326": -60.647,
+          "longitude_epsg_4326": -45.564,
+          "penguin_count": 3041,
+          "season_starting": 2006,
+          "site_id": "SHIN",
+          "site_name": "Shingle Cove (Coronation Island)"
+        },
+        {
+          "latitude_epsg_4326": -62.458,
+          "longitude_epsg_4326": -60.787,
+          "penguin_count": 2170,
+          "season_starting": 2019,
+          "site_id": "SHIR",
+          "site_name": "Cape Shirreff"
+        },
+        {
+          "latitude_epsg_4326": -62.185,
+          "longitude_epsg_4326": -58.297,
+          "penguin_count": 246,
+          "season_starting": 2004,
+          "site_id": "SHIS",
+          "site_name": "Shag Island"
+        },
+        {
+          "latitude_epsg_4326": -66.283,
+          "longitude_epsg_4326": 110.5,
+          "penguin_count": 13658,
+          "season_starting": 2010,
+          "site_id": "SHLY",
+          "site_name": "Shirley/Beall"
+        },
+        {
+          "latitude_epsg_4326": -69.169,
+          "longitude_epsg_4326": 39.434,
+          "penguin_count": 37,
+          "season_starting": 2004,
+          "site_id": "SIGA",
+          "site_name": "Sigaren"
+        },
+        {
+          "latitude_epsg_4326": -73.272,
+          "longitude_epsg_4326": -78.541,
+          "penguin_count": 14784,
+          "season_starting": 2012,
+          "site_id": "SIMS",
+          "site_name": "Sims Island"
+        },
+        {
+          "latitude_epsg_4326": -64.718,
+          "longitude_epsg_4326": -62.754,
+          "penguin_count": 543,
+          "season_starting": 2019,
+          "site_id": "SKET",
+          "site_name": "South of Ketley Island"
+        },
+        {
+          "latitude_epsg_4326": -60.778,
+          "longitude_epsg_4326": -45.139,
+          "penguin_count": 5000,
+          "season_starting": 2019,
+          "site_id": "SKIL",
+          "site_name": "Skilling Island (north coast)"
+        },
+        {
+          "latitude_epsg_4326": -63.92,
+          "longitude_epsg_4326": -60.809,
+          "penguin_count": 469,
+          "season_starting": 2023,
+          "site_id": "SKOT",
+          "site_name": "Skottsberg Point"
+        },
+        {
+          "latitude_epsg_4326": -64.022,
+          "longitude_epsg_4326": -61.454,
+          "penguin_count": 1000,
+          "season_starting": 1985,
+          "site_id": "SMAL",
+          "site_name": "Small Island"
+        },
+        {
+          "latitude_epsg_4326": -60.759,
+          "longitude_epsg_4326": -45.154,
+          "penguin_count": 20000,
+          "season_starting": 2019,
+          "site_id": "SMAT",
+          "site_name": "Unnamed islands (South of Matthews Island)"
+        },
+        {
+          "latitude_epsg_4326": -65.46,
+          "longitude_epsg_4326": -65.351,
+          "penguin_count": 453,
+          "season_starting": 2012,
+          "site_id": "SMIG",
+          "site_name": "Smiggers Island"
+        },
+        {
+          "latitude_epsg_4326": -62.874,
+          "longitude_epsg_4326": -62.3,
+          "penguin_count": 4500,
+          "season_starting": 1986,
+          "site_id": "SMIT",
+          "site_name": "Cape Smith"
+        },
+        {
+          "latitude_epsg_4326": -62.83,
+          "longitude_epsg_4326": -61.478,
+          "penguin_count": 300,
+          "season_starting": 2012,
+          "site_id": "SMON",
+          "site_name": "Southeast of Monroe Point"
+        },
+        {
+          "latitude_epsg_4326": -74.369,
+          "longitude_epsg_4326": -60.827,
+          "penguin_count": 4018,
+          "season_starting": 2009,
+          "site_id": "SMTH",
+          "site_name": "Smith"
+        },
+        {
+          "latitude_epsg_4326": -72.302,
+          "longitude_epsg_4326": -78.82,
+          "penguin_count": 6061,
+          "season_starting": 2009,
+          "site_id": "SMYL",
+          "site_name": "Smyley"
+        },
+        {
+          "latitude_epsg_4326": -64.524,
+          "longitude_epsg_4326": -57.444,
+          "penguin_count": 2164,
+          "season_starting": 2009,
+          "site_id": "SNOW",
+          "site_name": "Snow Hill Island"
+        },
+        {
+          "latitude_epsg_4326": -65.688,
+          "longitude_epsg_4326": -65.338,
+          "penguin_count": 477,
+          "season_starting": 2012,
+          "site_id": "SOMI",
+          "site_name": "South of Martin Islands"
+        },
+        {
+          "latitude_epsg_4326": -63.016,
+          "longitude_epsg_4326": -60.635,
+          "penguin_count": 217,
+          "season_starting": 2011,
+          "site_id": "SPBL",
+          "site_name": "South Point Bluff"
+        },
+        {
+          "latitude_epsg_4326": -63.861,
+          "longitude_epsg_4326": -60.978,
+          "penguin_count": 0,
+          "season_starting": 2013,
+          "site_id": "SPER",
+          "site_name": "Spert Island"
+        },
+        {
+          "latitude_epsg_4326": -64.635,
+          "longitude_epsg_4326": -62.554,
+          "penguin_count": 244,
+          "season_starting": 2024,
+          "site_id": "SPIG",
+          "site_name": "Spigot Peak Ridge"
+        },
+        {
+          "latitude_epsg_4326": -60.594,
+          "longitude_epsg_4326": -46.02,
+          "penguin_count": 125000,
+          "season_starting": 2003,
+          "site_id": "SPIN",
+          "site_name": "Spine Island (Coronation Island)"
+        },
+        {
+          "latitude_epsg_4326": -64.625,
+          "longitude_epsg_4326": -62.558,
+          "penguin_count": 365,
+          "season_starting": 2024,
+          "site_id": "SPIP",
+          "site_name": "Spigot Peak Point"
+        },
+        {
+          "latitude_epsg_4326": -61.156,
+          "longitude_epsg_4326": -54.937,
+          "penguin_count": 30,
+          "season_starting": 1970,
+          "site_id": "SPLI",
+          "site_name": "Split Beach"
+        },
+        {
+          "latitude_epsg_4326": -63.014,
+          "longitude_epsg_4326": -60.67,
+          "penguin_count": 5352,
+          "season_starting": 2011,
+          "site_id": "SPNW",
+          "site_name": "South Point Bluff (northwest)"
+        },
+        {
+          "latitude_epsg_4326": -64.283,
+          "longitude_epsg_4326": -61.072,
+          "penguin_count": 195,
+          "season_starting": 2024,
+          "site_id": "SPRI",
+          "site_name": "Sprightly Islands Vicinity"
+        },
+        {
+          "latitude_epsg_4326": -60.683,
+          "longitude_epsg_4326": -45.644,
+          "penguin_count": 69,
+          "season_starting": 2015,
+          "site_id": "SPRO",
+          "site_name": "Spindrift Rocks"
+        },
+        {
+          "latitude_epsg_4326": -64.636,
+          "longitude_epsg_4326": -62.562,
+          "penguin_count": 60,
+          "season_starting": 2024,
+          "site_id": "SPTR",
+          "site_name": "Spigot Peak Tripod"
+        },
+        {
+          "latitude_epsg_4326": -60.699,
+          "longitude_epsg_4326": -45.169,
+          "penguin_count": 500,
+          "season_starting": 2019,
+          "site_id": "SPUI",
+          "site_name": "Spence Harbour and unnamed island"
+        },
+        {
+          "latitude_epsg_4326": -62.678,
+          "longitude_epsg_4326": -60.957,
+          "penguin_count": 4,
+          "season_starting": 1965,
+          "site_id": "STAC",
+          "site_name": "Stackpole Rocks"
+        },
+        {
+          "latitude_epsg_4326": -67.534,
+          "longitude_epsg_4326": 61.718,
+          "penguin_count": 3227,
+          "season_starting": 2008,
+          "site_id": "STAN",
+          "site_name": "Stanton Continental Rock"
+        },
+        {
+          "latitude_epsg_4326": -74.12,
+          "longitude_epsg_4326": -23.087,
+          "penguin_count": 5455,
+          "season_starting": 2009,
+          "site_id": "STCB",
+          "site_name": "Stancomb"
+        },
+        {
+          "latitude_epsg_4326": -60.767,
+          "longitude_epsg_4326": -45.15,
+          "penguin_count": 20,
+          "season_starting": 2019,
+          "site_id": "STEE",
+          "site_name": "Steepholm Islands"
+        },
+        {
+          "latitude_epsg_4326": -69.341,
+          "longitude_epsg_4326": 76.582,
+          "penguin_count": 434,
+          "season_starting": 2010,
+          "site_id": "STEI",
+          "site_name": "Steines Island"
+        },
+        {
+          "latitude_epsg_4326": -60.654,
+          "longitude_epsg_4326": -45.707,
+          "penguin_count": 0,
+          "season_starting": 2010,
+          "site_id": "STEN",
+          "site_name": "Stene Point"
+        },
+        {
+          "latitude_epsg_4326": -64.192,
+          "longitude_epsg_4326": -61.049,
+          "penguin_count": 0,
+          "season_starting": 2015,
+          "site_id": "STER",
+          "site_name": "Sterneck Island"
+        },
+        {
+          "latitude_epsg_4326": -64.087,
+          "longitude_epsg_4326": -60.997,
+          "penguin_count": 5,
+          "season_starting": 2023,
+          "site_id": "STIC",
+          "site_name": "South of Tumba Ice Cap"
+        },
+        {
+          "latitude_epsg_4326": -62.023,
+          "longitude_epsg_4326": -58.718,
+          "penguin_count": 100,
+          "season_starting": 2016,
+          "site_id": "STIG",
+          "site_name": "Stigant Point"
+        },
+        {
+          "latitude_epsg_4326": -61.236,
+          "longitude_epsg_4326": -55.359,
+          "penguin_count": 2987,
+          "season_starting": 2019,
+          "site_id": "STNK",
+          "site_name": "Stinker Point"
+        },
+        {
+          "latitude_epsg_4326": -62.397,
+          "longitude_epsg_4326": -59.848,
+          "penguin_count": 14738,
+          "season_starting": 2018,
+          "site_id": "STOK",
+          "site_name": "Stoker Island"
+        },
+        {
+          "latitude_epsg_4326": -62.26,
+          "longitude_epsg_4326": -58.616,
+          "penguin_count": 3,
+          "season_starting": 2019,
+          "site_id": "STRA",
+          "site_name": "Stranger Point"
+        },
+        {
+          "latitude_epsg_4326": -67.508,
+          "longitude_epsg_4326": 61.598,
+          "penguin_count": 801,
+          "season_starting": 2008,
+          "site_id": "STUN",
+          "site_name": "Stanton unnamed"
+        },
+        {
+          "latitude_epsg_4326": -67.467,
+          "longitude_epsg_4326": 164.633,
+          "penguin_count": 10,
+          "season_starting": 2002,
+          "site_id": "STUR",
+          "site_name": "Sturge Island"
+        },
+        {
+          "latitude_epsg_4326": -71.956,
+          "longitude_epsg_4326": 171.07,
+          "penguin_count": 44571,
+          "season_starting": 2013,
+          "site_id": "SVEN",
+          "site_name": "Sven Foyn Island"
+        },
+        {
+          "latitude_epsg_4326": -69.034,
+          "longitude_epsg_4326": 76.835,
+          "penguin_count": 18065,
+          "season_starting": 1981,
+          "site_id": "SVIS",
+          "site_name": "Svenner Islands"
+        },
+        {
+          "latitude_epsg_4326": -69.275,
+          "longitude_epsg_4326": 158.78,
+          "penguin_count": 804,
+          "season_starting": 1985,
+          "site_id": "SWIS",
+          "site_name": "Southwest Island (Aviation Islands)"
+        },
+        {
+          "latitude_epsg_4326": -61.931,
+          "longitude_epsg_4326": -58.436,
+          "penguin_count": 2000,
+          "season_starting": 2005,
+          "site_id": "TART",
+          "site_name": "Tartar Point"
+        },
+        {
+          "latitude_epsg_4326": -62.384,
+          "longitude_epsg_4326": -59.782,
+          "penguin_count": 1586,
+          "season_starting": 2018,
+          "site_id": "TAUN",
+          "site_name": "Taunton Island"
+        },
+        {
+          "latitude_epsg_4326": -67.454,
+          "longitude_epsg_4326": 60.878,
+          "penguin_count": 519,
+          "season_starting": 2009,
+          "site_id": "TAYG",
+          "site_name": "Taylor Glacier"
+        },
+        {
+          "latitude_epsg_4326": -63.349,
+          "longitude_epsg_4326": -55.551,
+          "penguin_count": 6769,
+          "season_starting": 2021,
+          "site_id": "TAYH",
+          "site_name": "Tay Head (Joinville Island)"
+        },
+        {
+          "latitude_epsg_4326": -61.933,
+          "longitude_epsg_4326": -57.642,
+          "penguin_count": 200,
+          "season_starting": 2019,
+          "site_id": "TAYL",
+          "site_name": "Taylor Point"
+        },
+        {
+          "latitude_epsg_4326": -62.697,
+          "longitude_epsg_4326": -60.87,
+          "penguin_count": 1587,
+          "season_starting": 2023,
+          "site_id": "TELI",
+          "site_name": "Telish Rock"
+        },
+        {
+          "latitude_epsg_4326": -68.445,
+          "longitude_epsg_4326": 41.701,
+          "penguin_count": 86,
+          "season_starting": 2010,
+          "site_id": "TENM",
+          "site_name": "Tenmondai Rock"
+        },
+        {
+          "latitude_epsg_4326": -63.918,
+          "longitude_epsg_4326": -60.734,
+          "penguin_count": 391,
+          "season_starting": 2023,
+          "site_id": "TETR",
+          "site_name": "Tetrad Islands"
+        },
+        {
+          "latitude_epsg_4326": -67.442,
+          "longitude_epsg_4326": 63.543,
+          "penguin_count": 917,
+          "season_starting": 2006,
+          "site_id": "THOR",
+          "site_name": "Thorgaut"
+        },
+        {
+          "latitude_epsg_4326": -61.312,
+          "longitude_epsg_4326": -54.117,
+          "penguin_count": 7000,
+          "season_starting": 2010,
+          "site_id": "THUN",
+          "site_name": "Thunder Bay"
+        },
+        {
+          "latitude_epsg_4326": -73.498,
+          "longitude_epsg_4326": -125.62,
+          "penguin_count": 2989,
+          "season_starting": 2009,
+          "site_id": "THUR",
+          "site_name": "Thurston Glacier, Mount Siple"
+        },
+        {
+          "latitude_epsg_4326": -63.892,
+          "longitude_epsg_4326": -60.68,
+          "penguin_count": 2,
+          "season_starting": 1983,
+          "site_id": "TIEA",
+          "site_name": "Trinity Island (east)"
+        },
+        {
+          "latitude_epsg_4326": -63.711,
+          "longitude_epsg_4326": -60.749,
+          "penguin_count": 670,
+          "season_starting": 1986,
+          "site_id": "TINW",
+          "site_name": "Trinity Island (northwest)"
+        },
+        {
+          "latitude_epsg_4326": -63.893,
+          "longitude_epsg_4326": -60.901,
+          "penguin_count": 551,
+          "season_starting": 2023,
+          "site_id": "TISW",
+          "site_name": "Trinity Island (southwest)"
+        },
+        {
+          "latitude_epsg_4326": -63.833,
+          "longitude_epsg_4326": -60.829,
+          "penguin_count": 700,
+          "season_starting": 1986,
+          "site_id": "TIWE",
+          "site_name": "Trinity Island (west)"
+        },
+        {
+          "latitude_epsg_4326": -64.773,
+          "longitude_epsg_4326": -64.074,
+          "penguin_count": 0,
+          "season_starting": 2008,
+          "site_id": "TORG",
+          "site_name": "Torgersen Island"
+        },
+        {
+          "latitude_epsg_4326": -69.483,
+          "longitude_epsg_4326": 39.567,
+          "penguin_count": 45,
+          "season_starting": 2004,
+          "site_id": "TORI",
+          "site_name": "Torinosu Cove"
+        },
+        {
+          "latitude_epsg_4326": -63.591,
+          "longitude_epsg_4326": -59.779,
+          "penguin_count": 2,
+          "season_starting": 1986,
+          "site_id": "TOWE",
+          "site_name": "Tower Island (east)"
+        },
+        {
+          "latitude_epsg_4326": -63.56,
+          "longitude_epsg_4326": -59.876,
+          "penguin_count": 1500,
+          "season_starting": 1986,
+          "site_id": "TOWW",
+          "site_name": "Tower Island (west)"
+        },
+        {
+          "latitude_epsg_4326": -63.319,
+          "longitude_epsg_4326": -61.951,
+          "penguin_count": 5000,
+          "season_starting": 2019,
+          "site_id": "TPTN",
+          "site_name": "Two points north of Cape Hooker"
+        },
+        {
+          "latitude_epsg_4326": -62.522,
+          "longitude_epsg_4326": -59.839,
+          "penguin_count": 3703,
+          "season_starting": 2022,
+          "site_id": "TRIA",
+          "site_name": "Triangle Point"
+        },
+        {
+          "latitude_epsg_4326": -61.278,
+          "longitude_epsg_4326": -55.241,
+          "penguin_count": 348,
+          "season_starting": 2019,
+          "site_id": "TRID",
+          "site_name": "Trident Glacier"
+        },
+        {
+          "latitude_epsg_4326": -61.996,
+          "longitude_epsg_4326": -57.63,
+          "penguin_count": 3435,
+          "season_starting": 2022,
+          "site_id": "TROW",
+          "site_name": "Trowbridge Islands"
+        },
+        {
+          "latitude_epsg_4326": -64.923,
+          "longitude_epsg_4326": -63.407,
+          "penguin_count": 783,
+          "season_starting": 2023,
+          "site_id": "TRUA",
+          "site_name": "Truant Island"
+        },
+        {
+          "latitude_epsg_4326": -65.394,
+          "longitude_epsg_4326": -65.288,
+          "penguin_count": 347,
+          "season_starting": 2012,
+          "site_id": "TRUN",
+          "site_name": "Trundle Island"
+        },
+        {
+          "latitude_epsg_4326": -68.381,
+          "longitude_epsg_4326": 78.412,
+          "penguin_count": 13789,
+          "season_starting": 2011,
+          "site_id": "TRYN",
+          "site_name": "Tryne Islands"
+        },
+        {
+          "latitude_epsg_4326": -62.078,
+          "longitude_epsg_4326": -57.913,
+          "penguin_count": 510,
+          "season_starting": 2017,
+          "site_id": "TSIS",
+          "site_name": "Three Sisters"
+        },
+        {
+          "latitude_epsg_4326": -62.328,
+          "longitude_epsg_4326": -59.167,
+          "penguin_count": 8153,
+          "season_starting": 2024,
+          "site_id": "TTOE",
+          "site_name": "The Toe"
+        },
+        {
+          "latitude_epsg_4326": -60.67,
+          "longitude_epsg_4326": -45.166,
+          "penguin_count": 5000,
+          "season_starting": 2019,
+          "site_id": "TTUR",
+          "site_name": "The Turret"
+        },
+        {
+          "latitude_epsg_4326": -63.376,
+          "longitude_epsg_4326": -58.258,
+          "penguin_count": 15000,
+          "season_starting": 1990,
+          "site_id": "TUPI",
+          "site_name": "Tupinier Island"
+        },
+        {
+          "latitude_epsg_4326": -62.087,
+          "longitude_epsg_4326": -57.951,
+          "penguin_count": 83,
+          "season_starting": 2017,
+          "site_id": "TURR",
+          "site_name": "Turret Point (King George Island)"
+        },
+        {
+          "latitude_epsg_4326": -65.267,
+          "longitude_epsg_4326": -64.118,
+          "penguin_count": 1214,
+          "season_starting": 2023,
+          "site_id": "TUXE",
+          "site_name": "Cape Tuxen"
+        },
+        {
+          "latitude_epsg_4326": -64.592,
+          "longitude_epsg_4326": -64.247,
+          "penguin_count": 1664,
+          "season_starting": 2019,
+          "site_id": "TWGI",
+          "site_name": "Three islands west of Gerlache Island"
+        },
+        {
+          "latitude_epsg_4326": -61.18,
+          "longitude_epsg_4326": -55.402,
+          "penguin_count": 100,
+          "season_starting": 1970,
+          "site_id": "TWIN",
+          "site_name": "Twin Stack"
+        },
+        {
+          "latitude_epsg_4326": -65.255,
+          "longitude_epsg_4326": -64.133,
+          "penguin_count": 34,
+          "season_starting": 2023,
+          "site_id": "TXRX",
+          "site_name": "Tuxen Rocks"
+        },
+        {
+          "latitude_epsg_4326": -62.383,
+          "longitude_epsg_4326": -59.785,
+          "penguin_count": 123,
+          "season_starting": 2018,
+          "site_id": "UAIT",
+          "site_name": "Unnamed Island in Aitcho Islands"
+        },
+        {
+          "latitude_epsg_4326": -62.22,
+          "longitude_epsg_4326": -58.439,
+          "penguin_count": 250,
+          "season_starting": 2015,
+          "site_id": "UCHA",
+          "site_name": "Uchatka Point"
+        },
+        {
+          "latitude_epsg_4326": -67.469,
+          "longitude_epsg_4326": 61.141,
+          "penguin_count": 1942,
+          "season_starting": 2008,
+          "site_id": "UFSI",
+          "site_name": "Ufs Island"
+        },
+        {
+          "latitude_epsg_4326": -63.232,
+          "longitude_epsg_4326": -62.178,
+          "penguin_count": 6223,
+          "season_starting": 2019,
+          "site_id": "UICW",
+          "site_name": "Unnamed island off Cape Wallace"
+        },
+        {
+          "latitude_epsg_4326": -68.767,
+          "longitude_epsg_4326": 77.751,
+          "penguin_count": null,
+          "season_starting": 2013,
+          "site_id": "UIP1",
+          "site_name": "Unnnamed Island PE 1"
+        },
+        {
+          "latitude_epsg_4326": -68.901,
+          "longitude_epsg_4326": 77.736,
+          "penguin_count": 40,
+          "season_starting": 2011,
+          "site_id": "UIP2",
+          "site_name": "Unnnamed Island PE 2"
+        },
+        {
+          "latitude_epsg_4326": -68.442,
+          "longitude_epsg_4326": 78.211,
+          "penguin_count": 123,
+          "season_starting": 2011,
+          "site_id": "UIP3",
+          "site_name": "Unnnamed Island PE 3"
+        },
+        {
+          "latitude_epsg_4326": -68.901,
+          "longitude_epsg_4326": 77.716,
+          "penguin_count": 6893,
+          "season_starting": 2010,
+          "site_id": "UIPN",
+          "site_name": "Unnamed Island PE 2 North"
+        },
+        {
+          "latitude_epsg_4326": -68.046,
+          "longitude_epsg_4326": 43.017,
+          "penguin_count": 146,
+          "season_starting": 2009,
+          "site_id": "UMBE",
+          "site_name": "Umebosi"
+        },
+        {
+          "latitude_epsg_4326": -70.681,
+          "longitude_epsg_4326": 166.919,
+          "penguin_count": 305,
+          "season_starting": 2010,
+          "site_id": "UNGE",
+          "site_name": "Unger Island (Unger Rock)"
+        },
+        {
+          "latitude_epsg_4326": -67.44,
+          "longitude_epsg_4326": 63.544,
+          "penguin_count": 0,
+          "season_starting": 2010,
+          "site_id": "UNN2",
+          "site_name": "Unnamed 2"
+        },
+        {
+          "latitude_epsg_4326": -67.448,
+          "longitude_epsg_4326": 63.334,
+          "penguin_count": 5669,
+          "season_starting": 2010,
+          "site_id": "UNN7",
+          "site_name": "Unnamed 7"
+        },
+        {
+          "latitude_epsg_4326": -64.717,
+          "longitude_epsg_4326": -62.864,
+          "penguin_count": 58,
+          "season_starting": 2023,
+          "site_id": "USEF",
+          "site_name": "Useful Island"
+        },
+        {
+          "latitude_epsg_4326": -60.758,
+          "longitude_epsg_4326": -44.622,
+          "penguin_count": 5000,
+          "season_starting": 2019,
+          "site_id": "VAIS",
+          "site_name": "Valette Island"
+        },
+        {
+          "latitude_epsg_4326": -61.102,
+          "longitude_epsg_4326": -54.651,
+          "penguin_count": 329,
+          "season_starting": 2019,
+          "site_id": "VALE",
+          "site_name": "Cape Valentine"
+        },
+        {
+          "latitude_epsg_4326": -62.992,
+          "longitude_epsg_4326": -60.721,
+          "penguin_count": 13935,
+          "season_starting": 2021,
+          "site_id": "VAPO",
+          "site_name": "Vapour Col (Deception Island)"
+        },
+        {
+          "latitude_epsg_4326": -71.556,
+          "longitude_epsg_4326": -74.76,
+          "penguin_count": 1500,
+          "season_starting": 2019,
+          "site_id": "VERD",
+          "site_name": "Verdi Inlet"
+        },
+        {
+          "latitude_epsg_4326": -65.245,
+          "longitude_epsg_4326": -64.257,
+          "penguin_count": 379,
+          "season_starting": 2017,
+          "site_id": "VERN",
+          "site_name": "Vernadsky Station"
+        },
+        {
+          "latitude_epsg_4326": -68.484,
+          "longitude_epsg_4326": 78.095,
+          "penguin_count": 45497,
+          "season_starting": 2012,
+          "site_id": "VESN",
+          "site_name": "Vestfold North"
+        },
+        {
+          "latitude_epsg_4326": -68.588,
+          "longitude_epsg_4326": 77.923,
+          "penguin_count": 101297,
+          "season_starting": 2011,
+          "site_id": "VESS",
+          "site_name": "Vestfold South"
+        },
+        {
+          "latitude_epsg_4326": -62.683,
+          "longitude_epsg_4326": -61.098,
+          "penguin_count": 200,
+          "season_starting": 1986,
+          "site_id": "VIET",
+          "site_name": "Vietor Rock"
+        },
+        {
+          "latitude_epsg_4326": -65.668,
+          "longitude_epsg_4326": -65.214,
+          "penguin_count": 360,
+          "season_starting": 2012,
+          "site_id": "VIEU",
+          "site_name": "Vieugue Island"
+        },
+        {
+          "latitude_epsg_4326": -63.726,
+          "longitude_epsg_4326": -57.642,
+          "penguin_count": 6937,
+          "season_starting": 2021,
+          "site_id": "VORT",
+          "site_name": "Vortex Island"
+        },
+        {
+          "latitude_epsg_4326": -62.676,
+          "longitude_epsg_4326": -61.094,
+          "penguin_count": 100,
+          "season_starting": 1986,
+          "site_id": "VRNW",
+          "site_name": "Vietor Rock (northwest)"
+        },
+        {
+          "latitude_epsg_4326": -63.282,
+          "longitude_epsg_4326": -62.266,
+          "penguin_count": 30000,
+          "season_starting": 2012,
+          "site_id": "WABL",
+          "site_name": "Cape Wallace Bluff (south)"
+        },
+        {
+          "latitude_epsg_4326": -72.713,
+          "longitude_epsg_4326": -103.451,
+          "penguin_count": 546,
+          "season_starting": 2009,
+          "site_id": "WAIT",
+          "site_name": "Cape Waites"
+        },
+        {
+          "latitude_epsg_4326": -61.143,
+          "longitude_epsg_4326": -54.697,
+          "penguin_count": 700,
+          "season_starting": 2017,
+          "site_id": "WALK",
+          "site_name": "Walker Point"
+        },
+        {
+          "latitude_epsg_4326": -63.233,
+          "longitude_epsg_4326": -62.209,
+          "penguin_count": 26683,
+          "season_starting": 2019,
+          "site_id": "WALL",
+          "site_name": "Cape Wallace"
+        },
+        {
+          "latitude_epsg_4326": -74.637,
+          "longitude_epsg_4326": 165.382,
+          "penguin_count": 15529,
+          "season_starting": 2022,
+          "site_id": "WASH",
+          "site_name": "Cape Washington"
+        },
+        {
+          "latitude_epsg_4326": -64.824,
+          "longitude_epsg_4326": -62.858,
+          "penguin_count": 2,
+          "season_starting": 2016,
+          "site_id": "WATE",
+          "site_name": "Waterboat Point"
+        },
+        {
+          "latitude_epsg_4326": -66.995,
+          "longitude_epsg_4326": 144.285,
+          "penguin_count": 2797,
+          "season_starting": 2011,
+          "site_id": "WATT",
+          "site_name": "Watt Bay"
+        },
+        {
+          "latitude_epsg_4326": -66.857,
+          "longitude_epsg_4326": 143.589,
+          "penguin_count": 5997,
+          "season_starting": 2011,
+          "site_id": "WAYA",
+          "site_name": "Way Archipelago"
+        },
+        {
+          "latitude_epsg_4326": -62.952,
+          "longitude_epsg_4326": -60.752,
+          "penguin_count": 20000,
+          "season_starting": 2013,
+          "site_id": "WDEC",
+          "site_name": "Western Deception Island"
+        },
+        {
+          "latitude_epsg_4326": -60.636,
+          "longitude_epsg_4326": -44.848,
+          "penguin_count": 28507,
+          "season_starting": 2010,
+          "site_id": "WEDD",
+          "site_name": "Weddell Island"
+        },
+        {
+          "latitude_epsg_4326": -62.234,
+          "longitude_epsg_4326": -59.057,
+          "penguin_count": 385,
+          "season_starting": 2018,
+          "site_id": "WEEK",
+          "site_name": "Weeks Stack"
+        },
+        {
+          "latitude_epsg_4326": -61.134,
+          "longitude_epsg_4326": -55.429,
+          "penguin_count": 413,
+          "season_starting": 2019,
+          "site_id": "WELC",
+          "site_name": "Welcome Point"
+        },
+        {
+          "latitude_epsg_4326": -65.445,
+          "longitude_epsg_4326": -65.382,
+          "penguin_count": 4,
+          "season_starting": 2012,
+          "site_id": "WELL",
+          "site_name": "Weller Island"
+        },
+        {
+          "latitude_epsg_4326": -72.622,
+          "longitude_epsg_4326": 170.202,
+          "penguin_count": 1810,
+          "season_starting": 2018,
+          "site_id": "WHEA",
+          "site_name": "Cape Wheatstone"
+        },
+        {
+          "latitude_epsg_4326": -60.748,
+          "longitude_epsg_4326": -44.544,
+          "penguin_count": 10000,
+          "season_starting": 2018,
+          "site_id": "WHIT",
+          "site_name": "Cape Whitson"
+        },
+        {
+          "latitude_epsg_4326": -66.246,
+          "longitude_epsg_4326": 110.557,
+          "penguin_count": 15000,
+          "season_starting": 2012,
+          "site_id": "WHTY",
+          "site_name": "Blakeney/Whitney"
+        },
+        {
+          "latitude_epsg_4326": -63.004,
+          "longitude_epsg_4326": -55.849,
+          "penguin_count": 15020,
+          "season_starting": 2015,
+          "site_id": "WIDE",
+          "site_name": "Wideopen Islands"
+        },
+        {
+          "latitude_epsg_4326": -61.098,
+          "longitude_epsg_4326": -54.861,
+          "penguin_count": 2588,
+          "season_starting": 2019,
+          "site_id": "WILD",
+          "site_name": "Point Wild"
+        },
+        {
+          "latitude_epsg_4326": -65.52,
+          "longitude_epsg_4326": -65.686,
+          "penguin_count": 32,
+          "season_starting": 2012,
+          "site_id": "WINK",
+          "site_name": "Winkle Island (two islets next to Winkle Island)"
+        },
+        {
+          "latitude_epsg_4326": -62.568,
+          "longitude_epsg_4326": -61.124,
+          "penguin_count": 75,
+          "season_starting": 1986,
+          "site_id": "WINW",
+          "site_name": "Window Island"
+        },
+        {
+          "latitude_epsg_4326": -66.55,
+          "longitude_epsg_4326": 81.818,
+          "penguin_count": 2480,
+          "season_starting": 2022,
+          "site_id": "WISH",
+          "site_name": "West Ice Shelf"
+        },
+        {
+          "latitude_epsg_4326": -62.235,
+          "longitude_epsg_4326": -59.138,
+          "penguin_count": 9483,
+          "season_starting": 2016,
+          "site_id": "WITH",
+          "site_name": "Withem Island"
+        },
+        {
+          "latitude_epsg_4326": -74.33,
+          "longitude_epsg_4326": 165.133,
+          "penguin_count": 2889,
+          "season_starting": 2022,
+          "site_id": "WOOD",
+          "site_name": "Wood Bay (Edmonson Point)"
+        },
+        {
+          "latitude_epsg_4326": -62.484,
+          "longitude_epsg_4326": -60.304,
+          "penguin_count": 4000,
+          "season_starting": 2013,
+          "site_id": "WOOI",
+          "site_name": "Wood Island"
+        },
+        {
+          "latitude_epsg_4326": -74.406,
+          "longitude_epsg_4326": -132.777,
+          "penguin_count": 10481,
+          "season_starting": 2010,
+          "site_id": "WOPT",
+          "site_name": "Worley Point"
+        },
+        {
+          "latitude_epsg_4326": -61.838,
+          "longitude_epsg_4326": -58.037,
+          "penguin_count": 216,
+          "season_starting": 1980,
+          "site_id": "WORL",
+          "site_name": "Worlds End"
+        },
+        {
+          "latitude_epsg_4326": -60.676,
+          "longitude_epsg_4326": -44.544,
+          "penguin_count": 4653,
+          "season_starting": 2010,
+          "site_id": "WPEC",
+          "site_name": "Watson Peninsula (east coast)"
+        },
+        {
+          "latitude_epsg_4326": -60.675,
+          "longitude_epsg_4326": -44.551,
+          "penguin_count": 2750,
+          "season_starting": 1983,
+          "site_id": "WPWC",
+          "site_name": "Watson Peninsula (west coast)"
+        },
+        {
+          "latitude_epsg_4326": -61.106,
+          "longitude_epsg_4326": -54.963,
+          "penguin_count": 2354,
+          "season_starting": 2019,
+          "site_id": "WSAD",
+          "site_name": "West of Saddleback Point (Penguin Island)"
+        },
+        {
+          "latitude_epsg_4326": -63.334,
+          "longitude_epsg_4326": -55.643,
+          "penguin_count": 3500,
+          "season_starting": 2021,
+          "site_id": "WTAY",
+          "site_name": "West of Tay Head"
+        },
+        {
+          "latitude_epsg_4326": -68.357,
+          "longitude_epsg_4326": 78.538,
+          "penguin_count": 1028,
+          "season_starting": 2011,
+          "site_id": "WYAT",
+          "site_name": "Wyatt Earp Islands"
+        },
+        {
+          "latitude_epsg_4326": -65.239,
+          "longitude_epsg_4326": -64.156,
+          "penguin_count": 2374,
+          "season_starting": 2024,
+          "site_id": "YALO",
+          "site_name": "Yalour Islands"
+        },
+        {
+          "latitude_epsg_4326": -62.526,
+          "longitude_epsg_4326": -59.769,
+          "penguin_count": 5658,
+          "season_starting": 2024,
+          "site_id": "YANK",
+          "site_name": "Yankee Harbor"
+        },
+        {
+          "latitude_epsg_4326": -66.417,
+          "longitude_epsg_4326": 162.4,
+          "penguin_count": null,
+          "season_starting": 2002,
+          "site_id": "YOUN",
+          "site_name": "Young Island"
+        },
+        {
+          "latitude_epsg_4326": -69.217,
+          "longitude_epsg_4326": 39.433,
+          "penguin_count": 102,
+          "season_starting": 2004,
+          "site_id": "YTRE",
+          "site_name": "Ytrehovdeholmen"
+        },
+        {
+          "latitude_epsg_4326": -70.716,
+          "longitude_epsg_4326": 166.478,
+          "penguin_count": 1000,
+          "season_starting": 2019,
+          "site_id": "YULE",
+          "site_name": "Yule Bay"
+        },
+        {
+          "latitude_epsg_4326": -62.079,
+          "longitude_epsg_4326": -58.784,
+          "penguin_count": 68,
+          "season_starting": 2016,
+          "site_id": "ZAWA",
+          "site_name": "Zawadski Stacks"
+        },
+        {
+          "latitude_epsg_4326": -62.433,
+          "longitude_epsg_4326": -60.166,
+          "penguin_count": 20000,
+          "season_starting": 2013,
+          "site_id": "ZEDI",
+          "site_name": "Zed Island"
+        },
+        {
+          "latitude_epsg_4326": -63.612,
+          "longitude_epsg_4326": -59.842,
+          "penguin_count": 1000,
+          "season_starting": 1986,
+          "site_id": "ZIGZ",
+          "site_name": "Zig Zag Island"
+        }
+      ],
+      "elevationRange": [
+        0,
+        3000
+      ],
+      "elevationScale": 50,
+      "extruded": true,
+      "getPosition": "@@=[longitude_epsg_4326, latitude_epsg_4326]",
+      "id": "2f37ebb7-d558-4f8a-8bcb-d49d26054aef",
+      "pickable": true
+    }
+  ],
+  "mapProvider": "carto",
+  "mapStyle": "https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json",
+  "views": [
+    {
+      "@@type": "MapView",
+      "controller": true
+    }
+  ]
+};
+    const tooltip = true;
+    const customLibraries = null;
+    const configuration = null;
+
+    const deckInstance = createDeck({
+                  container,
+      jsonInput,
+      tooltip,
+      customLibraries,
+      configuration
+    });
+
+  </script>
+</html>
