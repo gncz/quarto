@@ -37,7 +37,7 @@ Very convincing. <br>
 
 ![The Great Pyramid, and the blue sky](assets/GP2.jpg){width=100% fig-align="left"}
 
-Everybody knows what this is, and where it is.
+Everybody knows what this is. <br>
 Many people can imagine a weight around 50kg. Nobody can imagine 6 million tons.
 Some of us managed projects. None of use without modern communication tools.
 Some of constructed simple things with modern tools.
