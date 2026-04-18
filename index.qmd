@@ -5,6 +5,7 @@ listing:
     - ttc.qmd
     - housing.qmd
     - butwhy.qmd
+    - sakeof.qmd
     type: grid
     sort: "desc desc"
     fields: [image,title,description,categories]
