@@ -238,7 +238,7 @@ layer = pdk.Layer(
 view_state= pdk.ViewState(
         latitude= -64.737905,
         longitude= -63.896758,
-        zoom=3,
+        zoom=4,
         pitch=45,
         bearing=0
 )
@@ -285,6 +285,13 @@ fig_line = px.line(
         title='Change of Nests for Chinstrap Penguins With More Than 60 Observations',
         color='site_name',
         template='plotly_white'
+)
+
+fig_line.update_layout(
+        legend = dict(
+                orientation= "h",
+                yanchor = "bottom"
+                )
 )
 
 fig_line.show()
